@@ -1,0 +1,194 @@
+/* -------------------------------------- */
+/* IMPORT ALL MODULES                     */
+/* -------------------------------------- */
+
+/* SASS/COMPASS LIBRARIES */
+@import "susy";
+@import 'stitch';
+@import 'stitch/patterns';
+@import "compass/layout.scss";
+@import 'compass/css3';
+@import 'compass/css3/user-interface';
+@import 'compass/utilities';
+@import 'compass/typography/lists';
+
+
+/* SETUP: GLOBAL VARS, FONTS */
+@import 'partials/setup/vars';
+@import 'partials/setup/fonts';
+
+
+/* HELPERS: MIXINS, ANIMATIION DEFINITIONS, MAIN/GENERIC CLASSES AND EXTEND VARIABLES */
+/* Make sure Mixins load last as they may use certain definitions, e.g. clearfix      */
+@import 'partials/helpers/animation-generic';
+@import 'partials/helpers/definitions-generic';
+@import 'partials/helpers/mixins-generic';
+
+
+/* STYLE GUIDE: RESETS, NORMALIZATIONS, GENERIC PATTERNS */
+@import 'partials/setup/styleGuide';
+
+
+/* LAYOUT AND GRID INIT */
+@import 'partials/modules/pageLayout/article';
+
+
+/* UI MODULES */
+@import 'partials/modules/quickContact';
+
+@import 'partials/modules/topBranding/left';
+//@import 'partials/modules/topBranding/center';
+
+//@import 'partials/modules/topNav/dropdown-aardvark';
+@import 'partials/modules/topNav/dropdown';
+//@import 'partials/modules/topNav/dropdown+search';
+//@import 'partials/modules/topNav/offCanvas';
+//@import 'partials/modules/topNav/offCanvas+search';
+//@import 'partials/modules/topNav/offCanvas+separateSearch';
+//@import 'partials/modules/topNav/offCanvas+multilevel';
+//@import 'partials/modules/topNav/offCanvas+multilevel+search';
+//@import 'partials/modules/topNav/offCanvas+multilevel+separateSearch';
+//@import 'partials/modules/topNav/select';
+//@import 'partials/modules/topNav/select+search';
+
+
+@import 'partials/modules/itemListing';
+@import 'partials/modules/twitterBalloon';
+@import 'partials/modules/footer';
+@import 'partials/helpers/spinners';
+
+/* -------------------------------------- */
+
+
+
+
+
+
+@include ui-spinner(#fff, 60px, gray, purple, .7, 4s); // Will use these variables.
+
+
+
+/* -------------------------------------- */
+/* INIT AND MANAGE ALL MODULES            */
+/* -------------------------------------- */
+
+@include pageLayout();
+@include quickContact();
+@include topBranding();
+@include topNav();
+@include itemListing();
+@include twitterBalloon();
+@include footer();
+
+
+
+
+
+@media only screen and (min-width: 320px){
+	@include topBranding("320");
+	@include topNav("320");
+
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: 480px){
+	@include topNav("480");
+	@include itemListing("480");
+}
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 640px){
+	@include pageLayout("640");
+	@include quickContact("640");
+	@include topBranding("640");
+	@include itemListing("640");
+	@include footer("640");
+}
+
+
+
+
+
+
+@media only screen and (min-width: 768px){
+	@include pageLayout("768");
+	@include topNav("768");
+	@include itemListing("768");
+	@include twitterBalloon("768");
+	@include footer("768");
+}
+
+
+
+
+
+
+@media only screen and (min-width: 800px){
+	@include itemListing("800");
+	@include footer("800");
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: 960px){
+	@include pageLayout("960");
+	@include quickContact("960");
+	@include topBranding("960");
+	@include topNav("960");
+	@include itemListing("960");
+	@include footer("960");
+}
+
+
+
+
+
+@include topNav("960-1100");
+
+
+
+
+
+
+@media only screen and (min-width: 1100px){
+	@include pageLayout("1100");
+	@include topNav("1100");
+	@include itemListing("1100");
+}
+
+
+
+
+
+
+@include topNav("1100-1248");
+
+
+
+
+
+
+@media only screen and (min-width: 1248px){
+	@include pageLayout("1200");
+	@include quickContact("1200");
+	@include topBranding("1200");
+	@include topNav("1200");
+	@include itemListing("1200");
+	@include footer("1200");
+}

@@ -1,0 +1,124 @@
+/* ===================================================================================
+ * Module Name: Top Branding > Left
+ * ===================================================================================
+ * Contains layout outlines for the main heading branding,
+ * with the logo being shifted from central to left on smaller resolutions
+ *
+ * @dependency $logoSmall string/boolean Will use provided smaller (e.g. horizontal) version of the logo,
+ *                                       or scale down the existing one if set to false.
+ *                                       Expected to be set in _vars.scss.
+ * =================================================================================== */
+
+
+
+
+@mixin topBranding($res:false){
+
+
+
+	@if $res == false {
+	/* ------------------------------------------------------
+	 * GENERIC
+	 * ------------------------------------------------------ */
+
+		$roundingBuffer : 0.5%;// 0.5% to fix rounding issues
+
+		#header{
+			@extend %cf;
+			text-align : center;
+			z-index    : 101;
+		}
+
+			#logo{
+				float    : left;
+				z-index  : 100;
+				position : relative;
+			}
+
+				#logoImage{
+					@extend %noWhitespace;
+
+					@if($logoSmall){
+						@include dim(image-width($logoSmall), image-height($logoSmall));
+						background:image-url($logoSmall) no-repeat 0 0;
+
+						img{
+							@extend %removed;
+						}
+
+					}@else{
+						@include dim(99px, 99px);
+					}
+				}
+
+				#logoSlogan{
+					@extend %visuallyhidden;
+				}
+
+	/* ------------------------------------------------------
+	 * ENDOF: GENERIC
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "640" {
+	/* ------------------------------------------------------
+	 * 640
+	 * ------------------------------------------------------ */
+
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 640
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "960" {
+	/* ------------------------------------------------------
+	 * 960
+	 * ------------------------------------------------------ */
+
+			#logo{
+				float    : none;
+				z-index  : 100;
+				position : relative;
+			}
+
+			#logoImage{
+				@include dim(auto, auto, false);
+
+
+				@if($logoSmall){
+					background:none;
+
+					img{
+						@include rel($l:auto);
+					}
+				}
+			}
+
+	/* ------------------------------------------------------
+	 * ENDOF: 960
+	 * ------------------------------------------------------ */
+	}
+
+
+
+}

@@ -1,0 +1,276 @@
+/* ===================================================================================
+ * Style Guide:
+ * -----------------------------------------------------------------------------------
+ * II. CONTENT GROUPING
+ * ===================================================================================
+
+
+
+	/* .......................................
+	 * II#1. LISTS
+	 * ....................................... */
+
+		ol, ul{
+			margin-left : -2.5em;
+			}
+
+			ol ol{
+				margin-left : -1em;
+			}
+
+			ol ul{
+				margin-left : -1em;
+			}
+
+			ul ul{
+				margin-left : -1em;
+			}
+
+			ul ol{
+				margin-left : -1em;
+			}
+
+
+		%horizontalList{
+			@include horizontal-list;
+		}
+
+		.horizontalList{
+			@extend %horizontalList;
+		}
+
+
+		%inlineBlockList{
+			@include inline-block-list();
+		}
+
+		.inlineBlockList{
+			@extend %inlineBlockList;
+		}
+
+
+		%tableList{
+			display:table;
+
+			li{
+				display:table-cell;
+			}
+		}
+
+
+		%blockList{
+			display    : block;
+			margin     : 0;
+			padding    : 0;
+			list-style : none;
+
+			li{
+				display : block;
+				width   : 100%;
+			}
+		}
+
+		.blockList{
+			@extend %blockList;
+		}
+
+
+
+
+		@mixin numericColouredList(){
+			list-style-type: none;
+
+			li{
+				counter-increment : level1;
+
+				&:before{
+					content     : counter(level1, decimal) ". ";
+					position    : absolute;
+					@content;
+				}
+			}
+		}
+
+
+		.numericColouredList{
+			@include numericColouredList(){
+				color:$red;
+			}
+		}
+
+
+		/* .......................................
+		 * II#2. DEFINITION LISTS
+		 * ....................................... */
+
+		dt{
+			font-weight:bold;
+		}
+
+		dd{
+			margin-left:1em
+		}
+
+
+		%dl-inline{
+			@extend %cf;
+			display : block;
+
+			dt,dd{
+				@include inline-block;
+				margin : 0;
+				float  : left;
+			}
+
+			dt{
+				margin : 0 0.5em 0 0;
+				position:relative;
+
+				&:after{
+					content:":";
+				}
+			}
+
+			dd + dt{
+				clear  : both;
+			}
+		}
+
+		.dl-inline{
+			@extend %dl-inline;
+		}
+
+
+
+
+
+
+
+
+	/* .......................................
+	 * II#3. TABULAR DATA
+	 * ....................................... */
+
+		/* Remove most spacing between table cells. */
+
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0;
+			padding: 0;
+
+			&:hover{
+				caption{
+					@include transition(opacity .3s ease-in-out);
+					@include opacity(.75);
+				}
+			}
+		}
+
+			caption {
+				@include adjust-font-size-to(14px);
+				@include transition(opacity 1s ease-in-out);
+				@include opacity(.5);
+				padding      : rhythm(1);
+				caption-side : bottom;
+				text-align   : left;
+				font-style   : italic;
+			}
+
+			thead{
+				border-bottom: 2px solid $dark-default;
+			}
+
+			tfoot{
+				border       : 2px solid $dark-default;
+				border-width : 2px 0;
+				background   : $grey-light;
+			}
+
+				tr{
+					border-bottom: 1px solid $grey-light;
+
+					&:last-child {
+						border-bottom: none;
+					}
+
+					&:nth-child(2n) {
+						background: #fbfbfb;
+					}
+				}
+
+					th, td {
+						padding    : 0 rhythm(1);
+						height     : rhythm(2);
+						text-align : left;
+						border     : 0;
+						vertical-align: middle;
+					}
+
+					th {
+						border-width: 2px;
+					}
+
+					td {
+						color: #666;
+					}
+
+		/* Responsive Tables. Based on Chris Coyier's http://css-tricks.com/responsive-data-tables */
+		@media only screen and (max-width: 640px)  {
+
+			/* Force table to not be like tables anymore */
+			table, thead, tbody, tfoot, th, td, tr {
+				display: block;
+			}
+
+			/* Hide table headers (but not display: none;, for accessibility) */
+			thead {
+				@include abs($l:-9999px);
+			}
+
+				th{
+					font-weight: normal;
+				}
+
+
+			tfoot{
+				th[scope="row"]{
+					padding     : rhythm(0.25) 3% rhythm(0.25) 3%;
+					height      : rhythm(1);
+					text-align  : center;
+					font-weight : bold;
+				}
+			}
+
+				tr {
+					border: 1px solid $grey-light;
+				}
+
+				tbody tr{
+					&:first-child{
+						border-top:0;
+					}
+					&:last-child{
+						border-bottom: 2px solid $grey-light;
+					}
+				}
+
+
+					td,
+					tfoot th:not([scope="row"]){
+						/* Behave  like a "row" */
+						border   : none;
+						position : relative;
+						padding  : rhythm(0.25) 3% rhythm(0.25) 53%;
+						height   : rhythm(1);
+
+						&:before {
+							content       : attr(data-label);
+							position      : absolute;
+							top           : rhythm(0.25);
+							left          : 3%;
+							width         : 43%;
+							white-space   : nowrap;
+						}
+					}
+		}

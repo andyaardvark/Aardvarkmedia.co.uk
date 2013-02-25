@@ -1,0 +1,288 @@
+/* -------------------------------------- */
+/* IMPORT ALL MODULES                     */
+/* -------------------------------------- */
+/* SASS/COMPASS LIBRARIES */
+/* SETUP: GLOBAL VARS, FONTS */
+/* EASING
+ * ------------------------------------------- */
+/* MODULE OPTIONS
+ * ------------------------------------------- */
+/* VERTICAL RHYTHM
+ * ------------------------------------------- */
+/* GRID
+ * ------------------------------------------- */
+/* IMAGES
+ * ------------------------------------------- */
+/* COLOURS
+ * -------------------------------------------
+ * use colour_name[-state] names instead referring
+ * to usage to minimise their amount and future confusion.
+ * If unavoidable, extend with element or function specific values
+ *
+ * e.g.: $dark-blue, $red-inactive
+ * ------------------------------------------- */
+/* applies to majority of black and near-black elements, e.g. text */
+/* applies to majority of white and near-white elements, e.g. background */
+/* e.g.: logo banner, links/buttons idle colour */
+/* e.g.: top nav hovers */
+/* e.g.: top nav background */
+/* e.g.: links/buttons hover colour */
+/* e.g.: links/buttons active state colour */
+/* used for panel backgrounds, e.g. home twitter feed */
+/* used for panel strokes, e.g. dividers, twitter tooltip border */
+/* ued for panel fills, e.g. ribbon in the work/study case oages */
+/* used for panel backgrounds, e.g. buttons, footer navigation */
+/* used for panel backgrounds, e.g. functional footer */
+/* used for panel backgrounds, e.g. buttons idle */
+/* used for panel backgrounds, e.g. buttons hover */
+/* used for panel backgrounds, e.g. buttons active */
+/* TYPOGRAPHY
+ * ------------------------------------------- */
+/* MISC
+ * ------------------------------------------- */
+/* amount of fading applied when hovering services in top nav*/
+/* ICON FONTS
+ * ------------------------------------------- */
+@font-face {
+  font-family: 'aardvark';
+  src: url("../fonts/aardvark.eot");
+}
+
+@font-face {
+  font-family: 'aardvark';
+  src: url(data:application/x-font-woff;charset=utf-8;base64,d09GRk9UVE8AAAl4AAsAAAAADXAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABDRkYgAAABCAAABjwAAAiFYkD2OkZGVE0AAAdEAAAAGgAAABxmsFM+R0RFRgAAB2AAAAAdAAAAIAA1AARPUy8yAAAHgAAAAEsAAABgL9zcYGNtYXAAAAfMAAAARQAAAVrAGfLxaGVhZAAACBQAAAAuAAAANvxS8StoaGVhAAAIRAAAAB4AAAAkBNIAqmhtdHgAAAhkAAAAGQAAACAOwQBgbWF4cAAACIAAAAAGAAAABgAIUABuYW1lAAAIiAAAAOQAAAGP/3t4pnBvc3QAAAlsAAAADAAAACAAAwAAeJyNVWtQlGUUPt+6y34irVzVYF0hQ7HUYL2glGiObmZ4SXEtLW8xSsgg2uowVmSaefnI0jBrJk3NNCHNnCyxLMvLKCZeKlQqC0FNUcEwd203np5XkGkmfzQ7c77znve85/Kcy2piNoumaS0nT56VMWfyrOmimUSTVN89Jl/HFr52ZiOkhRFidgTL3aPDYRjNTIh1adZNt89jscvHre0ioXb5Kswuul1/MVxaKhu6tJY20l7ulfvFKSkycHbOs4MTExMbP0mNH2fjp0fjp2fjJ5kfFzVvx9Qcm4i2SFusLdGWaoZWoL0munJkklhTwJIcJFaLdZ212Fbsi4y635deYw2k+//D2W6OgWnP9S+hPdnpwyiILNwA+NeHAKj/lNzOQnKuDCDQ+SMd+CuGbOXyyxYKKocAtW4zUDchD/jTfpnHH/pAWiQvo2Ze/CRITOxAataebkdpioNKOW+D0Fzm0bGT3EcFOsR610hI/PIiatbnjYJo3/F5vdLUduwjVzCU3LJIaprDEoC9zlyLASldfR14fdgK4KT3aAeg1/c+NOy0TLKSygDed9WDoBCCdJmWw/MHjGeG22wYypCN1h86MlK5XPYT0DDzErls+m1IKyA3t5JcUlFTcKjIcVtUyDeZy2gP08g9T64qnKR8EZHYX92UMKp//UolzFgQOOhR0DDNYKUZOFPChDcHmkAUR04kNfHYqzRcThBxw8y4Bv3MmBdEkHMvJpfeF2L7bT5VnDMgA7oSCUfcEkir85cg/dSLdrkbIO+0r4dE5NPVtOXFhqJFhpISocsvD2nUxIXXn+LrtkzveqyymGIHvq4+Qy90hWuhG3Q0vLe9O+SB8sVRwCXHHAM4n3mjCZ3qrW7g74xohd7T24F9EZ9BXNkFdOR6NmAQH2lPMcqIrHmLjfC6D9IAdifS+CeZLOHZ4cDRHSyN6fFMYpzxLivRsLkqnFn0HNWVdu6bboIkbE5WZSPn7FxLZ8749cCPhQ28KV4IHN5ygmTbFMpWpbH26c8DRyomkJwKo4VM9uxJ9yFaHLHGYfMVQssvzWc212pMTKl2DXA1qRNwZZ4ANXmneJG4nu56fMZWz88jF01T/ryRjNw/qzvp7ETOw1tjjwET6+KA1EN+CvdtjSQ9ePAGJCxjHHB8wUpI+zKOj558lDkHXST31HRy8/aTm7uWySUlB5N2e4yJhZbugXSs7wGxdz3Cfjih76DnU6OA071SWaOJLwJ/rPuOjburEhKU1Y8lOBBPrpDJYmwwuX2/0FjLwucVfaSO4D7KwdOPxRLcqVMJ8x/beLHxIvBT6UuExZNCRWe1eiQzsxRVbSOmNxTHR7YuyYAvrpSxOXOYumsqM+sTRm+eFAZYdWwKJLzcReA8uyGxnS7RxL0zVZNFDGBBLd3dvG81iD6DmVrrBW9BepRVAHtm5UKGTd0ElHenbGzaERpf05v59HqZs6XKiPBujNw8jrb0BzeSpqioHtA9JNZsdTxGoaO3izRmmI2Nk8o+j0hgX9as/JYN0vbKcHbcjm8hbeaepZHd2yGRaZyUkJYBJpXA/rvAtYJaVcSarFT2wcgp+ZCo/i8QrSUBaqfOYQ4frFc5cur0cWt1my/S62E9Oz4Ryiptqmsit46KoOr2BX7eVNfBn14cVGy901UTqbp9oY4OYzp//nTO/0pvGWSMl01TpDshWXqSo9j4gj/L//Y93hhPa5Z/OWrW73DYykEcxAmSzMU3mE78l10UmPOPc4mP6a/m7GFut3VW1rgieyiFL7BpKzm9qBjEvq6Yls3jcz35ZNQ1vn7zc5IJf/GodrKjiLWOf6cN9/oXV9kAh+YJXewa2o8uVr1/EsicJMrFQGDwqlZ0sTr3mdsreUDcYZblLrUmxv/OCSg7zdlI4PCe2MM33QZzoe+9uIvrLZDFLorZqJa22i9aaLvQKGjR3U5Azq19BYh+qAsazu09xQerV+Qo2Ko7b+E/1oIxkJKibwB7zAWHzRvp/YGxuRQufRVCt8itY7MMBxR+JYoraT7eQdb81uEt9PdUVj/pROFwtvuBbfxfKBkR3YEo+r3L+Fekh1arVeJ9zTCKGZuLClRlsn1HRKuXnR02w+cxBwp9hVauq0gjyggJ/gcAb3C4eJxjYGBgZACCM7aLzoPos5YR5jAaAEQDBaYAAHicY2BkYGDgA2IJBhBgYmAEQnYgZgHzGAAElwA6AAAAeJxjYGZSYJzAwMrAwejDmMbAwOAOpb8ySDK0MDAwMbAyM8CBAILJEJDmmsLg8IDhAwPjg/8PGPQYHzAoNDAwMMIVKAAhIwAb4gw/AHicY2BgYGaAYBkGRgYQCAHyGMF8FgYLIM3FwMHABIQMD1gesH9g+P8fpOgBA4ytwCj/X4AdqhcKGNkYUAVGIAAAZYwLtwAAAHicY2BkYGAA4hPWGffi+W2+MnAzMYDAWcsIcwT9/wHTQcYHQC4HA1gaACjCCq8AAHicY2BkYGB88P8Bgx7TQQaGfwxAEiiCAjgAjxgFfQAAeJxjYmBgYGJgUGA6CKZB2AFKgwEAGO8BMAAAAAAAUAAACAAAeJx9jj1OAzEQhb9NNiEIhBAFDY2llGhX3qWIlAPsAVKktxRrFRHtSs5Pwz1oOQMtx+AAnIEj8NaYhiK2rPn0/GbmAde8kjGcjBl3iUdc8Jh4zJyXxLk874knXPGZeCr9W84sv5RyG7sGHnHDQ+IxDU+Jc3neEk+45yPxVPoXTjew4RTrMzgXNicXRCs8LUd28YuVb487J2jo6TjEGuTwGGpKrOpS7//IX3VBIdfwLJXC0fTdoelD601dWrM0f4uFi6IualvJdCbeWosDe7YxjtHQIQJrH/bbvjNVac+1/wCGYDxseJxjYGbACwAAfQAE) format("woff"), url(data:application/x-font-ttf;charset=utf-8;base64,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) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+/* Use the following CSS code if you want to have a class per icon */
+/* HELPERS: MIXINS, ANIMATIION DEFINITIONS, MAIN/GENERIC CLASSES AND EXTEND VARIABLES */
+/* Make sure Mixins load last as they may use certain definitions, e.g. clearfix      */
+/* ===================================================================================
+ * Helper Name: Generic Mixins
+ * ===================================================================================
+ * Contains all shorthand mixins.
+ * Introduce per-page/section segmentation for larger projects to reduce filesize.
+ *
+ * Filename convention: _mixins-[section].scss
+ * =================================================================================== */
+/* ------------------------------------------------------
+ * ELEMENT SIZING
+ * ------------------------------------------------------
+ * @desc  sets display type and size
+
+ * @param $w  cssUnit width
+ * @param $h  cssUnit height
+ * @param $d  string  display-type
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: ELEMENT SIZING
+ * ------------------------------------------------------
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * FONT STYLING SHORTHAND
+ * ------------------------------------------------------
+ * @desc  Use sparringly.
+ *        Idealy go with 'font' or vertical-rhythm mixins
+
+ * @param $fs   cssUnit font-size
+ * @param $lh   cssUnit line-height
+ * @param $fw   cssUnit font-weight
+ * @param $fst  cssUnit font-style
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: FONT STYLING SHORTHAND
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * POSITIONING
+ * ------------------------------------------------------
+ * @desc  positions element absolutely, relatively or as a fixed element
+
+ * @param $t  cssUnit top
+ * @param $r  cssUnit right
+ * @param $b  cssUnit bottom
+ * @param $l  cssUnit left
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: POSITIONING
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ANIMATE
+ * ------------------------------------------------------
+ * @desc  Add Compass support for CSS animation.
+ *        PLEASE NOTE: enable prefixes as required by the target audience.
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: ANIMATE
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * TRIANGLE
+ * ------------------------------------------------------
+ * @desc  Renders a CSS triangle.
+
+ * @param $direction  string[up, left, right, bottom]
+ * @param $color      hexValue
+ * @param $size       cssUnit[px, em, rem]
+ * @param $height     cssUnit[px, em, rem] set to stretch or shrink the base of the triangle
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: TRIANGLE
+ * ------------------------------------------------------
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * GRADIENTS
+ * ------------------------------------------------------
+ * @desc  Renders a CSS gradient.
+ *
+ *
+ * @param $startColor colour value
+ * @param $endColor   colour value
+ * @param $direction  [num]deg
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: GRADIENTS
+ * ------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * COLUMNISE LIST
+ * ------------------------------------------------------
+ * @desc  Transforms <li> into a dynamically sized, table-like elements.
+
+ * @param $c integer:
+ *    1           : all <li>s are 100% wide.
+ *    2           : all <li>s are at filling half of the available columns' width.
+ *    3 [optional]: all <li>s are filling 30% of the total width, with 5% of the gutter.
+ *    0           : all elements are inlined. Widths are set automatically.
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: COLUMNISE LIST
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * PLACEHOLDER
+ * ------------------------------------------------------
+ * @desc  allows styling of placeholder text
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: PLACEHOLDER
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * BROWSER SPECIFIC SELECTORS
+ * ------------------------------------------------------ */
+/* fixes 3D transform flickering in Webkits */
+/* target mobile devices—please note this is a very generous assumption */
+/* ------------------------------------------------------
+ * ENDOF: BROWSER SPECIFIC SELECTORS
+ * ------------------------------------------------------ */
+/* Mixins =================================================== */
+/* ===================================================================================
+ * Module Name: About Process Graph Styles
+ * =================================================================================== */
+/* -------------------------------------- */
+/* -------------------------------------- */
+/* INIT AND MANAGE ALL MODULES            */
+/* -------------------------------------- */
+/* ------------------------------------------------------
+ * GENERIC
+ * ------------------------------------------------------ */
+/* line 15, ../sass/partials/modules/_about-process.scss */
+.about-process-graph {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+/* line 20, ../sass/partials/modules/_about-process.scss */
+.about-process-graph:before {
+  width: 50%;
+  height: 67%;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 27%;
+  border: 0.5em solid #bdbebf;
+  content: '';
+  border-radius: 1em;
+  z-index: -1;
+}
+/* line 29, ../sass/partials/modules/_about-process.scss */
+.about-process-graph li {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 55%;
+  height: auto;
+  display: block;
+  float: left;
+  padding: 1em 0 1em 1em;
+  margin-bottom: 3em;
+  background: #fafafb;
+  text-align: center;
+}
+/* line 38, ../sass/partials/modules/_about-process.scss */
+.about-process-graph li:before {
+  margin-left: -1em;
+}
+/* line 44, ../sass/partials/modules/_about-process.scss */
+.about-process-graph svg {
+  position: relative;
+  left: -0.5em;
+  display: block;
+  margin: 0 auto;
+}
+
+/* line 52, ../sass/partials/modules/_about-process.scss */
+.graph-process-discover:after {
+  width: 0.5em;
+  height: 3em;
+  display: block;
+  position: relative;
+  bottom: 0;
+  left: -0.375em;
+  content: '';
+  margin: .5em auto 1em;
+  background: #bdbebf;
+}
+
+/* line 60, ../sass/partials/modules/_about-process.scss */
+.graph-process-measure {
+  padding-bottom: 2em;
+}
+
+/* line 64, ../sass/partials/modules/_about-process.scss */
+.graph-process-evolve {
+  position: absolute;
+  top: 60%;
+  right: 0;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+/* ------------------------------------------------------
+ * ENDOF: GENERIC
+ * ------------------------------------------------------ */

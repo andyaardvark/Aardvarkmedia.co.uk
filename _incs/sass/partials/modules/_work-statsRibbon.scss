@@ -1,0 +1,540 @@
+
+
+@mixin statsRibbon($res:false){
+
+
+/* ------------------------------------------------------
+ * GENERIC
+ * ------------------------------------------------------ */
+
+
+	@if $res == false {
+
+		.project-stats{
+			margin-top:rhythm(1);
+		}
+
+			.gridbase-stats{
+				padding:0;
+
+				h3{
+					margin    : 0;
+					font-size : 1em;
+					color     : $light-default;
+				}
+
+				ul{
+					font-size : .9em;
+				}
+
+					li{
+						color     : $grey-light;
+						position  : relative;
+					}
+			}
+
+				.project-awards,
+				.project-links{
+					@include box-sizing(border-box);
+					width   : 100%;
+					padding : rhythm(1) $grid-padding 0;
+				}
+
+				.project-awards li,
+				.project-links a{
+					@include box-sizing(border-box);
+					display     : table;
+					line-height : 1.35em;
+					padding     : 0.25em 0;
+
+					&:before{
+						@extend %iconFont;
+						padding-right  : .25em;
+						display        : table-cell;
+						color          : $yellow;
+						font-size      : 1.25em;
+						vertical-align : middle;
+						width          : 1.5em;
+					}
+				}
+
+			.icon-gearworks:before {
+				@extend %icon-gearworks;
+			}
+
+			.icon-people:before {
+				@extend %icon-people;
+			}
+
+
+			.project-awards li:before{
+				@extend %icon-award;
+			}
+
+
+			.project-links{
+				padding-bottom : rhythm(1);
+
+				a{
+					&:before{
+						@include transition(color .7s ease);
+					}
+
+					&:hover:before{
+						@include transition(color .3s ease);
+					}
+				}
+			}
+
+
+				.project-numbers{
+					@include box-sizing(border-box);
+					@include box-shadow(inset 0 0 0 1px $grey-darker, inset 0 0 0 10px $grey-dark, inset 0 0 0 11px $grey);
+					background : $grey-dark;
+					padding    : rhythm(1) $grid-padding;
+					margin     : 0 auto;
+
+				}
+
+
+
+			.stats-list{
+				@extend %blockList;
+				text-align:center;
+
+				li{
+					@include box-sizing(border-box);
+					border-top : 2px dotted $grey;
+					padding: 0.75em 0 0.5em;
+
+					&:first-child{
+						border:0;
+					}
+
+					&:last-child{
+						padding-bottom:0;
+					}
+				}
+
+				em{
+					font     : normal $headingFont-regular 2em/1.5em $headingFont;
+					color    : $red;
+					display  : block;
+					position : relative;
+
+					&:before{
+						@extend %iconFont;
+						@include inline-block;
+						padding-right  : .25em;
+						font-size      : 0.8em;
+						margin-top     : -0.2em;
+						vertical-align : middle;
+					}
+				}
+			}
+
+			.icon-person:before {
+				@extend %icon-person;
+			}
+
+			.icon-magnifyingGlass:before {
+				@extend %icon-magnifyingGlass;
+			}
+
+			.icon-ladder:before {
+				@extend %icon-ladder;
+			}
+
+
+
+	}
+
+	/* ------------------------------------------------------
+	 * ENDOF: GENERIC
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 320
+	 * ------------------------------------------------------ */
+
+	@else if $res == "320" {
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 320
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 480
+	 * ------------------------------------------------------ */
+
+	@else if $res == "480" {
+
+		.stats-list{
+			display : table;
+			width   : 100%;
+
+			li{
+				display     : table-cell;
+				border-left : 2px dotted $grey;
+				border-top  : 0;
+				line-height : 1.35em;
+			}
+
+			em{
+				&:before{
+					margin  : 0;
+					display : block;
+				}
+			}
+		}
+
+		.separatedList-col3{
+			li{
+				width       : 100% * 1/3;
+				padding     : 0 3.3333%;
+			}
+		}
+
+		.separatedList-col2{
+			li{
+				width       : 50%;
+				padding     : 0 3.3333%;
+			}
+		}
+
+		.separatedList-col1{
+			li{
+				width       : 50%;
+				padding     : 0 3.3333%;
+				margin-left : 25%;
+			}
+		}
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 480
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 640
+	 * ------------------------------------------------------ */
+
+	@else if $res == "640" {
+
+		.project-awards,
+		.project-links{
+			@include span-columns(4);
+			padding:1em $grid-padding;
+		}
+
+		.project-links{
+			@include omega();
+		}
+
+
+		.project-numbers{
+			@include span-columns(8);
+			@include omega();
+		}
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 640
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 768
+	 * ------------------------------------------------------ */
+
+	@else if $res == "768" {
+
+		.stats-list{
+
+			li{
+
+			}
+
+				em{
+
+					&:before{
+						display       : inline-block;
+						padding-right : .25em;
+						margin-top    : -.2em
+					}
+				}
+		}
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 768
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 800
+	 * ------------------------------------------------------ */
+	@else if $res == "800" {
+
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 800
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 960
+	 * ------------------------------------------------------ */
+
+	@else if $res == "960" {
+
+		.project-stats{
+			position: relative;
+		}
+
+
+
+			.gridbase-stats{
+
+				&:before{
+					@include dim((columns(6) + $gutter-width * 2 - 4.2%), 1.5em);
+					@include abs($l:50%, $t:-.75em);
+					content     : '';
+					margin-left : -.5 * (columns(6) + $gutter-width * 2 - 4.2%);
+					background  : $light-default;
+				}
+			}
+
+				.project-awards,
+				.project-links{
+					@include span-columns(3);
+					position:  relative;
+					padding:rhythm(.5) $grid-padding;
+				}
+
+				.project-awards:after{
+					@include dim(9%, 100%);
+					@include abs($t:0, $r:-9%);
+					@include skewY(-31deg);
+					@include prefixer(transform-origin, 100%);
+					content    : '';
+					background : $grey-darker;
+				}
+
+				.project-links:before{
+					@include dim(9%, 100%);
+					@include abs($t:0, $l:-9%);
+					@include skewY(31deg);
+					@include prefixer(transform-origin, 0);
+					content    : '';
+					background : $grey-darker;
+				}
+
+				.project-links{
+					@include omega();
+				}
+
+
+				.project-numbers{
+					@include dim( (columns(6) + $gutter-width * 2), 100% );
+					float       : none;
+					position    : absolute;
+					left        : 50%;
+					margin-left : (columns(6) + $gutter-width * 2) * -.5;
+					margin-top  : .75em;
+					padding     : 1em 2.5% 1.5em;
+
+
+					&:after{
+						@include dim(120%, 60px);
+						@include abs($l:50%, $b:-60px);
+						content     : "";
+						margin-left : -60%;
+						background  : transparent $statsShadow no-repeat 50% 0;
+						background-size:130% 130%;
+
+					}
+				}
+
+
+					.stats-list{
+						@include box-sizing(border-box);
+						@include abs($b:1.5em, $l:50%);
+						display     : block;
+						margin-left : -45%;
+						width       : 90%;
+					}
+
+					@include firefox(){
+						.stats-list{
+							display     : table;
+						}
+					}
+
+
+
+					.separatedList-col3{
+						li{
+							@include box-sizing(content-box);
+							width       : 30%;
+							padding     : 0 2.5%;
+
+							&:first-child{
+								padding-left:0;
+							}
+
+							&:last-child{
+								padding-right:0;
+							}
+						}
+					}
+
+					.separatedList-col2{
+						li{
+							width       : 50%;
+							padding     : 0 3.3333%;
+						}
+					}
+
+					.separatedList-col1{
+						li{
+							width       : 50%;
+							padding     : 0 3.3333%;
+							margin-left : 25%;
+						}
+					}
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 960
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 1100
+	 * ------------------------------------------------------ */
+
+	@else if $res == "1100" {
+
+		.project-awards:after{
+			@include skewY(-29deg);
+		}
+
+		.project-links:before{
+			@include skewY(29deg);
+		}
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 1100
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 1200
+	 * ------------------------------------------------------ */
+
+	@else if $res == "1200" {
+		.gridbase-stats:before{
+			width       : (columns(6) + $gutter-width * 2 - 3.7%);
+			margin-left : -.5 * (columns(6) + $gutter-width * 2 - 3.7%);
+		}
+
+		.project-awards,
+		.project-links{
+			@include span-columns(3);
+		}
+
+		.project-awards{
+			padding-left:0;
+
+			&:after{
+				@include skewY(-31deg);
+				width : 8%;
+				right : -8%;
+			}
+		}
+
+		.project-links{
+			padding-right:0;
+
+			&:before{
+				@include skewY(31deg);
+				width : 8%;
+				left : -8%;
+			}
+		}
+
+
+		.project-links{
+			@include omega();
+		}
+
+
+		.project-numbers{
+			width: (columns(6) + $gutter-width * 2);
+			margin-left : (columns(6) + $gutter-width * 2) * -.5;
+		}
+
+
+
+
+	}
+/* ------------------------------------------------------
+ * ENDOF: 1200
+ * ------------------------------------------------------ */
+
+
+
+
+}

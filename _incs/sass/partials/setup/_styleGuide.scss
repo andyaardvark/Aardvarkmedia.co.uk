@@ -1,0 +1,211 @@
+/* ===================================================================================
+ * Style Guide
+ * ===================================================================================
+ * Contains all default visuals, including resets, for all _used_ elements as well as
+ * sets very basic, but not function-specific sets of elements.
+ *
+ * Should be used to build publically accessible reference page.
+ * Example: http://www.paulrobertlloyd.com/about/styleguide/
+ *
+ * Based on:
+ * normalize.css v2.0.1 | MIT License | git.io/normalize
+ * Eric Meyer Reset http://meyerweb.com/eric/tools/css/reset/
+ * =================================================================================== */
+
+
+
+
+
+/* =======================================================================
+ * GENERIC
+ * ======================================================================= */
+
+	@-webkit-viewport {
+		width : device-width;
+	}
+
+	@-moz-viewport {
+		width : device-width;
+	}
+
+	@-ms-viewport {
+		width : device-width;
+	}
+
+	@-o-viewport {
+		width : device-width;
+	}
+
+	@viewport {
+		width : device-width;
+	}
+
+
+
+	/* ---------------------------------------
+	 * ROOT ELEMENTS
+	 * --------------------------------------- */
+
+		/* 1. Sets default font family to sans-serif.
+		 * 2. Prevents iOS text size adjust after orientation change, without disabling user zoom. */
+		html {
+			-webkit-text-size-adjust    : 100%; /* 2 */
+			-ms-text-size-adjust        : 100%; /* 2 */
+			-webkit-overflow-scrolling  : touch;
+			-webkit-tap-highlight-color : lighten($grey-darker, 75%);
+			-webkit-text-size-adjust    : 100%;
+			-ms-text-size-adjust        : 100%;
+
+			font-family                 : sans-serif; /* 1 */
+			color                       : $dark-default;
+			background                  : $light-default;
+		}
+
+		/* Removes default margin. */
+		body, html {
+			margin  : 0;
+			padding : 0;
+		}
+
+
+		body{
+			color            : $dark-default;
+			nowhitespace     : afterproperty;
+			font-family      : $baseFont;
+			letter-spacing   : 0;
+			width            : 100%;
+
+			/* fix :checked selector for Android */
+			-webkit-animation: bugfix infinite 1s;
+		}
+
+			@-webkit-keyframes bugfix {
+				0%, 100% {padding:0;}
+			}
+
+
+
+
+
+
+
+
+	/* ---------------------------------------
+	 * HTML5 ELEMENTS
+	 * --------------------------------------- */
+
+		/* Corrects `block` display not defined in IE 8/9. */
+		article,
+		aside,
+		details,
+		figcaption,
+		figure,
+		footer,
+		header,
+		hgroup,
+		nav,
+		section,
+		summary {
+			display: block;
+		}
+
+		/* Addresses styling for `hidden` attribute not present in IE 8/9. */
+		[hidden] {
+			display: none;
+		}
+
+
+
+
+
+
+
+	/* ---------------------------------------
+	 * ICONOGRAPHY
+	 * --------------------------------------- */
+
+		%fontIcon{
+			 font: 1.3em/1.3em 'criography_3_iconsregular';
+		 }
+
+		.fontIcon{
+			@extend %fontIcon;
+		}
+
+
+
+
+
+
+	/* ---------------------------------------
+	 * MODULES
+	 * --------------------------------------- */
+	@import 'partials/setup/styleGuide/copy';
+	@import 'partials/setup/styleGuide/contentGrouping';
+	@import 'partials/setup/styleGuide/media';
+	@import 'partials/setup/styleGuide/forms';
+	@import 'partials/setup/styleGuide/navigation';
+	@import 'partials/setup/styleGuide/other';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

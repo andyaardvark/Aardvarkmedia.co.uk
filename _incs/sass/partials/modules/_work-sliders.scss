@@ -1,0 +1,337 @@
+@mixin workSliders($res:false){
+
+
+/* ------------------------------------------------------
+ * GENERIC
+ * ------------------------------------------------------ */
+
+
+	@if $res == false {
+
+		.browserSlider{
+			@extend %browserFrame;
+			background:transparent;
+
+			.rsBullets-container {
+				@include rel($b:0);
+				@include dim(100%, rhythm(2));
+				line-height : rhythm(2);
+				z-index     : 4;
+				text-align  : center;
+
+			}
+
+				.rsBullets{
+					@include inline-block;
+					width : auto;
+				}
+
+			.rsGCaption {
+				@include abs($b:0, $l:0);
+				@include dim(100%, 2em);
+				color       : $light-default;
+				float       : none;
+				line-height : 2em;
+				font-size   : 1em;
+				text-align  : center;
+				padding     : 0;
+				background  : rgba($grey-darker, .8);
+				overflow    : hidden;
+			}
+		}
+
+
+		.shadowFramedSlider-wrapper{
+			@extend %shadowFrame;
+		}
+
+			.shadowFramedSlider{
+				@include dim(100%, auto, false);
+
+				.rsBullets-container {
+					bottom   : 0;
+				}
+
+				.rsGCaption {
+					@include rel($l:0, $b:0);
+					@include adjust-font-size-to(14px);
+					padding       : 0;
+					float         : left;
+					width         : 96%;
+					background    : transparent;
+					border-radius : 0;
+					color         : $dark-default;
+
+				}
+
+			}
+
+	}
+
+	/* ------------------------------------------------------
+	 * ENDOF: GENERIC
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 320
+	 * ------------------------------------------------------ */
+
+	@else if $res == "320" {
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 320
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 480
+	 * ------------------------------------------------------ */
+
+	@else if $res == "480" {
+
+		.browserSlider{
+			margin-bottom:rhythm(2);
+
+			.rsBullets-container {
+				@include dim(70%, 2em, false);
+				@include abs($r:15%);
+				padding    : 0;
+				z-index    : 10;
+			}
+
+			.rsBullets,
+			.rsArrow{
+				vertical-align: top;
+			}
+
+			.rsBullets{
+				line-height : inherit;
+				padding-top : 0;
+			}
+
+			.rsArrow{
+				line-height: rhythm(1);
+			}
+
+				.rsArrowIcn{
+					color   : $light-default;
+					opacity : 1;
+				}
+
+
+				.rsBullet span {
+					background-color : $light-default !important;
+				}
+
+				.rsNavSelected span{
+					background-color :$yellow !important;
+				}
+
+			.rsGCaption {
+				@include box-sizing(border-box);
+				padding-left : .5em;
+				text-align   : left;
+				z-index      : 5;
+			}
+		}
+
+
+
+
+		.rsBullet{
+
+			&:hover .rsBullet-tooltip:after{
+				@include prefixer('transform-duration', '.7s, .7s');
+				@include translateY(.5em);
+				opacity:1;
+			}
+
+			.rsBullet-tooltip{
+				position: relative;
+
+				&:after{
+					@include dim(4em, (4em / 1.5) - .5em); // respect image aspect ratio minus padding
+					@include abs($l:50%, $t:-3.25em);
+					@include transition(opacity .3s ease, transform .3s);
+					content         : attr(data-label);
+					margin-left     : -2em;
+					text-align      : center;
+					padding-top     : .5em;
+					background      : $yearTooltip no-repeat 50% 0;
+					background-size : 100% 100%;
+					color           : $dark-default;
+					font-size       : 1em;
+					line-height     : 1em;
+					opacity         : 0;
+				}
+			}
+
+		}
+
+		#project-secondarySlider .rsBullets{
+			overflow:visible;
+		}
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 480
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 640
+	 * ------------------------------------------------------ */
+
+	@else if $res == "640" {
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 640
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 768
+	 * ------------------------------------------------------ */
+
+	@else if $res == "768" {
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 768
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 800
+	 * ------------------------------------------------------ */
+	@else if $res == "800" {
+
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 800
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 960
+	 * ------------------------------------------------------ */
+
+	@else if $res == "960" {
+		#project-secondarySlider{
+			.rsGCaption{
+				font-size   : 1.5em;
+				height      : 2.25em;
+				line-height : 2.25em;
+			}
+
+			.rsBullets-container{
+				font-size   : 1.25em;
+				height      : 2.7em;
+				line-height : 4em;
+			}
+
+				.rsBullets{
+					height : 100%;
+				}
+
+					.rsBullet:hover .rsBullet-tooltip:after{
+						@include translateY(.8em);
+					}
+
+					.rsBullet-tooltip:after{
+						@include dim(3.35em, (3.35em / 1.5) - .35em); /* respect image aspect ratio minus padding */
+						font-size   : 1.25em;
+						padding-top : .35em;
+						margin-left : -1.675em;
+					}
+
+		}
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 960
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 1100
+	 * ------------------------------------------------------ */
+
+	@else if $res == "1100" {
+
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 1100
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 1200
+	 * ------------------------------------------------------ */
+
+	@else if $res == "1200" {
+
+	}
+/* ------------------------------------------------------
+ * ENDOF: 1200
+ * ------------------------------------------------------ */
+
+
+
+
+}

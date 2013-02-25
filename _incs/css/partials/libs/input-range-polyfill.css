@@ -1,0 +1,746 @@
+/* ===================================================================================
+ * INPUT RANGE POLYFILL STYLES
+ * ===================================================================================
+ * Styles for js\lib\input-range-polyfill.js
+ *
+ * @dependency _vars.scss.
+ * =================================================================================== */
+/* EASING
+ * ------------------------------------------- */
+/* MODULE OPTIONS
+ * ------------------------------------------- */
+/* VERTICAL RHYTHM
+ * ------------------------------------------- */
+/* GRID
+ * ------------------------------------------- */
+/* IMAGES
+ * ------------------------------------------- */
+/* COLOURS
+ * -------------------------------------------
+ * use colour_name[-state] names instead referring
+ * to usage to minimise their amount and future confusion.
+ * If unavoidable, extend with element or function specific values
+ *
+ * e.g.: $dark-blue, $red-inactive
+ * ------------------------------------------- */
+/* applies to majority of black and near-black elements, e.g. text */
+/* applies to majority of white and near-white elements, e.g. background */
+/* e.g.: logo banner, links/buttons idle colour */
+/* e.g.: top nav hovers */
+/* e.g.: top nav background */
+/* e.g.: links/buttons hover colour */
+/* e.g.: links/buttons active state colour */
+/* used for panel backgrounds, e.g. home twitter feed */
+/* used for panel strokes, e.g. dividers, twitter tooltip border */
+/* ued for panel fills, e.g. ribbon in the work/study case oages */
+/* used for panel backgrounds, e.g. buttons, footer navigation */
+/* used for panel backgrounds, e.g. functional footer */
+/* used for panel backgrounds, e.g. buttons idle */
+/* used for panel backgrounds, e.g. buttons hover */
+/* used for panel backgrounds, e.g. buttons active */
+/* TYPOGRAPHY
+ * ------------------------------------------- */
+/* MISC
+ * ------------------------------------------- */
+/* amount of fading applied when hovering services in top nav*/
+/* 
+
+	 Don't use this version of the file in a production environment. A minified 
+	 version tailored specifically to your needs can be generated in-browser by
+	 using the /css-generator/index.html file.
+	 
+	 Notes for the adventurous:
+	 
+	 1. The script automagically adds the classname "oldie" to IE6, 7 & 8.
+	 
+	 2. A combination of the .oldie class and "safe css hacks" are used to target 
+			specific IE versions. See: http://mathiasbynens.be/notes/safe-css-hacks
+	 
+	 3. MSHTML has been used to base64 encode the various png images used for the 
+			drag handle in IE6 and 7. IE7 gets served one base64 encoded image sprite 
+			whereas IE6 gets served individual base64 encoded images.
+			 
+			See: http://www.phpied.com/the-proper-mhtml-syntax/ for more info on MHTML
+			
+			The base64 encoded images have been placed into their own .mht file. This
+			means only IE6 and 7 will ever be burdened with downloading the file.
+			
+			A Microsoft security update in July 2011 means that .mht files now have to
+			be delivered with the mimetype "message/rfc822". If using IIS, there is 
+			nothing to do as IIS appears to default to using the required 
+			"message/rfc822" mimetype, if using Apache, there are two ways in which to
+			configure this behaviour:
+			
+			A. You have Admin rights and can restart the Apache server
+			
+			Update the apache_root/httpd/conf/Srm.conf file and add the following 
+			line:
+			
+			AddType message/rfc822 mht
+			
+			This method requires that you restart Apache.
+			
+			B. You can simply use an htaccess directive 
+			
+			You can add the following to an .htaccess file that sits in the same 
+			directory as the .mht file (or to an htaccess file at the root of your
+			website if one exists already): 
+			
+			AddType message/rfc822 mht
+			
+			You do not need to restart Apache for the change to take effect.
+			
+			Yikes - I cant do either of the above!
+			
+			Don't worry, using the .mht file isn't compulsory - just replace the 
+			various mhtml: references (found within the .oldie classes) to point to 
+			the correct image file on your server (not forgetting to actually upload 
+			the image files to your server of course). 
+			
+			All of the relevant rules have further instructions embedded within them.
+			 
+	 4. All browsers but IE6 get one "normal" base64 encoded image sprite. IE6 has
+			to use separate images for each animation state.
+	 
+	 5. The drag handle is only 20px in width & height, most probably not suitable 
+			for touch screen devices. 
+			
+	 6. It's painless to base64 encode your own images, use an online encoder. 
+			See: http://www.google.com/search?q=base+64+encoder - the only problem is 
+			that IE6 needs each frame of the handle sprite to be encoded individually.
+			
+	 7. If you want to use a different image for vertical slider drag handles,
+			uncomment the relevant classes below (easy to spot as they all have the 
+			classname ".fd-slider-vertical" somewhere within the declaration).
+			 
+	 8. As a reminder, the following HTML is being targetted by the CSS:
+ 
+<span class="fd-slider[-vertical]" 
+			id="fd-slider-[the associated form element id]" 
+			role="application" 
+			aria-disabled="false">
+	<span class="fd-slider-wrapper (fd-slider-[focus|hover|no-value|disabled|active])">
+		<span class="fd-slider-inner"></span>
+		<span class="fd-slider-range"></span>
+		<span class="fd-slider-bar"></span>
+		<span class="fd-slider-handle" 
+		tabindex="0" 
+		role="slider" 
+		aria-valuemin="-10" 
+		aria-valuemax="10" 
+		aria-labelledby="[the associated form element label id]" 
+		id="fd-slider-handle-[the associated form element id]" 
+		aria-describedby="fd-slider-describedby" 
+		aria-valuenow="-3.50" 
+		aria-valuetext="-3.50">&nbsp;</span>
+	</span>
+</span>
+
+*/
+/*
+	Element: Form element associated with the slider
+	Notes: The styles given to the associated form element in order to hide
+	it within the display
+*/
+/* line 115, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-form-element-hidden {
+  display: none;
+}
+
+/* Element: Outer wrapper */
+/* line 120, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider {
+  height: 20px;
+}
+
+/* Element: Outer wrapper */
+/* line 125, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider {
+  text-align: center;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  border: 0 none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+/*
+	Element: Outer Wrapper 
+	Orientation: Both horizontal & vertical
+	Notes: IE6 & 7 need a transparent gif as a background in order for
+	hover events to work. This has been base64 encoded within the .mht file.
+	As it's not a png, no AlphaImageLoader filter is required for IE6. 
+*/
+/* line 147, ../../../sass/partials/libs/input-range-polyfill.scss */
+.oldie .fd-slider {
+  /* If not using the .mht file then uncomment the following rule and edit the filepath to match the absolute path to the blank.gif file on your server (replace "www.your-domain.com/the/path/to/") */
+  /*		
+  	*background:transparent url(/_incs/images/libs/input-range-polyfill/blank.gif) repeat;
+  	
+  */
+}
+
+/*
+	Element: Inner wrapper
+	Notes: All other DOM elements added as children to this element.
+*/
+/* line 160, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+	Element: ieBlur shiv
+	Notes: Used only by IE for the onfocus "Blur" effect
+*/
+/* line 173, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-inner {
+  display: none;
+}
+
+/*
+	Element: ieBlur shiv
+	Notes: IE6, 7 & 8 only.
+	Use the "Blur" filter to simulate the box-shadow - not brilliant but the 
+	best we can do for IE. IE6 can't absolutely position on 4 sides so we 
+	reset the right to "auto" and use a nasty expression to calculate the 
+	width dynamically. 
+*/
+/* line 185, ../../../sass/partials/libs/input-range-polyfill.scss */
+.oldie .fd-slider-inner {
+  position: absolute;
+  height: 2px;
+  border: 1px solid #bbf;
+  background: #bbf;
+  top: 4px;
+  bottom: none;
+  left: 4px;
+  right: 12px;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  line-height: 4px;
+  _right: auto;
+  _width: expression((this.parentNode.offsetWidth - 12) + "px");
+  filter: progid:DXImageTransform.Microsoft.Blur(pixelradius = 3.5);
+}
+
+/*
+	Element: ieBlur shiv
+	Notes: Display the "Blurred" inner div for IE6, 7 & 8 when the slider
+	gains focus
+*/
+/* line 209, ../../../sass/partials/libs/input-range-polyfill.scss */
+.oldie .fd-slider-focused .fd-slider-inner {
+  display: block;
+}
+
+/*
+	Element: Inner track bar
+*/
+/* line 216, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-bar {
+  display: block;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  left: 10px;
+  z-index: 2;
+  height: 2px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-bottom: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+  border: 1px solid rgba(187, 187, 187, 0.8);
+  border-bottom: 1px solid rgba(170, 170, 170, 0.8);
+  border-right: 1px solid rgba(170, 170, 170, 0.8);
+  line-height: 4px;
+  background-color: #ddd;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ececec), to(#cccccc));
+  background-image: -webkit-linear-gradient(top, #ececec, #cccccc);
+  background-image: -moz-linear-gradient(top, #ececec, #cccccc);
+  background-image: -ms-linear-gradient(top, #ececec, #cccccc);
+  background-image: -o-linear-gradient(top, #ececec, #cccccc);
+  background-image: linear-gradient(to bottom, #ececec, #cccccc);
+  border-radius: 2px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+/*
+	Element: Inner track bar
+	Notes: For IE6 & 7 & 8. IE6 does not recognise absolute positioning on
+	four sides (top, right, bottom & left) so we use an expression to 
+	dynamically calculate the track bar size. Yes, it is horrible - you 
+	don't need to remind me.
+*/
+/* line 254, ../../../sass/partials/libs/input-range-polyfill.scss */
+.oldie .fd-slider-bar {
+  _right: auto;
+  _width: expression((this.parentNode.offsetWidth - 20) + "px");
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = '#ffececec', endColorstr = '#ffcccccc');
+}
+
+/*
+	Element: Inner track bar
+	State: Focused
+	Notes: Drop shadow on the inner bar when focused - newer browsers get 
+	an animation. IE6, 7 & 8 get a "Blur" filter on an inner SPAN 
+	.fd-slider-inner instead 
+*/
+/* line 268, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-focused .fd-slider-bar {
+  box-shadow: 0 0 6px rgba(10, 130, 170, 0.7);
+}
+
+/*
+	Element: Inner animated range bar 
+*/
+/* line 276, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-range {
+  display: block;
+  position: absolute;
+  top: 9px;
+  left: 11px;
+  z-index: 3;
+  height: 2px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  line-height: 2px;
+  background-color: #4cc;
+  background-image: -webkit-gradient(linear, left top, right top, from(#66cccc), to(#33ccff));
+  background-image: -webkit-linear-gradient(left, #66cccc, #33ccff);
+  background-image: -moz-linear-gradient(left, #66cccc, #33ccff);
+  background-image: -ms-linear-gradient(left, #66cccc, #33ccff);
+  background-image: -o-linear-gradient(left, #66cccc, #33ccff);
+  background-image: linear-gradient(to right, #66cccc, #33ccff);
+  border-radius: 2px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+/*
+	Element: Inner range bar 
+	Notes: IE6, 7 & 8
+*/
+/* line 304, ../../../sass/partials/libs/input-range-polyfill.scss */
+.oldie .fd-slider-range {
+  /* IE6 - is this needed? To test. */
+  _left: 10px;
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = '#ff66cccc', endColorstr = '#ff33ccff');
+}
+
+/*
+	Element: Drag handle 
+	State: Default.
+	Notes: The image sprite used for the handle is base64 encoded below. IE7
+	gets its own version within the .mht file, IE6 does not use an image
+	sprite and it is necessary to base64 encode individual animation frames
+	within the .mht file.
+*/
+/* line 319, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-handle {
+  position: absolute;
+  display: block;
+  padding: 0;
+  border: 0 none;
+  margin: 0;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  outline: 0 none;
+  background: transparent url(data:image/png;base64,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) no-repeat 0 0;
+  cursor: W-resize;
+  line-height: 20px;
+  font-size: 10px;
+  -moz-outline: 0 none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+/*
+	Element: Drag handle 
+	State: Default
+	Notes: IE6, 7 & 8 use a nasty expression in order to not draw focus 
+	outline on drag handle. 
+*/
+/* line 351, ../../../sass/partials/libs/input-range-polyfill.scss */
+.oldie .fd-slider-handle {
+  /*
+  		 If not using the .mht file then uncomment the following rule and edit 
+  		 the filepath to match the absolute path to the fd-slider-sprite.png 
+  		 file on your server (replace "www.your-domain.com/the/path/to/") 
+  	*/
+  /* 
+  	
+  	*background-image:url(/_incs/images/libs/input-range-polyfill/fd-slider-sprite.png);
+  	
+  	*/
+  /**********************************************************************/
+  /* IE6 - reset the background image sprite stipulated above. */
+  _background-image: none;
+  /* 
+  		 IE6 - use the AlphaImageLoader to either load a base64 encoded image 
+  		 from the .mht file or a normal png image from the server 
+  	*/
+  /* 
+  		 If not using the .mht file then uncomment the following rule and edit 
+  		 the filepath to match the absolute path to the fd-handle-normal.png
+  		 file on your server (replace "www.your-domain.com/the/path/to/") 
+  	*/
+  /*
+  	
+  	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src='/_incs/images/libs/input-range-polyfill/fd-handle-normal.png');
+  	
+  	*/
+  /* IE6, 7 & 8 */
+  outline: expression(hideFocus='true');
+}
+
+/*
+	Element: Drag handle 
+	State: Focused
+	Notes: Attempts to remove the focus outline, remove the rule if it
+	offends your sensibilities.
+*/
+/* line 397, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-handle:focus {
+  outline: 0 none;
+  border: 0 none;
+  -moz-user-focus: normal;
+}
+
+/* line 403, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-handle:focus::-moz-focus-inner {
+  border-color: transparent;
+}
+
+/*
+	Element: Drag handle 
+	State: Focused and Hovered and also while handle is animating into
+	position or being dragged.
+	Notes: I'm using the same image for focused, hover and active states
+	but you can, of course, go wild.
+*/
+/* line 416, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-focused .fd-slider-handle,
+.fd-slider-hover .fd-slider-handle,
+.fd-slider-active .fd-slider-handle {
+  background-position: 0 -20px;
+}
+
+/*
+	Element: Drag handle 
+	State: Focused and Hovered and also while handle is animating into
+	position or being dragged.
+	Notes: IE6 only.
+*/
+/* line 428, ../../../sass/partials/libs/input-range-polyfill.scss */
+.oldie .fd-slider-focused .fd-slider-handle,
+.oldie .fd-slider-hover .fd-slider-handle,
+.oldie .fd-slider-active .fd-slider-handle {
+  /* 
+  		 IE6 - use the AlphaImageLoader to either load a base64 encoded image 
+  		 from the .mht file or a normal png image from the server 
+  	*/
+  /* 
+  		 If not using the .mht file then uncomment the following rule and edit 
+  		 the filepath to match the absolute path to the fd-handle-glow.png
+  		 file on your server (replace "www.your-domain.com/the/path/to/") 
+  	*/
+  /*
+  	
+  	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src='/_incs/images/libs/input-range-polyfill/fd-handle-glow.png');
+  
+  	*/
+}
+
+/*
+Element: Drag handle 
+State: User has not yet used the slider to set a value
+Notes: I screwed the positioning of the image sprite by 1px which is why
+it's -59px and not -60px. Yeah - I suck at Photoshop.      
+*/
+/* line 456, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-no-value .fd-slider-handle {
+  background-position: 0 -59px;
+}
+
+/*
+	Element: Drag handle 
+	State: User has not yet used the slider to set a value
+	Notes: IE6 only
+*/
+/* line 465, ../../../sass/partials/libs/input-range-polyfill.scss */
+.oldie .fd-slider-no-value .fd-slider-handle {
+  /* 
+  		 IE6 - use the AlphaImageLoader to either load a base64 encoded image 
+  		 from the .mht file or a normal png image from the server 
+  	*/
+  /* 
+  		 If not using the .mht file then uncomment the following rule and edit 
+  		 the filepath to match the absolute path to the fd-handle-no-value.png
+  		 file on your server (replace "www.your-domain.com/the/path/to/") 
+  	*/
+  /*
+  	
+  	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src='/_incs/images/libs/input-range-polyfill/fd-handle-no-value.png');
+  
+  	*/
+}
+
+/*
+	Element: document.body
+	Notes: Class given to body to change cursor style when dragging. It also
+	attempts to stop text selection while dragging. 
+*/
+/* line 492, ../../../sass/partials/libs/input-range-polyfill.scss */
+body.fd-slider-drag-horizontal,
+body.fd-slider-drag-horizontal * {
+  cursor: N-resize !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+/*
+	Element: document.body
+	Notes: Class given to body to change cursor style when dragging
+*/
+/* line 506, ../../../sass/partials/libs/input-range-polyfill.scss */
+body.fd-slider-drag-horizontal,
+body.fd-slider-drag-horizontal * {
+  cursor: W-resize !important;
+}
+
+/*
+	Element: Inner wrapper
+	State: disabled
+	Notes: Class given to slider when disabled
+*/
+/* line 515, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-disabled {
+  opacity: .8;
+  cursor: default;
+}
+
+/*
+	Element: Drag handle
+	State: disabled
+	Notes: Class given to slider when disabled
+*/
+/* line 525, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-disabled .fd-slider-handle {
+  cursor: default !important;
+  background-position: 0 -40px;
+  opacity: 1;
+}
+
+/*
+	Element: Drag handle
+	State: disabled
+	Notes: IE6 only
+*/
+/* line 536, ../../../sass/partials/libs/input-range-polyfill.scss */
+.oldie .fd-slider-disabled .fd-slider-handle {
+  /* 
+  		 IE6 - use the AlphaImageLoader to either load a base64 encoded image 
+  		 from the .mht file or a normal png image from the server 
+  	*/
+  /* 
+  		 If not using the .mht file then uncomment the following rule and edit 
+  		 the filepath to match the absolute path to the fd-handle-disabled.png
+  		 file on your server (replace "www.your-domain.com/the/path/to/") 
+  	*/
+  /*
+  	
+  	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src='/_incs/images/libs/input-range-polyfill/fd-handle-disabled.png');
+  
+  	*/
+}
+
+/*
+	Element: Inner track bar
+	State: disabled
+*/
+/* line 559, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-disabled .fd-slider-bar {
+  cursor: auto !important;
+  border: 1px solid #888;
+  border-bottom: 1px solid #999;
+  border-right: 1px solid #999;
+  border: 1px solid rgba(136, 136, 136, 0.8);
+  border-bottom: 1px solid rgba(153, 153, 153, 0.8);
+  border-right: 1px solid rgba(153, 153, 153, 0.8);
+  background-color: #555;
+  background-image: -webkit-gradient(linear, left top, right top, from(#666666), to(#333333));
+  background-image: -webkit-linear-gradient(left, #666666, #333333);
+  background-image: -moz-linear-gradient(left, #666666, #333333);
+  background-image: -ms-linear-gradient(left, #666666, #333333);
+  background-image: -o-linear-gradient(left, #666666, #333333);
+  background-image: linear-gradient(to right, #666666, #333333);
+}
+
+/*
+	Element: Inner track bar
+	State: disabled
+	Notes: IE6, 7 & 8
+*/
+/* line 581, ../../../sass/partials/libs/input-range-polyfill.scss */
+.oldie .fd-slider-disabled .fd-slider-bar {
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 0, startColorstr = '#ff666666', endColorstr = '#ff333333');
+}
+
+/*
+	Element: Range bar
+	State: disabled
+*/
+/* line 590, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-disabled .fd-slider-range {
+  cursor: auto !important;
+  background-color: #222;
+  background-image: -webkit-gradient(linear, left top, right top, from(#222222), to(black));
+  background-image: -webkit-linear-gradient(left, #222222, black);
+  background-image: -moz-linear-gradient(left, #222222, black);
+  background-image: -ms-linear-gradient(left, #222222, black);
+  background-image: -o-linear-gradient(left, #222222, black);
+  background-image: linear-gradient(to right, #222222, #000000);
+}
+
+/*
+	Element: Range bar
+	State: disabled
+	Notes: IE6, 7 & 8
+*/
+/* line 606, ../../../sass/partials/libs/input-range-polyfill.scss */
+.oldie .fd-slider-disabled .fd-slider-range {
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 0, startColorstr = '#ff222222', endColorstr = '#ff000000');
+}
+
+/*
+  Sample tooltip code. Only works on grade A browsers (so no IE6, 7 or 8).
+  
+  See: http://nicolasgallagher.com/multiple-backgrounds-and-borders-with-css2/ 
+  for full info on how to style generated content & the associated pitfalls.  
+*/
+/* line 619, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-handle:before,
+.fd-slider-handle:after {
+  content: "";
+  /* Remove from screen */
+  opacity: 0;
+  -webkit-transition: all 0.3s ease 0.2s;
+  -moz-transition: all 0.3s ease 0.2s;
+  -ms-transition: all 0.3s ease 0.2s;
+  -o-transition: all 0.3s ease 0.2s;
+  transition: all 0.3s ease 0.2s;
+}
+
+/* 
+	 The tooltip body - as we position it above the slider and position the 
+	 tooltip arrow below it, we need to know the height of the body. This means 
+	 that multi-line tooltips are not supported.
+	 
+	 To support multi-line tooltips, you will need to position the tooltip below 
+	 the slider and the tooltip pointer above the tooltip body. Additionally, you 
+	 will have to set the tooltip body "height" to auto
+*/
+/* line 639, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-handle:before {
+  display: block;
+  position: absolute;
+  top: -30px;
+  left: -25px;
+  margin: 0;
+  width: 60px;
+  padding: 5px;
+  height: 14px;
+  line-height: 12px;
+  font-size: 10px;
+  text-shadow: 0 1px 0 #000;
+  color: #fff;
+  background: #222;
+  z-index: 1;
+  /* Use the ARIA valuetext property, set by the script, to generate the  tooltip content */
+  content: attr(aria-valuetext);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 4px #aaa;
+  -moz-box-shadow: 0 0 4px #aaa;
+  box-shadow: 0 0 4px #aaa;
+}
+
+/* line 665, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-handle:after {
+  outline: none;
+  content: "";
+  display: block;
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  margin: 0 0 0 -5px;
+  background: #222;
+  z-index: 2;
+  width: 10px;
+  height: 10px;
+  overflow: hidden;
+  /* Rotate element by 45 degress to get the "\/" pointer effect */
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -webkit-box-shadow: 0 0 4px #aaa;
+  -moz-box-shadow: 0 0 4px #aaa;
+  box-shadow: 0 0 4px #aaa;
+  clip: rect(4px, 14px, 14px, 4px);
+}
+
+/* Change opacity and position to kick in the transitions */
+/* line 692, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-focused .fd-slider-handle:before,
+.fd-slider-hover .fd-slider-handle:before,
+.fd-slider-active .fd-slider-handle:before {
+  top: -25px;
+  opacity: 1;
+}
+
+/* line 699, ../../../sass/partials/libs/input-range-polyfill.scss */
+.fd-slider-focused .fd-slider-handle:after,
+.fd-slider-hover .fd-slider-handle:after,
+.fd-slider-active .fd-slider-handle:after {
+  top: -9px;
+  opacity: 1;
+}
+
+/* Remove completely for IE 6, 7 and 8 */
+/* line 707, ../../../sass/partials/libs/input-range-polyfill.scss */
+.oldie .fd-slider-handle:before,
+.oldie .fd-slider-handle:after {
+  display: none;
+}
