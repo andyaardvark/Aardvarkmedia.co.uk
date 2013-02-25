@@ -1,0 +1,571 @@
+/* ===================================================================================
+ * Helper Name: Generic Mixins
+ * ===================================================================================
+ * Contains all shorthand mixins.
+ * Introduce per-page/section segmentation for larger projects to reduce filesize.
+ *
+ * Filename convention: _mixins-[section].scss
+ * =================================================================================== */
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * ELEMENT SIZING
+ * ------------------------------------------------------
+ * @desc  sets display type and size
+
+ * @param $w  cssUnit width
+ * @param $h  cssUnit height
+ * @param $d  string  display-type
+ * ------------------------------------------------------ */
+
+@mixin dim($w:false, $h:false, $d:true){
+	@if $w {  width   : $w;  }
+	@if $h {  height  : $h;  }
+	@if $d {
+		@if ($d==inline or $d==table or $d==table-cell or $d==table-row or $d==table-column or $d==inherit or $d==none) {
+			display : $d;
+		}
+		@else{
+			display : block;
+		}
+	}
+}
+
+/* ------------------------------------------------------
+ * ENDOF: ELEMENT SIZING
+ * ------------------------------------------------------
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * FONT STYLING SHORTHAND
+ * ------------------------------------------------------
+ * @desc  Use sparringly.
+ *        Idealy go with 'font' or vertical-rhythm mixins
+
+ * @param $fs   cssUnit font-size
+ * @param $lh   cssUnit line-height
+ * @param $fw   cssUnit font-weight
+ * @param $fst  cssUnit font-style
+ * ------------------------------------------------------ */
+
+@mixin fs($fs:false, $lh:false, $fw:false, $fst:false){
+	@if $fs               {font-size    : $fs;}
+	@if $lh               {line-height  : $lh;}
+	@if $fw               {
+		@if $fw!='inherit'  {font-weight  : $fw;}
+	}
+	@if $fst              {font-style   : $fst;}
+}
+
+
+@mixin font-size($font-size: 16){
+	font-size : #{$font-size}px;
+	font-size : #{$font-size / 10}rem;
+}
+
+/* ------------------------------------------------------
+ * ENDOF: FONT STYLING SHORTHAND
+ * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * POSITIONING
+ * ------------------------------------------------------
+ * @desc  positions element absolutely, relatively or as a fixed element
+
+ * @param $t  cssUnit top
+ * @param $r  cssUnit right
+ * @param $b  cssUnit bottom
+ * @param $l  cssUnit left
+ * ------------------------------------------------------ */
+
+@mixin pos($t, $r, $b, $l){
+	@if $t{ top:      $t; }
+	@if $r{ right:    $r; }
+	@if $b{ bottom:   $b; }
+	@if $l{ left:     $l; }
+}
+
+
+@mixin abs($t:false, $r:false, $b:false, $l:false){
+	position  : absolute;
+	@include pos($t, $r, $b, $l);
+}
+
+
+@mixin rel($t:false, $r:false, $b:false, $l:false){
+	position  : relative;
+	@include pos($t, $r, $b, $l);
+}
+
+
+@mixin fixed($t:false, $r:false, $b:false, $l:false){
+	position  : fixed;
+	@include pos($t, $r, $b, $l);
+}
+
+/* ------------------------------------------------------
+ * ENDOF: POSITIONING
+ * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * ANIMATE
+ * ------------------------------------------------------
+ * @desc  Add Compass support for CSS animation.
+ *        PLEASE NOTE: enable prefixes as required by the target audience.
+ * ------------------------------------------------------ */
+
+@mixin cgyAnimate($a:false){
+	@if $a {
+		/*  -moz-animation    : #{$a};  */
+				-webkit-animation : #{$a};
+		/*  -ms-animation     : #{$a};  */
+		/*	-o-animation      : #{$a};  */
+				animation         : #{$a};
+	}
+}
+
+/* ------------------------------------------------------
+ * ENDOF: ANIMATE
+ * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * TRIANGLE
+ * ------------------------------------------------------
+ * @desc  Renders a CSS triangle.
+
+ * @param $direction  string[up, left, right, bottom]
+ * @param $color      hexValue
+ * @param $size       cssUnit[px, em, rem]
+ * @param $height     cssUnit[px, em, rem] set to stretch or shrink the base of the triangle
+ * ------------------------------------------------------ */
+
+@mixin triangle($direction, $color, $size, $height:false) {
+	@include dim(0, 0);
+
+	@if $direction == "left" {
+		border-bottom   : $size solid transparent;
+		border-top      : $size solid transparent;
+		@if $height {
+			border-right  : $height solid $color;
+		}else{
+			border-right  : $size solid $color;
+		}
+	}
+
+
+	@else if $direction == "right" {
+		border-bottom   : $size solid transparent;
+		border-top      : $size solid transparent;
+		@if $height {
+			border-left   : $height solid $color;
+		}else{
+			 border-left  : $size solid $color;
+		}
+	}
+
+
+	@else if $direction == "up" {
+		border-left     : $size solid transparent;
+		border-right    : $size solid transparent;
+		@if $height {
+			border-bottom : $height solid $color;
+		}else{
+			 border-bottom: $size solid $color;
+		}
+	}
+
+
+	@else if $direction == "down" {
+		border-right    : $size solid transparent;
+		border-left     : $size solid transparent;
+		@if $height {
+			border-top    : $height solid $color;
+		}else{
+			 border-top   : $size solid $color;
+		}
+	}
+}
+
+/* ------------------------------------------------------
+ * ENDOF: TRIANGLE
+ * ------------------------------------------------------
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * GRADIENTS
+ * ------------------------------------------------------
+ * @desc  Renders a CSS gradient.
+ *
+ *
+ * @param $startColor colour value
+ * @param $endColor   colour value
+ * @param $direction  [num]deg
+ * ------------------------------------------------------ */
+
+@mixin hGradient($startColor: #000, $endColor: #fff) {
+	background-color  : $endColor;
+	@include background-image(linear-gradient(left, $startColor, $endColor));
+	background-repeat : repeat-x;
+}
+
+
+@mixin vGradient($startColor: #000, $endColor: #fff) {
+	background-color  : $endColor;
+	@include background-image(linear-gradient($startColor, $endColor));
+	background-repeat : repeat-x;
+}
+
+
+@mixin dGradient($startColor: #000, $endColor: #fff, $deg: 45deg) {
+	background-color  : $endColor;
+	@include background-image(linear-gradient($deg, $startColor, $endColor));
+	background-repeat : repeat-x;
+}
+
+/* ------------------------------------------------------
+ * ENDOF: GRADIENTS
+ * ------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * COLUMNISE LIST
+ * ------------------------------------------------------
+ * @desc  Transforms <li> into a dynamically sized, table-like elements.
+
+ * @param $c integer:
+ *    1           : all <li>s are 100% wide.
+ *    2           : all <li>s are at filling half of the available columns' width.
+ *    3 [optional]: all <li>s are filling 30% of the total width, with 5% of the gutter.
+ *    0           : all elements are inlined. Widths are set automatically.
+ * ------------------------------------------------------ */
+
+@mixin columniseList($c:0){
+	@if($c==1){
+		@include span-columns($total-columns);
+	}
+
+
+	@else if($c==2){
+		@include span-columns($total-columns * .5);
+		white-space:inherit;
+
+		&:nth-child(2n){
+			@include omega();
+		}
+	}
+
+
+	@else if($c==3){
+		width        : (100 - 2 * $gutter-width)/3;
+		margin-right : $gutter-width;
+
+		&:nth-child(2n){
+			@include remove-omega;
+		}
+
+		&:nth-child(3n){
+			@include omega();
+		}
+	}
+
+
+	@else if($c==0){
+		@include inline-block;
+		width  : auto;
+		margin : 0 1%;
+		float  : none;
+
+		&:nth-child(2n),
+		&:nth-child(3n){
+			@include inline-block;
+			margin : 0 1%;
+			float  : none;
+		}
+	}
+}
+
+/* ------------------------------------------------------
+ * ENDOF: COLUMNISE LIST
+ * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * PLACEHOLDER
+ * ------------------------------------------------------
+ * @desc  allows styling of placeholder text
+ * ------------------------------------------------------ */
+
+@mixin placeholder(){
+
+	&::-webkit-input-placeholder{
+	@content;
+	}
+
+	&:-moz-placeholder{
+		@content;
+	}
+
+	&::-moz-placeholder{
+		@content;
+	}
+
+	&:-ms-input-placeholder{
+		@content;
+	}
+
+}
+/* ------------------------------------------------------
+ * ENDOF: PLACEHOLDER
+ * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * BROWSER SPECIFIC SELECTORS
+ * ------------------------------------------------------ */
+
+@mixin webkit(){
+	@media screen and (-webkit-min-device-pixel-ratio:0) {
+		@content;
+	}
+}
+
+
+
+
+
+@mixin chrome(){
+	@media not all and (-webkit-min-device-pixel-ratio:0) {
+		@content;
+	}
+}
+
+
+
+
+
+@mixin firefox(){
+	@-moz-document url-prefix() {
+     @content;
+  }
+}
+
+
+
+
+
+@mixin opera(){
+	@media not screen and (1) {
+		@content;
+	}
+}
+
+
+
+
+
+/* fixes 3D transform flickering in Webkits */
+@mixin deflicker($shift:1){
+	-webkit-perspective-origin    : 50% 50%;
+	-webkit-backface-visibility   : hidden;
+	-webkit-transform             : translateZ(0px + $shift);
+}
+
+
+
+
+/* target mobile devices—please note this is a very generous assumption */
+@mixin mobilise(){
+	@media  only screen and (max-device-width: 1024px),
+	only screen and (max-width : 1200px) and (-webkit-min-device-pixel-ratio: 1.5),
+	only screen and (max-width : 1200px) and (min--moz-device-pixel-ratio: 1.5),
+	only screen and (max-width : 1200px) and (-o-min-device-pixel-ratio: 3/2){
+
+		@content;
+
+	}
+
+}
+
+/* ------------------------------------------------------
+ * ENDOF: BROWSER SPECIFIC SELECTORS
+ * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+
+
+//************************************************************************//
+// Grabbed from [bourbon]
+// Default: Webkit, moz, spec
+// Example: @include prefixer(border-radius, $radii, $o: true);
+//************************************************************************//
+@mixin prefixer ($property, $value, $webkit: true,
+																		$moz: true,
+																		$ms: true,
+																		$o: true,
+																		$spec: true){
+
+	@if $webkit { -webkit-#{$property}: $value; }
+	@if $moz    {    -moz-#{$property}: $value; }
+	@if $ms     {     -ms-#{$property}: $value; }
+	@if $o      {      -o-#{$property}: $value; }
+	@if $spec   {         #{$property}: $value; }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Mixins =================================================== */
+
+// 1. ROOT 					==============================
+// 2. TYPOGRAPHY 			==============================
+
+
+
+
+
+
+@mixin text-overflow() {
+	overflow      : hidden;
+	text-overflow : ellipsis;
+	white-space   : nowrap;
+}
+
+
+
+
+// @include bordered(COLOR, COLOR, COLOR, COLOR);
+
+@mixin bordered($top-color: #666, $right-color: #666, $bottom-color: #666, $left-color: #666) {
+	border              : 1px solid $top-color;
+	border-left-color   : $left-color;
+	border-right-color  : $right-color;
+	border-bottom-color : $bottom-color;
+}
+
+
+
+
+// Chrome Frame
+
+@mixin chromeframe() {
+	margin     : .2em 0;
+	background : $lightgrey;
+	color      : $black;
+	padding    : .2em 0;
+}
+
+
+
+
+
+// @include resize(VALUE) (none, both, horizontal, vertical, inherit)
+
+@mixin resize($direction: both) {
+	resize   : $direction;
+	overflow : auto;
+}
+
+
+
+
+
+// 6. LAYOUT 				==============================
+
+// @include columns(250px, 0, 24px, COLOR, solid, 1px)
+
+@mixin columns($colwidth: 250px, $colcount: 0, $colgap: 50px, $columnRuleColor: #eee, $columnRuleStyle: solid, $columnRuleWidth: 1px) {
+	@include column-count($colcount);
+	@include column-gap($colgap);
+	@include column-width($colwidth);
+	@include column-rule-color($columnRuleColor);
+	@include column-rule-style($columnRuleStyle);
+	@include column-rule-width($columnRuleWidth);
+}

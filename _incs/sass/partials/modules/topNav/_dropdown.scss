@@ -1,0 +1,623 @@
+/* ===================================================================================
+ * Module Name: Top Navigation > Dropdown > No Search
+ * ===================================================================================
+ * Contains layout outlines for the top navigation being rendered as a dropdown on smaller resolutions.
+ * Assumes the lack of Search box.
+ *
+ * @dependency $topNavDropDown-allowThreeCols boolean Defines whether the list should go from 2 columns to 1 directly
+ *                                                    or have a step with 3 columns as well. Expected to be set in _vars.scss.
+ * =================================================================================== */
+
+
+
+@mixin topNav($res:false){
+
+
+
+
+  @if $res == false {
+  /* ------------------------------------------------------
+	 * GENERIC
+	 * ------------------------------------------------------ */
+
+	  .topNav{
+		  @extend %cf;
+		  @include adjust-font-size-to(16px);
+		  width       : 100%;
+		  position    : relative;
+		  padding-top : 0.5em;
+	  }
+
+	  @media only screen and (max-width: 959px){
+			.topNav-extraPadded{
+			  padding-bottom  : 14px;
+		  }
+	  }
+
+	    #topNav-bar{
+		    background : $red-darker;
+		    z-index    : 101;
+		    position   : absolute;
+		    height     : 2.6em;
+	    }
+
+		  #topNavToggler,
+		  #quickContactToggler{
+			  @extend %buttonIcon;
+			  @include adjust-font-size-to($base-font-size);
+			  @include dim(1.5em, 1.25em);
+			  margin   : 0 $grid-padding 0 0;
+			  float    : right;
+			  position : relative;
+			  z-index  : 105;
+
+			  &:after{
+				  @extend %icon-menu;
+				  @include dim(100%, 100%);
+				  @include abs($t:0, $l:0);
+				  text-indent : 0;
+				  font-size   : 1.5em;
+				  line-height : 1.4em;
+				  color       : #fff;
+				  text-shadow : 0 1px 1px #404040;
+			  }
+
+		  }
+
+			  #topNavInput{
+				  @extend %hidden;
+
+				  &:checked{
+					  & ~ .topNav-links:not(.animated){
+						  @include rel($l:0);
+						  height  : 100%;
+					  }
+				  }
+			  }
+
+
+		  #quickContactToggler:after{
+		    @extend %icon-icon-phone;
+			  font-size   : 1em;
+			  line-height : 2.1em;
+		  }
+
+
+		  .topNav-links{
+			  @include abs($l : -9999px);
+			  @include dim(100%, auto, false);
+			  overflow       : hidden;
+			  z-index        : 100;
+			  margin         : 0;
+			  width          : 100%;
+			  text-shadow    : 0 1px 1px #404040;
+			  text-transform : uppercase;
+				padding-top    : 1em;
+
+			  &.visible{
+				  position : relative;
+				  left     : 0;
+				  height   : 0;
+			  }
+
+			  &>li{
+				  @include columniseList(1);
+			  }
+
+			  a{
+				  @include transition(background-color .7s ease, box-shadow .7s ease);
+			    @include inline-block;
+				  padding : .2em .375em;
+				  color   : #ffffff;
+
+				  &:hover,
+				  &:active{
+					  @include prefixer('transition-duration', #{.3s, .3s});
+					  @include box-shadow(0 1px 1px 0 rgba($grey-darker, .75));
+					  border-radius   : 4px;
+					  background      : $red-dark;
+					  text-decoration : none;
+				  }
+
+				  &:active{
+					  background : $red;
+				  }
+			  }
+		  }
+
+
+	  #servicesNav{
+		  @extend %hidden;
+	  }
+
+
+		  .serviceIcon-design:before{
+			  @extend %icon-twitter;
+		  }
+
+		  .serviceIcon-sms:before{
+			  @extend %icon-twitter;
+		  }
+
+		  .serviceIcon-ecrm:before{
+			  @extend %icon-twitter;
+		  }
+
+		  .serviceIcon-hosting:before{
+			  @extend %icon-twitter;
+		  }
+
+		  .serviceIcon-support:before{
+			  @extend %icon-twitter;
+		  }
+
+		  .serviceIcon-email:before{
+			  @extend %icon-twitter;
+		  }
+
+		  .serviceIcon-mobile:before{
+			  @extend %icon-twitter;
+		  }
+
+  /* ------------------------------------------------------
+	 * ENDOF: GENERIC
+	 * ------------------------------------------------------ */
+  }
+
+
+
+
+
+
+
+
+
+
+
+  @else if $res == "320" {
+  /* ------------------------------------------------------
+	 * 320
+	 * ------------------------------------------------------ */
+
+	  .topNav-links>li{
+			@include columniseList(2);
+	  }
+
+  /* ------------------------------------------------------
+	 * ENDOF: 320
+	 * ------------------------------------------------------ */
+  }
+
+
+
+
+
+
+
+
+
+  @else if $res == "480" {
+  /* ------------------------------------------------------
+	 * 480
+	 * ------------------------------------------------------ */
+
+	  @if($topNavDropDown-allowThreeCols==true){
+	    .topNav-links>li{
+			  @include columniseList(3);
+		  }
+	  }
+
+  /* ------------------------------------------------------
+	 * ENDOF: 480
+	 * ------------------------------------------------------ */
+  }
+
+
+
+
+
+
+
+
+
+
+  @else if $res == "768" {
+  /* ------------------------------------------------------
+	 * 768
+	 * ------------------------------------------------------ */
+
+	  .topNav{
+		  padding-top : .75em;
+	  }
+
+		 #quickContactToggler{
+			  margin-right   : $grid-padding*.5;
+		 }
+
+	  .topNav-links>li{
+			@include columniseList(0);
+	  }
+
+  /* ------------------------------------------------------
+	 * ENDOF: 768
+	 * ------------------------------------------------------ */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  @else if $res == "960" {
+  /* ------------------------------------------------------
+	 * 960
+	 * ------------------------------------------------------ */
+
+	  .topNav{
+	    @include dim(90%, 100%, false);
+		  margin      : 0 auto;
+		  padding-top : 1em;
+		  overflow    : inherit;
+		  z-index     : 99;
+	  }
+
+	    #topNav-bar{
+	      @include removed();
+	    }
+
+		  #topNavToggler{
+			  @include hidden();
+		  }
+
+		  #topNavToggler,
+		  #quickContactToggler{
+			  margin-top   : .4em;
+		  }
+
+		  #quickContactToggler{
+			  @include abs($r:-4%, $t:1.125em);
+			  margin-right : 0;
+			  float        : none;
+		  }
+
+		  .topNav-links{
+			  @include rel($l:auto, $t:auto);
+			  @include span-columns($total-columns);
+			  @include prefixer(perspective, 800px, true, false);
+			  @include prefixer(perspective-origin, 480px 0, true, false);
+			  height   : auto;
+			  z-index  : 100;
+			  margin   : rhythm(.5) 0 0;
+			  padding  : 0;
+			  overflow : inherit;
+			  left     : -.25%; /* artificial offset to keep the nav centred against the logo and keep everything semantic atst */
+
+
+			  &>li{
+				  @include columniseList();
+
+				  &:nth-of-type(3){
+					  @include post(3);
+				  }
+			  }
+
+			  a{
+				  text-decoration : none;
+				  padding         : .2em .45em;
+			  }
+		  }
+
+
+		  .topNav-padded{
+			  padding-bottom:1.5em;
+		  }
+
+
+	  @include firefox(){
+		  #services-toggler{
+			  -moz-perspective        : 800px;
+			  perspective             : 800px;
+			  -moz-perspective-origin : 250px 0;
+			  perspective-origin      : 250px 0;
+		  }
+	  }
+
+				#services-toggler{
+
+
+					&:hover #servicesNav{
+						//@include translateY(0);
+						@include transform(translateY(0) rotateX(0deg));
+						@include prefixer('transition-duration', #{.3s, .3s, 0s});
+						@include prefixer('transition-delay',  #{.3s, .3s, 0s});
+						opacity : 1;
+						left    : 51.75% /* compensate 1.75% for .topNav-links offset */
+					}
+				}
+
+				  #servicesNav {
+					  @include dim(830px, auto);
+					  @include abs($l: -9999px);
+					  @include transform(translateY(0) rotateX(-80deg));
+					  @include prefixer('transform-origin', 415px 0);
+					  @include transition(opacity .3s ease-out .3s, transform .3s $ease-out-back .3s, left 0s linear .3s);
+					  background : $grey-darker;
+					  margin     : 24px 0 0 -415px;
+					  visibility : visible;
+					  padding    : 4em 0 1.5em;
+					  opacity    : 0;
+
+					  em {
+						  font-style : normal;
+						  color      : $grey-light;
+					  }
+
+					  &:before{
+						  @include triangle('up', $grey-darker, 1em, .75em);
+						  @include abs($t: -.75em, $l: 28%);
+						  content     : '';
+					  }
+
+					  &:after{
+						  @include dim(9em, 25px);
+						  @include abs($l:20.5%, $t:-25px);
+						  content     : '';
+						  background  : $red-darker;
+						  opacity     : .001;
+					  }
+				  }
+
+				  .servicesNav-list{
+					  font-size   : 0.85em;
+					  font-weight : $baseFont-regular;
+					  line-height : 1.25em;
+					  text-shadow : none;
+					  overflow    : inherit;
+					  margin-top  : .75em;
+
+
+						.serviceIcon{
+							@include dim(7.4em, 7.5em, false);
+							@include transition(color .3s ease, background-color .3s ease, text-shadow .3s ease);
+							margin   : 0 .5em;
+							position : relative;
+
+							&:before{
+								@include dim(100%, 60%);
+								@include abs($l:0, $b:.75em);
+								@include transition(color .3s ease, background-color .3s ease, text-shadow .3s ease);
+								text-align : center;
+								font-size  : 2.5em;
+
+							}
+						}
+
+					    a{
+						    @include box-sizing(border-box);
+						    @include dim(100%, 100%, block);
+						    @include transition(none);
+						    padding        : 55% 0 0;
+						    white-space    : normal;
+						    vertical-align : top;
+						    position       : relative;
+						    color          : inherit;
+
+						    &:hover{
+							    background     : transparent;
+						    }
+					    }
+				  }
+
+
+	          .serviceIcon:hover,
+	          .serviceIcon:hover:before{
+		          @include prefixer('transition-duration', '.7s, .7s, .7s');
+		          color : $light-default;
+	          }
+
+
+
+					  @each $service in design  $serviceColour-design,
+					                    sms     $serviceColour-sms,
+					                    ecrm    $serviceColour-ecrm,
+					                    hosting $serviceColour-hosting,
+					                    support $serviceColour-support,
+					                    email   $serviceColour-email,
+					                    mobile  $serviceColour-mobile {
+
+
+						  .serviceIcon-#{nth($service, 1)}{
+							  color:nth($service, 2);
+
+							  &:before{
+								  color:nth($service, 2);
+							  }
+
+							  &:hover{
+								  @include vGradient(nth($service, 2), darken(nth($service, 2), 10));
+								  text-shadow: 0 1px 1px $dark-default;
+
+								  &:before{
+									  text-shadow: 0 1px 0 rgba($dark-default, .15);
+								  }
+							  }
+						  }
+
+					  }
+
+
+
+
+  /* ------------------------------------------------------
+	 * ENDOF: 960
+	 * ------------------------------------------------------ */
+  }
+
+
+
+
+
+
+  @else if $res == "960-1100" {
+  /* ------------------------------------------------------
+	 * 960-1100
+	 * ------------------------------------------------------ */
+
+	  $step           : 28;
+    $initialOffset  : 0;
+	  $startMQ        : 960px + $initialOffset + $step;
+	  $startValue     : 27.5;
+	  $firstStep      : 0;
+	  $lastStep       : 3;
+	  $delta          : 1.5;
+
+
+	  @for $i from $firstStep through $lastStep{
+		  @media only screen and (min-width: ($startMQ + $step * $i) ) and (max-width: ($startMQ - 1 + $step * ($i+1)) ){
+
+			  #servicesNav{
+				  &:after{
+					  left: ($startValue - 7.25 - ( $delta * ( ($i - $firstStep) / $lastStep ) )) * 1%;
+				  }
+
+				  &:before{
+					  left: ($startValue - ( $delta * ( ($i - $firstStep) / $lastStep ) )) * 1%;
+				  }
+			  }
+
+		  }
+	  }
+
+  /* ------------------------------------------------------
+	 * ENDOF: 960-1100
+	 * ------------------------------------------------------ */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  @else if $res == "1100" {
+  /* ------------------------------------------------------
+	 * 1100
+	 * ------------------------------------------------------ */
+
+	  .topNav{
+	    width:  100% - $gutter-width*2;
+	  }
+
+		  #servicesNav{
+			  &:before{
+				  left: 24.5%;
+			  }
+
+			  &:after{
+				  left:17.5%;
+			  }
+		  }
+
+	  #quickContactToggler{
+		  right:0;
+	  }
+
+
+  /* ------------------------------------------------------
+	 * ENDOF: 1100
+	 * ------------------------------------------------------ */
+  }
+
+
+
+
+
+
+
+
+
+
+  @else if $res == "1100-1248" {
+  /* ------------------------------------------------------
+	 * 1100-1248
+	 * ------------------------------------------------------ */
+
+	  $step          : 37;
+	  $initialOffset : 0;
+	  $startMQ       : 1100px + $initialOffset + $step;
+	  $startValue    : 23.8;
+	  $firstStep     : 0;
+	  $lastStep      : 2;
+	  $delta         : 1;
+
+	  @for $i from $firstStep through $lastStep{
+		  @media only screen and (min-width: ($startMQ + $step * $i) ) and (max-width: ($startMQ - 1 + $step * ($i+1)) ){
+
+			  #servicesNav{
+				  &:after{
+					  left: ($startValue - 6.8 - ( $delta * ( ($i - $firstStep) / $lastStep ) )) * 1%;
+				  }
+
+				  &:before{
+					  left: ($startValue - ( $delta * ( ($i - $firstStep) / $lastStep ) )) * 1%;
+				  }
+			  }
+
+		  }
+	  }
+
+  /* ------------------------------------------------------
+	 * ENDOF: 1100-1248
+	 * ------------------------------------------------------ */
+  }
+
+
+
+
+
+
+
+
+
+
+  @else if $res == "1200" {
+  /* ------------------------------------------------------
+	 * 1200
+	 * ------------------------------------------------------ */
+
+	  .topNav{
+		  width:  1200px;
+	  }
+
+		  #servicesNav{
+			  &:before{
+				  left: 21%;
+			  }
+
+			  &:after{
+				  left: 14.5%
+			  }
+		  }
+
+
+  /* ------------------------------------------------------
+	 * ENDOF: 1200
+	 * ------------------------------------------------------ */
+  }
+
+
+
+
+
+}

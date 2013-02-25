@@ -1,0 +1,322 @@
+/* ===================================================================================
+ * COMBOBOX POLYFILL STYLES
+ * ===================================================================================
+ * Styles for js\lib\combobox-polyfill.js
+ *
+ * @dependency _vars.scss.
+ * =================================================================================== */
+/* EASING
+ * ------------------------------------------- */
+/* MODULE OPTIONS
+ * ------------------------------------------- */
+/* VERTICAL RHYTHM
+ * ------------------------------------------- */
+/* GRID
+ * ------------------------------------------- */
+/* IMAGES
+ * ------------------------------------------- */
+/* COLOURS
+ * -------------------------------------------
+ * use colour_name[-state] names instead referring
+ * to usage to minimise their amount and future confusion.
+ * If unavoidable, extend with element or function specific values
+ *
+ * e.g.: $dark-blue, $red-inactive
+ * ------------------------------------------- */
+/* applies to majority of black and near-black elements, e.g. text */
+/* applies to majority of white and near-white elements, e.g. background */
+/* e.g.: logo banner, links/buttons idle colour */
+/* e.g.: top nav hovers */
+/* e.g.: top nav background */
+/* e.g.: links/buttons hover colour */
+/* e.g.: links/buttons active state colour */
+/* used for panel backgrounds, e.g. home twitter feed */
+/* used for panel strokes, e.g. dividers, twitter tooltip border */
+/* ued for panel fills, e.g. ribbon in the work/study case oages */
+/* used for panel backgrounds, e.g. buttons, footer navigation */
+/* used for panel backgrounds, e.g. functional footer */
+/* used for panel backgrounds, e.g. buttons idle */
+/* used for panel backgrounds, e.g. buttons hover */
+/* used for panel backgrounds, e.g. buttons active */
+/* TYPOGRAPHY
+ * ------------------------------------------- */
+/* MISC
+ * ------------------------------------------- */
+/* amount of fading applied when hovering services in top nav*/
+/* ===================================================================================
+ * Helper Name: Generic Mixins
+ * ===================================================================================
+ * Contains all shorthand mixins.
+ * Introduce per-page/section segmentation for larger projects to reduce filesize.
+ *
+ * Filename convention: _mixins-[section].scss
+ * =================================================================================== */
+/* ------------------------------------------------------
+ * ELEMENT SIZING
+ * ------------------------------------------------------
+ * @desc  sets display type and size
+
+ * @param $w  cssUnit width
+ * @param $h  cssUnit height
+ * @param $d  string  display-type
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: ELEMENT SIZING
+ * ------------------------------------------------------
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * FONT STYLING SHORTHAND
+ * ------------------------------------------------------
+ * @desc  Use sparringly.
+ *        Idealy go with 'font' or vertical-rhythm mixins
+
+ * @param $fs   cssUnit font-size
+ * @param $lh   cssUnit line-height
+ * @param $fw   cssUnit font-weight
+ * @param $fst  cssUnit font-style
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: FONT STYLING SHORTHAND
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * POSITIONING
+ * ------------------------------------------------------
+ * @desc  positions element absolutely, relatively or as a fixed element
+
+ * @param $t  cssUnit top
+ * @param $r  cssUnit right
+ * @param $b  cssUnit bottom
+ * @param $l  cssUnit left
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: POSITIONING
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ANIMATE
+ * ------------------------------------------------------
+ * @desc  Add Compass support for CSS animation.
+ *        PLEASE NOTE: enable prefixes as required by the target audience.
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: ANIMATE
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * TRIANGLE
+ * ------------------------------------------------------
+ * @desc  Renders a CSS triangle.
+
+ * @param $direction  string[up, left, right, bottom]
+ * @param $color      hexValue
+ * @param $size       cssUnit[px, em, rem]
+ * @param $height     cssUnit[px, em, rem] set to stretch or shrink the base of the triangle
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: TRIANGLE
+ * ------------------------------------------------------
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * GRADIENTS
+ * ------------------------------------------------------
+ * @desc  Renders a CSS gradient.
+ *
+ *
+ * @param $startColor colour value
+ * @param $endColor   colour value
+ * @param $direction  [num]deg
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: GRADIENTS
+ * ------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * COLUMNISE LIST
+ * ------------------------------------------------------
+ * @desc  Transforms <li> into a dynamically sized, table-like elements.
+
+ * @param $c integer:
+ *    1           : all <li>s are 100% wide.
+ *    2           : all <li>s are at filling half of the available columns' width.
+ *    3 [optional]: all <li>s are filling 30% of the total width, with 5% of the gutter.
+ *    0           : all elements are inlined. Widths are set automatically.
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: COLUMNISE LIST
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * PLACEHOLDER
+ * ------------------------------------------------------
+ * @desc  allows styling of placeholder text
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: PLACEHOLDER
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * BROWSER SPECIFIC SELECTORS
+ * ------------------------------------------------------ */
+/* fixes 3D transform flickering in Webkits */
+/* target mobile devices—please note this is a very generous assumption */
+/* ------------------------------------------------------
+ * ENDOF: BROWSER SPECIFIC SELECTORS
+ * ------------------------------------------------------ */
+/* Mixins =================================================== */
+/* Input textbox - do not specify a width here, it will be overwritten */
+/* line 16, ../../../sass/partials/libs/combobox-polyfill.scss */
+input.ffb-input {
+  margin-top: 0;
+  float: left;
+  color: #000;
+  /* must specify along with watermark color */
+  /*height:16px;*/
+  /* required for webkit browsers (Safari, Chrome) */
+  padding-right: 2em;
+}
+
+/* Color of watermark, if present */
+/* line 28, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb-input.watermark {
+  /* added and removed dynamically */
+  color: #bdbebf;
+  /* must specify along with input color */
+}
+
+/* Drop-down arrow, with sprited image */
+/* line 37, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb-arrow {
+  position: absolute;
+  right: 0;
+  width: 1.5em;
+  height: 100%;
+  border-left: 1px solid #DDDDDD;
+}
+/* line 44, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb-arrow:after {
+  width: 0;
+  height: 0;
+  display: block;
+  border-right: 0.3em solid transparent;
+  border-left: 0.3em solid transparent;
+  border-top: 0.3em solid #1b1e1f;
+  position: absolute;
+  top: 0.8em;
+  left: 0.5em;
+  display: block;
+  content: "";
+}
+/* line 222, ../../../sass/partials/helpers/_mixins-generic.scss */
+.ffb-arrow:after else {
+  border-top: 0.3em solid #1b1e1f;
+}
+/* line 52, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb-arrow.out {
+  background: transparent;
+  border-left: 1px solid #DDDDDD;
+}
+/* line 57, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb-arrow.over {
+  background: transparent;
+  border-left: 1px solid #DDDDDD;
+}
+/* line 62, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb-arrow.active {
+  background: transparent;
+  border-left: 1px solid #DDDDDD;
+}
+
+/* line 69, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb-no-results {
+  padding: 2px;
+  color: #888;
+  font-style: italic;
+  border-bottom: 1px solid #828790;
+}
+
+/* Container for dropdown contents */
+/* line 81, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb {
+  position: absolute;
+  /* this guy's parent div is hard-coded to position:relative */
+  overflow: hidden;
+  border-left: 1px solid #828790;
+  /* #7B9EBD for Vista */
+  border-right: 1px solid #828790;
+  background-color: #fff;
+  /* Give it a background-color, so it's not transparent */
+}
+
+/* Inner div for dropdown */
+/* line 94, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb .content {
+  overflow: auto;
+}
+
+/* line 98, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb .content .row {
+  border-bottom: 1px solid #828790;
+  color: #000;
+  height: 20px;
+  clear: both;
+}
+
+/* line 105, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb-sel {
+  cursor: pointer;
+  cursor: hand;
+  color: #fff !important;
+  background-color: #39f;
+}
+
+/* line 112, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb-match {
+  font-weight: bold;
+  color: #000;
+}
+
+/* Paging */
+/* line 122, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb .paging {
+  vertical-align: middle;
+  border-bottom: 1px solid #828790;
+}
+
+/* line 127, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb .page, .ffb a.page {
+  font-size: 85%;
+  padding: 2px;
+  border: solid 1px #339;
+  background-color: #eef;
+  margin: 2px;
+}
+
+/* line 135, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb .box {
+  width: 22px;
+  margin: 2px;
+}
+
+/* line 140, ../../../sass/partials/libs/combobox-polyfill.scss */
+.ffb .summary {
+  font-size: 85%;
+}

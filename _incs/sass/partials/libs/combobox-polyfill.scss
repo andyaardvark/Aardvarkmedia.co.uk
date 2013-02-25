@@ -1,0 +1,142 @@
+/* ===================================================================================
+ * COMBOBOX POLYFILL STYLES
+ * ===================================================================================
+ * Styles for js\lib\combobox-polyfill.js
+ *
+ * @dependency _vars.scss.
+ * =================================================================================== */
+
+@import 'partials/setup/vars';
+@import 'partials/helpers/mixins-generic';
+
+
+
+
+/* Input textbox - do not specify a width here, it will be overwritten */
+input.ffb-input{
+	margin-top : 0;
+	float      : left;
+	color      : #000; /* must specify along with watermark color */
+	/*height:16px;*/ /* required for webkit browsers (Safari, Chrome) */
+	padding-right:2em;
+}
+
+
+
+
+/* Color of watermark, if present */
+.ffb-input.watermark{
+	/* added and removed dynamically */
+	color : $grey-light; /* must specify along with input color */
+}
+
+
+
+
+/* Drop-down arrow, with sprited image */
+.ffb-arrow{
+	position    : absolute;
+	right       : 0;
+	width       : 1.5em;
+	height      : 100%;
+	border-left : 1px solid #DDDDDD;
+
+	&:after{
+		@include triangle('down', $dark-default, .3em, .3em);
+		@include abs($t:.8em, $l:.5em);
+		display:block;
+		content:"";
+
+	}
+
+	&.out{
+		background  : transparent;
+		border-left : 1px solid #DDDDDD;
+	}
+
+	&.over{
+		background  : transparent;
+		border-left : 1px solid #DDDDDD;
+	}
+
+	&.active{
+		background  : transparent;
+		border-left : 1px solid #DDDDDD;
+	}
+}
+
+
+.ffb-no-results{
+	padding       : 2px;
+	color         : #888;
+	font-style    : italic;
+	border-bottom : 1px solid #828790;
+}
+
+
+
+
+
+/* Container for dropdown contents */
+.ffb{
+	position         : absolute; /* this guy's parent div is hard-coded to position:relative */
+	overflow         : hidden;
+	border-left      : 1px solid #828790; /* #7B9EBD for Vista */
+	border-right     : 1px solid #828790;
+	background-color : #fff; /* Give it a background-color, so it's not transparent */
+}
+
+
+
+
+
+/* Inner div for dropdown */
+.ffb .content{
+	overflow : auto;
+}
+
+.ffb .content .row{
+	border-bottom : 1px solid #828790;
+	color         : #000;
+	height        : 20px;
+	clear         : both;
+}
+
+.ffb-sel{
+	cursor           : pointer;
+	cursor           : hand;
+	color            : #fff !important;
+	background-color : #39f;
+}
+
+.ffb-match{
+	font-weight : bold;
+	color       : #000;
+}
+
+
+
+
+
+/* Paging */
+.ffb .paging{
+	vertical-align : middle;
+	border-bottom  : 1px solid #828790;
+}
+
+.ffb .page, .ffb a.page{
+	font-size        : 85%;
+	padding          : 2px;
+	border           : solid 1px #339;
+	background-color : #eef;
+	margin           : 2px;
+}
+
+.ffb .box{
+	width  : 22px;
+	margin : 2px;
+}
+
+.ffb .summary{
+	font-size : 85%;
+}

@@ -1,0 +1,568 @@
+/* ===================================================================================
+ * Module Name: Main Wrappers Layout
+ * ===================================================================================
+ * Contains all outer elements, including grid containers and grid setup.
+ *
+ * @dependency 'compass/typography/vertical_rhythm' imported in 'partials/modules/pageLayout/__main.scss'
+ *
+ * @dependency $showGrid boolean Defines whether the grid preview should be visible.
+ *                               Expected to be set in _vars.scss.
+ *
+ * @dependency $showGrid boolean Defines whether the grid preview should be visible.
+ *                               Expected to be set in _vars.scss.
+ * =================================================================================== */
+
+
+@include establish-baseline;
+
+
+@mixin mainWrappers($res:false){
+
+	@if $res == false {
+	/* ------------------------------------------------------
+	 * GENERIC
+	 * ------------------------------------------------------ */
+
+		$total-columns  : $total-columns-default;
+		$column-width   : 22%;
+		$gutter-width   : (100% - $total-columns * $column-width)/($total-columns - 1);
+		$grid-padding   : $gutter-width;
+		$roundingBuffer : 0.5%; // 0.5% to fix rounding issues with header offsets
+
+		.container{
+			position    : relative;
+			width       : 100%;
+
+			@if($showVerticalRhythm){
+				@include debug-vertical-alignment();
+			}
+		}
+
+			.gridbase{
+				@include box-sizing(border-box);
+				@include container;
+				@include container(640px $total-columns-640);
+				@include container(960px $total-columns-960);
+				@include container(1200px $total-columns-1200);
+				@if($showGrid){
+					@include susy-grid-background;
+				}
+
+				//@include transition(margin-left .5s, left .5s);
+				width    : 100%;
+				position : relative;
+				margin   : 0;
+				display  : block;
+
+				&.offcanvas{
+					margin-left:89%;
+				}
+			}
+
+			.content-full{
+				display:block;
+
+			}
+
+				#header{
+					position   : relative;
+					width      : 100%;
+				}
+
+
+					.heading-generic,
+					.heading-project{
+						text-align  : center;
+						color       : $light-default;
+						padding-top : rhythm(2);
+
+						h1{
+							margin      : 0 0 .5em;
+							line-height : 1.2em;
+						}
+
+						.sideStripes-light{
+							font           : $baseFont-regular 1.5em/1.5em $baseFont;
+							text-transform : uppercase;
+						}
+
+					}
+
+			.section-headless{
+				padding: rhythm(2) 0;
+			}
+
+
+			.content-col3,
+			.content-col2,
+			.column-2,
+			.column-3,
+			.column-3-4{
+				@extend %cf;
+				width:100%;
+			}
+
+			.column-3,
+			.column-2,
+			.column-3-4{
+				margin-bottom: rhythm(2);
+
+
+				&:last-child{
+					margin-bottom:0;
+				}
+			}
+
+		.column-4{
+			width      : 100%;
+			max-width  : 320px;
+			margin     : 0 auto;
+			margin     : .5em auto;
+		}
+
+
+
+		.columnisedList{
+			li{
+				@include columniseList(1);
+			}
+		}
+
+
+
+
+
+		/* ENABLE STICKY FOOTER */
+		//@include sticky-footer(4em, "#canvasser", "#footerSpacer", "#footer");
+
+		#footer{
+			width  : 100%;
+		}
+
+
+		@if($isPrototyping){
+			#header, #footer, .content, .sidebar, .slider, article[role="main"]{
+				background : rgba(255,0,0,.3);
+			}
+		}
+
+	/* ------------------------------------------------------
+	 * ENDOF: GENERIC
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "480" {
+	/* ------------------------------------------------------
+	 * 480
+	 * ------------------------------------------------------ */
+
+
+		.column-4{
+			@include inline-block;
+			vertical-align : top;
+			width         : (100% - $gutter-width)*.5;
+			margin-left   : $gutter-width;
+
+			&:nth-of-type(2n+1){
+				margin-left : 0;
+				clear       : left;
+			}
+		}
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 480
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "640" {
+	/* ------------------------------------------------------
+	 * 640
+	 * ------------------------------------------------------ */
+
+		$total-columns  : $total-columns-640;
+		$column-width   : 9.5%;
+		$gutter-width   : (100% - $total-columns * $column-width)/($total-columns - 1);
+		$grid-padding   : $gutter-width;
+
+		.gridbase{
+			@if($showGrid){
+				@include susy-grid-background;
+			}
+			margin  : 0;
+		}
+
+		.section-headless{
+			padding: rhythm(2) 0;
+		}
+
+		.columnisedList{
+			li{
+				@include columniseList(2);
+			}
+		}
+
+		.column-2{
+			display      : inline;
+			float        : left;
+			width        : (100% - $gutter-width)*.5;
+
+			&:first-child{
+				margin-right : $gutter-width;
+			}
+
+			&:last-child{
+				float:right;
+			}
+
+			p{
+				font-size:$base-font-size;
+			}
+
+		}
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 640
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "768" {
+	/* ------------------------------------------------------
+	 * 768
+	 * ------------------------------------------------------ */
+
+		$total-columns  : $total-columns-640;
+		$column-width   : 9.5%;
+		$gutter-width   : (100% - $total-columns * $column-width)/($total-columns - 1);
+		$grid-padding   : $gutter-width;
+
+		.gridbase{
+			@if($showGrid){
+				@include susy-grid-background;
+			}
+			margin  : 0;
+		}
+
+		.section-headless{
+			padding: rhythm(2) 0;
+		}
+
+		.columnisedList{
+			li{
+				@include columniseList(2);
+			}
+		}
+
+
+		.column-3,
+		.column-3-4{
+			display       : inline;
+			float         : left;
+			margin-right  : $gutter-width;
+			margin-bottom : 0;
+			width         : (100% - 2*$gutter-width)/3;
+
+			&:last-child{
+				margin-right : 0;
+				float        : right;
+			}
+
+			img{
+				@include dim(100%, auto);
+				margin-bottom : .75em;
+			}
+
+			p{
+				font-size:$base-font-size;
+			}
+
+		}
+
+		.column-3-4{
+			width         : ((100% - 2*$gutter-width)/3)*2;
+		}
+
+
+
+		.column-4{
+			width         : (100% - $gutter-width*.5)*.5;
+			margin-left   : $gutter-width*.5;
+
+			&:nth-of-type(2n+1){
+				margin-left : 0;
+			}
+		}
+
+	/* ------------------------------------------------------
+	 * ENDOF: 768
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "960" {
+	/* ------------------------------------------------------
+	 * 960
+	 * ------------------------------------------------------ */
+
+		$total-columns  : $total-columns-960;
+		$column-width   : 6%;
+		$gutter-width   : (100% - $total-columns * $column-width)/($total-columns - 1);
+		$grid-padding   : $gutter-width;
+
+		.gridbase{
+			@if($showGrid){
+				@include susy-grid-background;
+			}
+			margin  : 0 auto;
+		}
+
+		.section-headless{
+			padding: rhythm(2) 0;
+		}
+
+		.heading-generic,
+		.heading-project{
+			padding : rhythm(2) 0 rhythm(2);
+
+			h1, h2{
+				width  : columns(10, 12);
+				margin : 0 auto .5em;
+			}
+		}
+
+
+		.content-half,
+		.content-half-separated{
+			@include span-columns($total-columns*.5);
+			position:relative;
+
+			&:last-of-type{
+				@include omega();
+			}
+		}
+
+		.content-half-separated{
+			@include box-sizing(border-box);
+
+			&:first-of-type{
+				padding-right : $gutter-width*.5;
+			}
+
+			&:last-of-type{
+				padding-left  : $gutter-width*.5;
+
+				&:before{
+					@include dim(1px, 90%);
+					@include abs($t : 3.25em, $l: -$gutter-width);
+					content    : '';
+					background : $grey-light;
+				}
+			}
+		}
+
+		.columnisedList{
+			li{
+				@include columniseList(3);
+			}
+		}
+
+
+
+		.column-4{
+			width         : (100% - 2*$gutter-width*.5)/3;
+			margin-left   : $gutter-width*.5;
+
+			&:nth-of-type(2n+1){
+				margin-left : $gutter-width*.5;
+				clear       : none;
+			}
+
+			&:nth-of-type(3n+1){
+				margin-left : 0;
+				clear       : both;
+			}
+		}
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 960
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "1100" {
+	/* ------------------------------------------------------
+	 * 1100
+	 * ------------------------------------------------------ */
+
+		.heading-generic,
+		.heading-project{
+			h1, h2{
+				width  : columns(8);
+			}
+		}
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 1100
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "1200" {
+	/* ------------------------------------------------------
+	 * 1200
+	 * ------------------------------------------------------ */
+
+		$total-columns  : $total-columns-1200;                                                    // a {$total-columns-1200} column grid
+		$column-width   : 4.2%;                                                                     // each column is {$column-width} wide
+		$gutter-width   : (100% - $total-columns * $column-width)/($total-columns - 1);           // {$gutter-width} gutters between columns
+		$grid-padding   : $gutter-width;                                                          // grid-padding equal to {$grid-padding}, in this case: {$gutter-width}
+
+		.gridbase{
+			@include box-sizing(content-box);
+			@if($showGrid){
+				@include susy-grid-background;
+			}
+			width   : 1200px;
+			padding : 0;
+			margin  : 0 auto;
+		}
+
+		.section-headless{
+			padding: rhythm(2) 0;
+		}
+
+		.heading-generic,
+		.heading-project{
+			padding : rhythm(2) 0 rhythm(2);
+
+			h1, h2{
+				width  : columns(8);
+			}
+		}
+
+		.heading-project{
+			padding-bottom : rhythm(4);
+		}
+
+		.content-half,
+		.content-half-separated{
+			@include span-columns($total-columns*.5);
+
+			&:last-of-type{
+				@include omega();
+			}
+		}
+
+		.content-half-separated {
+
+			&:first-of-type {
+				padding-right : $gutter-width*.5;
+			}
+
+			&:last-of-type {
+				padding-left : $gutter-width*.5;
+
+				&:before {
+					top  : 3.25em;
+					left : -$gutter-width;
+				}
+			}
+		}
+
+		.column-2,
+		.column-3,
+		.column-3-4{
+			p{
+				@include adjust-font-size-to(14px);
+			}
+		}
+
+		.columnisedList{
+			li{
+				@include columniseList(3);
+			}
+		}
+
+
+		.column-4{
+			width         : (100% - 3*$gutter-width*.25)*.25;
+			margin-left   : $gutter-width*.25;
+
+			&:nth-of-type(2n+1),
+			&:nth-of-type(3n+1){
+				margin-left : $gutter-width*.25;
+				clear       : none;
+			}
+
+			&:nth-of-type(4n+1){
+				margin-left : 0;
+				clear       : both;
+			}
+		}
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 1200
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+}

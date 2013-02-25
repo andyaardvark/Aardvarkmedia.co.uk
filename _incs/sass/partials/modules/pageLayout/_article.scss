@@ -1,0 +1,301 @@
+/* ===================================================================================
+ * Module Name: Page Layout > Article
+ * ===================================================================================
+ * Contains layout outlines for all pages whose main content is a single article.
+ *
+ * Expand or condense depending on section diversity.
+ * Limit to containers layout only and avoid setting specific visuals for children elements.
+ *
+ * Filename convention: _[section]-[subsection/theme].scss
+ *
+ * @dependency $isPrototyping boolean Defines whether the block elements should be filled
+ *                                    with colour to visualise the layout better.
+ *                                    Expected to be set in _vars.scss.
+ *
+ * @imports __main.scss Definitions of main wrappers, including grid inits
+ * =================================================================================== */
+
+@import 'partials/modules/pageLayout/_main';
+
+
+
+
+@mixin pageLayout($res:false){
+
+
+
+	@if $res == false {
+	/* ------------------------------------------------------
+	 * GENERIC
+	 * ------------------------------------------------------ */
+
+		@include mainWrappers();
+
+		.content,
+		.content-full,
+		.content-half,
+		.sidebar{
+			@include span-columns($total-columns);
+			@include omega();
+			position : relative;
+			display  : block;
+
+			@if($isPrototyping){
+				background : rgba(255,0,0,.3);
+			}
+		}
+
+		.no-header{
+			padding--top: rhythm(2);
+		}
+
+		.secondaryContent-columns{
+			margin-top:rhythm(3);
+		}
+
+
+		.container-grey-even,
+		.container-grey-odd{
+			padding-bottom:rhythm(2);
+		}
+
+	/* ------------------------------------------------------
+	 * ENDOF: GENERIC
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "480" {
+	/* ------------------------------------------------------
+	 * 640
+	 * ------------------------------------------------------ */
+
+		@include mainWrappers("480");
+
+		.secondaryContent-columns{
+			margin-top:0;
+		}
+
+	/* ------------------------------------------------------
+	 * ENDOF: 480
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+	@else if $res == "640" {
+	/* ------------------------------------------------------
+	 * 640
+	 * ------------------------------------------------------ */
+
+		@include mainWrappers("640");
+
+		.content{
+			@include remove-omega();
+			width: columns(5);
+		}
+
+		.no-header{
+			padding-top: rhythm(2);
+		}
+
+		.sidebar{
+			@include omega();
+			width: columns(3);
+		}
+
+	/* ------------------------------------------------------
+	 * ENDOF: 640
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "768" {
+	/* ------------------------------------------------------
+	 * 768
+	 * ------------------------------------------------------ */
+
+		@include mainWrappers("768");
+
+		.content-half{
+			@include span-columns($total-columns*.5);
+
+			&:last-of-type{
+				@include omega();
+			}
+		}
+
+		.no-header{
+			padding-top: rhythm(2);
+		}
+
+	/* ------------------------------------------------------
+	 * ENDOF: 768
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "960" {
+	/* ------------------------------------------------------
+	 * 960
+	 * ------------------------------------------------------ */
+
+		@include mainWrappers("960");
+
+		.content{
+			@include remove-omega();
+			width: columns(7);
+		}
+
+		.sidebar{
+			width: columns(4);
+		}
+
+		.content-half{
+			@include span-columns($total-columns*.5);
+
+			&:last-of-type{
+				@include omega();
+			}
+		}
+
+		.no-header{
+			padding-top: rhythm(4);
+		}
+
+
+			.container-grey-even,
+			.container-grey-odd{
+				@include adjust-font-size-to(19px);
+				@include adjust-leading-to(1);
+			}
+
+			.hintBox{
+				font-size   : 1.5em;
+				line-height : 1.5em;
+			}
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 960
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+	@else if $res == "1100" {
+	/* ------------------------------------------------------
+	 * 1100
+	 * ------------------------------------------------------ */
+
+		@include mainWrappers("1100");
+
+	/* ------------------------------------------------------
+	 * ENDOF: 1100
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "1200" {
+	/* ------------------------------------------------------
+	 * 1200
+	 * ------------------------------------------------------ */
+
+		@include mainWrappers("1200");
+
+		.content{
+			@include post(1);
+			width: columns(10);
+		}
+
+		.sidebar{
+			width: columns(5);
+		}
+
+		.content-half{
+			@include span-columns($total-columns*.5);
+
+			&:last-of-type{
+				@include omega();
+			}
+		}
+
+		.no-header{
+			padding-top: rhythm(4);
+		}
+
+
+			.container-grey-even,
+			.container-grey-odd{
+				@include adjust-font-size-to(24px);
+				@include adjust-leading-to(1);
+				padding-bottom : rhythm(3);
+			}
+
+			.hintBox{
+				font-size   : 1.5em;
+				line-height : 1.5em;
+			}
+
+
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 1200
+	 * ------------------------------------------------------ */
+	}
+
+
+}
