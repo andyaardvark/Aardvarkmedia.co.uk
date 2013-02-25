@@ -1,0 +1,29 @@
+/* ===================================================================================
+ * Module Name: Keyframe Animations
+ * ===================================================================================
+ * Contains all generic animation definitions.
+ * Introduce per-page/section segmentation for larger projects to reduce filesize.
+ *
+ * Filename convention: _animation-[section].scss
+ *
+ * Animation example:
+ *
+ *  {animation name}
+ *  {optional: animation description}
+ *  @include keyframes(animationName){
+ *    25%, 75%  {left: 25px; }
+ *    50%       {left: 99px; }
+ *  }
+ *
+ * =================================================================================== */
+
+// FADEIN
+// Assuming element's initial opacity is 0, it animates it to 1;
+
+@-webkit-keyframes autoFadeIn {
+	100% {opacity:1;}
+}
+
+@keyframes autoFadeIn {
+	100% {opacity:1;}
+}

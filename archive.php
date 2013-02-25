@@ -1,38 +1,50 @@
 <?php
 /**
- * The template for displaying Archive pages.
+ * Template Name: Archive Pages: Default
  *
- * Used to display archive-type pages if nothing more specific matches a query.
- * For example, puts together date-based pages if no date.php file exists.
- *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ * @package <theme name>
+ * @since 1.0
  */
 ?>
-<?php get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
-<div class="content row">
-	<?php if ( have_posts() ): ?>
-	<?php if ( is_day() ) : ?>
-	<h2>Archive: <?php echo  get_the_date( 'D M Y' ); ?></h2>							
-	<?php elseif ( is_month() ) : ?>
-	<h2>Archive: <?php echo  get_the_date( 'M Y' ); ?></h2>	
-	<?php elseif ( is_year() ) : ?>
-	<h2>Archive: <?php echo  get_the_date( 'Y' ); ?></h2>								
-	<?php else : ?>
-	<h2>Archive</h2>	
-	<?php endif; ?>
-	<ol>
-	<?php while ( have_posts() ) : the_post(); ?>
-		<li>
-			<article>
-				<h2><a href="<?php esc_url( the_permalink() ); ?>" title="Permalink to <?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-				<time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><?php the_date(); ?> <?php the_time(); ?></time> <?php comments_popup_link('Leave a Comment', '1 Comment', '% Comments'); ?>
-				<?php the_content(); ?>
-			</article>
-		</li>
-	<?php endwhile; ?>
-	</ol>
-	<?php else: ?>
-	<h2>No posts to display</h2>	
-	<?php endif; ?>
+
+<?php include_once('_incs/html/header.php'); ?>
+
+<div class="gridbase no-header">
+  <h1 class="generic-title"><?php echo single_cat_title( '', false ) ; ?></h1>
+
+  <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+    <article class="postSnippet">
+
+      <h1 class="entry-title">
+        <a href="<?php the_permalink();?>" title="<?php PostSnippets::getSnippet('Proceed to full article'); ?>" class="nonColoured" rel="bookmark">
+          <?php the_title(); ?>
+        </a>
+      </h1>
+
+      <div class="entry-content">
+        <a href="<?php the_permalink();?>" title="<?php PostSnippets::getSnippet('Proceed to full article'); ?>" class="entry-thumb-container">
+          <?php
+          if(has_post_thumbnail()){
+            $thumbID = get_post_thumbnail_id(get_the_ID());
+
+            echo '<img src="'.reset(wp_get_attachment_image_src($thumbID, 'thumbnail')).'" alt="'.cgy_or(array(get_post_meta($thumbID, '_wp_attachment_image_alt', true), get_the_title())).'" class="entry-thumb" />';
+          }else{
+            echo '<img src="/_incs/images/placeholders/placeholder-image.svgz" alt="'.get_the_title().'" class="entry-thumb" />';
+          }
+          ?>
+        </a>
+
+        <?php the_excerpt(); ?>
+
+        <?php echo '<time class="entry-date" datetime="'.the_date('c', '', '', false).'" pubdate="">'.get_the_time('d M').'</time>'; ?>
+      </div>
+
+    </article>
+
+
+  <?php endwhile; endif; ?>
+
 </div>
-<?php get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>
+
+<?php include_once('_incs/html/footer.php'); ?>

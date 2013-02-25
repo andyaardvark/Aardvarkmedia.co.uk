@@ -2,7 +2,7 @@
 /**
  * The template for displaying Category Archive pages */
 ?>
-<?php get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
+<?php include_once('_incs/html/header.php'); ?>
 <div class="row">
 	<div class="content">
 	<?php if ( have_posts() ): ?>
@@ -21,4 +21,4 @@
 	<?php endif; ?>
 	</div>
 </div>
-<?php get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>
+<?php include_once('_incs/html/footer.php'); ?>

@@ -1,0 +1,864 @@
+/* ===================================================================================
+ * Module Name: Footer
+ * ===================================================================================
+ * Contains all styles for the main footer
+ *
+ * @dependency $isPrototyping boolean         Defines whether the block elements should be filled
+ *                                            with colour to visualise the layout better.
+ *                                            Expected to be set in _vars.scss.
+ * =================================================================================== */
+
+
+
+
+@mixin footer($res:false){
+
+	@if $res == false {
+	/* ------------------------------------------------------
+	 * GENERIC
+	 * ------------------------------------------------------ */
+
+		#footerSpacer{
+			clear:both;
+		}
+
+
+
+
+
+
+
+		/* Bottom Nav
+		 * ----------------------------------*/
+
+		#footer{
+			@include adjust-font-size-to(14px);
+			text-align: left;
+			color: $light-default;
+			background: $grey-darker;
+
+
+
+			.sideStripes-dark{
+				text-transform : uppercase;
+				font-weight    : $baseFont-bold;
+				margin-bottom  : rhythm(1);
+			}
+
+		}
+
+			.bottomNav{
+				background : darken($grey-light, 25);
+				color      : $grey-light;
+
+				a{
+					@include inline-block;
+					@include box-sizing(border-box);
+					color    : $light-default;
+					width    : 100%;
+					padding  : 0 $grid-padding*2;
+					position : relative;
+
+					&:after{
+						@include triangle('right', $grey-light, .35em, .35em);
+						@include abs($r : $grid-padding, $t : rhythm(1/3));
+						@include transition(right .7s ease);
+						content : '';
+					}
+
+					&:hover{
+						color:$red-light;
+
+						&:after{
+							@include transition-duration(.3s);
+							right: $grid-padding*.5;
+						}
+					}
+
+					&:active{
+						color:$red-lighter;
+					}
+				}
+			}
+
+				.bottomNavList{
+					@extend %blockList;
+
+					&>li{
+						border        : 1px solid darken($grey-light, 25);
+						border-width  : 1px 0;
+						margin-bottom : rhythm(1/3);
+						background    : $grey-dark;
+
+						&:first-child{
+							border-top:0;
+						}
+
+						&>a{
+							text-transform : uppercase;
+							padding        : .25em $grid-padding;
+							font-weight    : $baseFont-bold;
+
+							&:after{
+								top:rhythm(.5);
+							}
+						}
+					}
+
+					ul{
+						border-top : 1px solid darken($grey-light, 25);
+
+					}
+				}
+
+					.sub-menu{
+						@extend %blockList;
+
+						li{
+							border-bottom : 1px dotted darken($grey-light, 25);
+							padding       : .25em 0;
+
+							&:last-child{
+								border:0;
+							}
+						}
+					}
+
+
+
+
+
+
+
+		/* vCard
+		 * ----------------------------------*/
+
+		.footer-vcard{
+			font-style    : normal;
+			margin-bottom : rhythm(1);
+
+			.email,
+			.tel{
+				display        : block;
+
+				font-weight    : $baseFont-bold;
+				letter-spacing : .05em;
+				text-align     : left;
+			}
+
+			.tel,
+			.gmapsLink{
+				margin-bottom:rhythm(.5);
+			}
+
+			.gmapsLink,
+			.adr{
+				display:block;
+			}
+
+			a{
+				color      : $light-default;
+
+				&:hover{
+					color : $red-light;
+				}
+
+				&:active{
+					color : $red-lighter;
+				}
+
+			}
+
+		}
+
+
+			.footer-urls{
+				a{
+					@include inline-block;
+					padding-right : 3em;
+
+					&:last-child{
+						padding-right:0;
+					}
+
+
+					&:before{
+						@include inline-block;
+						@include transition(background .7s ease);
+						width         : 1.5em;
+						line-height   : 1.5em;
+						background    : $grey-dark;
+						border-radius : 4px;
+						font-size     : .85em;
+						padding       : .1em;
+						text-align    : center;
+						margin-right  : .5em;
+						color         : $light-default;
+					}
+
+					&:hover:before,
+					&:active:before{
+						@include transition-duration(.3s);
+					}
+
+					&:hover:before{
+						background  : $red-dark;
+					}
+
+					&:active:before{
+						background  : $red;
+					}
+				}
+			}
+
+				.icon-vcard:before{
+					@extend %icon-user;
+				}
+
+				.icon-rss:before{
+					@extend %icon-rss;
+				}
+
+				.icon-twitter:before{
+					@extend %icon-twitter;
+				}
+
+
+
+
+
+		/* Forms
+		 * ----------------------------------*/
+
+		#footer-forms{
+			@extend %cf;
+			padding      : rhythm(1) 0;
+			border       : 2px dotted $grey-dark;
+			border-width : 2px 0;
+
+			input{
+				margin-bottom:0;
+			}
+		}
+
+		.form-linear-dark{
+			margin-bottom:rhythm(1);
+
+			fieldset{
+				border:0;
+			}
+		}
+
+
+
+		/* Award List
+		 * ----------------------------------*/
+		.awardList{
+			clear          : both;
+			margin         : rhythm(2) 0 rhythm(1);
+			text-transform : uppercase;
+
+			li{
+				width         : columns(4);
+				text-align    : center;
+				margin-bottom : rhythm(1);
+				white-space   : inherit;
+
+			}
+
+				span{
+					&:first-child {
+						display   : block;
+						padding   : 0;
+						max-width : 100%;
+					}
+
+					&:last-child {
+						line-height : 1.2em;
+						padding     : .25em .5em 0;
+					}
+				}
+
+		}
+
+
+			.awardIcon{
+				@extend %ir;
+				@include dim(90%, rhythm(2), false);
+				background      : transparent url() no-repeat 50% 0;
+				background-size : contain;
+				margin          : 0 auto;
+			}
+
+			.award-lovie{
+				.awardIcon{
+					background-image: $lovieAwards;
+				}
+			}
+
+			.award-webby{
+				.awardIcon{
+					background-image: $webbyAwards;
+				}
+
+				/*span:last-child{
+					&:before,
+					&:after{
+						width:1.5em
+					}
+				}*/
+			}
+
+			.award-w3{
+				.awardIcon{
+					background-image: $w3Awards;
+				}
+
+				/*span:last-child{
+					&:before,
+					&:after{
+						width:.5em
+					}
+				}*/
+			}
+
+			.award-rar{
+				.awardIcon{
+					background-image: $rarAwards;
+				}
+			}
+
+
+		/* Copyright
+		 * ----------------------------------*/
+
+		.copyright {
+			@include box-sizing(border-box);
+			background : $red-dark;
+			font-size  : .8em;
+			padding    : rhythm(.5) $gutter-width;
+		}
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: GENERIC
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+	@else if $res == "320" {
+	/* ------------------------------------------------------
+	 * 320
+	 * ------------------------------------------------------ */
+
+
+	/* Award List
+	 * ----------------------------------*/
+		.awardList{
+			li{
+				width : columns(2);
+
+				&:nth-child(2n+1){
+					margin-right : $gutter-width;
+				}
+			}
+		}
+
+	/* ------------------------------------------------------
+	 * ENDOF: 320
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "640" {
+	/* ------------------------------------------------------
+	 * 640
+	 * ------------------------------------------------------ */
+
+
+		/* Bottom Nav
+		 * ----------------------------------*/
+
+		.bottomNav{
+			background:$grey-dark;
+
+			ul, li{
+				border:0;
+			}
+
+			a{
+				width:auto;
+			}
+		}
+
+			.bottomNavList{
+				@include box-sizing(border-box);
+				padding:0 $grid-padding;
+
+				&>li{
+					@include rhythm(0, .25, .25, 0);
+					border-bottom : 1px dotted darken($grey-light, 25);
+
+					&:last-child{
+						border:0;
+					}
+
+					&>a{
+						padding      : 0;
+						margin-right : 1.5em;
+
+						&:after{
+							right : -1em;
+							top   : .5em;
+						}
+
+						&:hover:after{
+							right : -1.25em;
+						}
+					}
+				}
+			}
+
+			.sub-menu{
+				@include inline-block;
+				vertical-align : top;
+
+				li{
+					@include inline-block;
+					vertical-align : top;
+					width          : auto;
+					padding        : 0;
+
+					&:last-child a:after{
+						content:none;
+					}
+				}
+
+				a{
+					padding:0 .5em;
+
+					&:after{
+						@include rel($t:auto, $r:auto);
+						@include dim(auto, auto, inline);
+						content : ',';
+						border  : 0;
+
+					}
+
+				}
+
+			}
+
+
+
+
+
+
+		/* vCard
+		 * ----------------------------------*/
+
+		.footer-vcard{
+			text-align: center;
+
+			.email,
+			.tel{
+				@include adjust-font-size-to($base-font-size*1.25);
+				@include inline-block;
+				margin-right: 1.5em;
+			}
+
+			.tel{
+				margin:0;
+
+				&:before{
+					content       : '';
+					border-left   : 1px solid $grey-dark;
+					padding-right : 1.5em;
+
+				}
+			}
+
+			.gmapsLink{
+				display:block;
+				margin-top:rhythm(.5);
+			}
+
+				.fn{
+
+				}
+
+
+		}
+
+
+
+
+
+		/* Forms
+		 * ----------------------------------*/
+
+
+
+		.form-linear-dark{
+			@include span-columns(6);
+			@include squish(1, 1);
+
+			label{
+				margin     : rhythm(.5) auto;
+				text-align : center;
+				float      : none;
+			}
+
+			input{
+				width: 75%;
+			}
+
+			button{
+				width: 25%;
+			}
+
+
+		}
+
+
+
+
+
+
+		/* Award List
+		 * ----------------------------------*/
+		.awardList{
+			margin-bottom : rhythm(2);
+
+			li{
+				width         : columns(2);
+				text-align    : center;
+				margin-bottom : 0;
+				margin-right  : $gutter-width;
+				overflow      : hidden;
+
+				&:nth-child(2n+1){
+					margin-right : $gutter-width;
+				}
+
+				&:last-child{
+					margin-right : 0;
+				}
+			}
+
+		}
+
+
+
+
+
+		/* Copyright
+		 * ----------------------------------*/
+
+		.copyright {
+			text-align: center;
+		}
+
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 640
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "768" {
+	/* ------------------------------------------------------
+	 * 768
+	 * ------------------------------------------------------ */
+
+
+	/* vCard
+			 * ----------------------------------*/
+
+		.footer-vcard{
+			.adr{
+				display:inline;
+			}
+
+			.fn{
+				&:after{
+					content:',';
+				}
+			}
+		}
+
+	/* ------------------------------------------------------
+	 * ENDOF: 768
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+	@else if $res == "800" {
+	/* ------------------------------------------------------
+	 * 800
+	 * ------------------------------------------------------ */
+
+
+
+		/* Forms
+		 * ----------------------------------*/
+
+		.form-linear-dark{
+			@include squish(0, 0);
+			width:columns(4);
+
+			&:last-child{
+				@include omega();
+			}
+
+		}
+
+
+
+		/* Award List
+		 * ----------------------------------*/
+
+		/*.award-webby{
+			span:last-child{
+				&:before,
+				&:after{
+					width:2em
+				}
+			}
+		}
+
+		.award-w3{
+			span:last-child{
+				&:before,
+				&:after{
+					width:2em
+				}
+			}
+		}*/
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 800
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+	@else if $res == "960" {
+	/* ------------------------------------------------------
+	 * 960
+	 * ------------------------------------------------------ */
+
+
+		/* Bottom Nav
+		 * ----------------------------------*/
+
+		.bottomNav{
+			text-align : center;
+		}
+
+			.bottomNavList{
+				@include box-sizing(border-box);
+				@include inline-block;
+				padding : rhythm(1) 0;
+				width   : 100%;
+
+				li{
+					@include inline-block;
+					border : 0;
+					width  : auto;
+				}
+
+				&>li{
+					vertical-align: top;
+					margin  : 0 $gutter-width*.75;
+					max-width: 14.9%;
+
+					&>a{
+						margin     : 0 0 rhythm(.5) 0;
+						text-align : center;
+						display    : block;
+					}
+				}
+
+					a{
+						@include inline-block;
+
+						&:after{
+							content : none;
+						}
+					}
+			}
+
+				.sub-menu{
+
+					li{
+						display        : block;
+						line-height    : 1.35em;
+						padding-bottom : 0.5em;
+					}
+				}
+
+
+
+
+		/* Forms
+		 * ----------------------------------*/
+
+		#footer-forms{
+			@include span-columns(10);
+			@include squish(1, 1);
+		}
+
+		.form-linear-dark{
+			margin : 0 0 rhythm(1);
+			width  : columns(5, 10);
+
+		}
+
+
+
+
+	/* Award List
+	* ----------------------------------*/
+
+		.awardList{
+			@include span-columns($total-columns);
+
+			li{
+				@include span-columns(3);
+
+				&:nth-child(2n+1){
+					margin-right : $gutter-width;
+				}
+			}
+
+		}
+
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 960
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "1200" {
+	/* ------------------------------------------------------
+	 * 1200
+	 * ------------------------------------------------------ */
+
+
+		/* Bottom Nav
+		 * ----------------------------------*/
+
+		.bottomNavList{
+			min-width : 1200px;
+			width     : auto;
+
+			&>li{
+				max-width:none;
+			}
+		}
+
+
+
+
+		/* Forms
+		 * ----------------------------------*/
+
+		#footer-forms{
+			@include span-columns(8);
+			@include squish(2, 2);
+		}
+
+		.form-linear-dark{
+			width         : columns(4, 8);
+		}
+
+
+
+	/* Award List
+	* ----------------------------------*/
+
+		.awardList{
+			@include span-columns(8);
+			@include squish(2, 2);
+
+			li{
+				@include span-columns(2, 8);
+
+				&:nth-child(2n+1){
+					margin-right : gutter(8);
+				}
+			}
+
+		}
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 1200
+	 * ------------------------------------------------------ */
+	}
+
+
+
+}
+

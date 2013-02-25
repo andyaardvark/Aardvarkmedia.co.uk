@@ -1,0 +1,159 @@
+/* ===================================================================================
+ * Style Guide:
+ * -----------------------------------------------------------------------------------
+ * III. MEDIA
+ * ===================================================================================
+
+	/* .......................................
+	 * III#1. FIGURES
+	 * ....................................... */
+
+		/* Removes border when inside `a` element in IE 8/9. */
+		img{
+			border : 0;
+		}
+
+			.img-filler{
+				width  : 100%;
+				height : auto;
+			}
+
+		/* Corrects overflow displayed oddly in IE 9. */
+		svg:not(:root){
+			overflow : hidden;
+		}
+
+		/* Addresses margin not present in IE 8/9 and Safari 5. */
+		figure{
+			margin : 0;
+
+			&:hover{
+				figcaption{
+					@include transition(opacity .3s ease-in-out);
+					@include opacity(.75);
+				}
+			}
+
+			img{
+				@include dim(100%, auto);
+			}
+		}
+
+			figcaption{
+				@include adjust-font-size-to(14px);
+				@include transition(opacity 1s ease-in-out);
+				@include opacity(.5);
+				margin     : rhythm(1) 0;
+				text-align : left;
+				font-style : italic;
+			}
+
+			blockquote{
+				margin       : 0;
+				font-style   : italic;
+				border-left  : rhythm(0.2) solid $grey-light;
+				padding-left : rhythm(0.8);
+
+				&+figcaption{
+					margin : rhythm(1);
+				}
+			}
+
+			.column-testimonial{
+
+				&:hover figcaption{
+					opacity:1;
+				}
+
+				blockquote{
+					border       : 0;
+					margin-left  : 0;
+					margin-right : 0;
+					padding-left : 0;
+
+					&:before{
+						@extend %icon-quote;
+						@include dim(auto, 2.25em);
+						float         : left;
+						background    : $grey-darker;
+						color         : $light-default;
+						border-radius : .25em;
+						text-align    : center;
+						margin        : .35em .5em 0 0;
+						line-height   : 2.25em;
+						font-style    : normal;
+						padding       : 0 0.75em;
+					}
+
+					p:first-child{
+						margin-top:0;
+					}
+
+				}
+
+				figcaption{
+					font-weight  : $baseFont-bold;
+					color        : $dark-default;
+					padding-left : 0;
+					margin-left  : 0;
+					margin-right : 0;
+					opacity      : 1;
+				}
+
+
+
+			}
+
+
+		@media only screen and (min-width: 768px) {
+			blockquote{
+				@include squish(1, 1);
+
+				&+figcaption{
+					@include squish(1, 1);
+				}
+			}
+
+		}
+
+
+
+
+
+
+
+
+
+	/* .......................................
+	 * III#2. CANVAS, AUDIO & VIDEO
+	 * ....................................... */
+
+			/* Corrects `inline-block` display not defined in IE 8/9. */
+			audio,
+			canvas,
+			video {
+				display: inline-block;
+			}
+
+
+			/* Prevents modern browsers from displaying `audio` without controls. Remove excess height in iOS 5 devices. */
+			audio:not([controls]) {
+				display : none;
+				height  : 0;
+			}
+
+
+
+
+
+
+
+
+	/* .......................................
+	 * III#3. INLINE GALLERIES
+	 * ....................................... */
+
+		.gallery-inline{
+			width: 100%;
+			height: 400px;
+		}

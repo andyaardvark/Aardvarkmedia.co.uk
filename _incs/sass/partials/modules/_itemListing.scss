@@ -1,0 +1,368 @@
+@mixin itemListing($res:false){
+
+
+
+
+/* ------------------------------------------------------
+ * GENERIC
+ * ------------------------------------------------------ */
+
+
+	@if $res == false {
+
+		.postSnippet{
+			@extend %cf;
+			@include transition(color .7s ease);
+			width         : 100%;
+			display       : block;
+			position      : relative;
+			margin-bottom : rhythm(1);
+		}
+
+		.entry-thumb-container{
+			@include dim(100%, rhythm(7));
+			overflow : hidden;
+			position : relative;
+		}
+
+			.entry-content{
+				position:relative;
+			}
+
+				.entry-thumb{
+					@include dim(100%, auto);
+					@include abs($t:50%);
+					margin-top : -50%;
+					height     : auto;
+
+				}
+
+					.entry-excerpt{
+						@include span-columns($total-columns);
+					}
+
+						.entry-title{
+
+							@include adjust-font-size-to($base-font-size);
+							line-height : $base-line-height;
+							margin      : 0 0 .75em;
+						}
+
+
+
+						.entry-date{
+							@include dim(2.5em, 2.5em);
+							@include abs($t:.4em, $l:-.4em);
+							@include box-sizing(border-box);
+							background     : $red;
+							text-align     : center;
+							color          : $light-default;
+							font-variant   : small-caps;
+							text-transform : lowercase;
+							line-height    : 1em;
+							padding-top    : .2em;
+							word-spacing   : .5em;
+						}
+
+		.gridEntry{
+			&:hover{
+				.gridOverlay{
+					@include transition(opacity .3s ease);
+					opacity:1;
+				}
+
+				.gridHeading{
+						color : $red-light;
+				}
+			}
+		}
+
+			.gridThumb{
+				@include dim(100%, 100%);
+				position:relative;
+
+				&:active + .gridCaption .gridHeading{
+					color : $red-lighter;
+				}
+
+			}
+
+				.gridOverlay{
+					@include dim(100%, 100%);
+					@include abs($t:0, $l:0);
+					@include transition(opacity .7s ease);
+					background: rgba($grey-darker, .75) $pattern-stars repeat 50% 50%;
+					opacity:0;
+
+					&:before{
+						@include inline-block;
+						content        : '';
+						height         : 100%;
+					}
+				}
+
+				.gridThumb-logo{
+					@include inline-block;
+					width  : 75%;
+					height : auto;
+				}
+
+
+			.gridCaption{
+				font-style  : normal;
+				line-height : 1.5em;
+				margin      : .5em 0;
+				opacity     : 1 !important;
+			}
+
+				.gridHeading{
+					color:$dark-default;
+
+					&:hover{
+						color : $red-light;
+					}
+
+					&:active{
+						color : $red-lighter;
+					}
+				}
+
+					.gridTitle{
+						font-size   : 1.2em;
+						line-height : 1.35em;
+						margin      : 0;
+					}
+	}
+
+	/* ------------------------------------------------------
+	 * ENDOF: GENERIC
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 480
+	 * ------------------------------------------------------ */
+
+	@else if $res == "480" {
+
+		.entry-thumb-container{
+			height:rhythm(8);
+		}
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 480
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 640
+	 * ------------------------------------------------------ */
+
+	@else if $res == "640" {
+
+		.entry-content{
+			position:static;
+		}
+			.entry-title{
+				width : columns(5);
+				float : right;
+			}
+
+			.entry-thumb-container{
+				@include span-columns(3);
+				margin-top : 0.5em;
+			}
+
+			.entry-content p{
+				@include span-columns(5);
+				@include omega();
+				margin-top : 0;
+			}
+
+			.entry-date {
+				top            : 0.9em;
+				pointer-events : none;
+			}
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 640
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 768
+	 * ------------------------------------------------------ */
+
+	@else if $res == "768" {
+
+		.entry-title,
+		.entry-thumb-container,
+		.postSnippet p{
+			width:100%;
+		}
+
+		.entry-title{
+			float : none;
+		}
+
+		.entry-content{
+			position : relative;
+		}
+
+			.entry-thumb-container{
+				float   : none;
+				display : block;
+			}
+
+			.postSnippet p{
+				margin-top : 1.5em;
+				float      : none;
+				display    : block;
+			}
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 768
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 800
+	 * ------------------------------------------------------ */
+
+	@else if $res == "800" {
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 800
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 960
+	 * ------------------------------------------------------ */
+
+	@else if $res == "960" {
+
+		.entry-content{
+			position:static;
+		}
+
+		.entry-title{
+			width : columns(4, 6);
+			float : right;
+		}
+
+		.entry-thumb-container{
+			width      : columns(2, 6);
+			margin-top : 0.4em;
+			float      : left;
+			display    : inline;
+			height     : 8em
+		}
+
+		.entry-content p{
+			width      : columns(4, 6);
+			margin-top : 0;
+			float      : right;
+			display    : inline;
+		}
+
+		.entry-date {
+			top            : 0.9em;
+			pointer-events : none;
+		}
+
+	}
+/* ------------------------------------------------------
+ * ENDOF: 960
+ * ------------------------------------------------------ */
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 1100
+	 * ------------------------------------------------------ */
+
+	@else if $res == "1100" {
+		.entry-thumb-container{
+			height     : 9em
+		}
+	}
+/* ------------------------------------------------------
+ * ENDOF: 1100
+ * ------------------------------------------------------ */
+
+
+
+
+	/* ------------------------------------------------------
+	 * 1200
+	 * ------------------------------------------------------ */
+
+	@else if $res == "1200" {
+		.entry-title,
+		.entry-content p{
+			width : columns(4, 6)+$gutter-width;
+		}
+
+		.entry-thumb-container{
+			width      : columns(2, 6);
+			height     : 10em;
+		}
+	}
+/* ------------------------------------------------------
+ * ENDOF: 1200
+ * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+}

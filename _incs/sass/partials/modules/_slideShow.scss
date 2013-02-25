@@ -1,0 +1,1231 @@
+@import '../libs/royalslider';
+
+
+
+@mixin slideShow($res:false){
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * GENERIC
+ * ------------------------------------------------------ */
+
+
+	@if $res == false {
+
+
+
+		%royalSliderSprite{
+			background-image: $royalSlider-sprite;
+		}
+
+
+
+
+
+
+		/******************************
+		*
+		*  RoyalSlider Aardvark Skin
+		*
+		*    1. Arrows
+		*    2. Bullets
+		*    3. Thumbnails
+		*    4. Tabs
+		*    5. Fullscreen button
+		*    6. Play/close video button
+		*    7. Preloader
+		*    8. Caption
+		*
+		*  Sprite: 'rs-universal.png'
+		*  Feel free to edit anything
+		*  If you don't some part - just delete it
+		*
+		******************************/
+
+		.slider-home {
+			@include box-shadow(0 3px 2px $dark-default, 0 1px 1px rgba($dark-default, .7));
+			position   : relative;
+			z-index    : auto;
+
+			&:after{
+				@include dim(100%, rhythm(3));
+				@include vGradient(lighten($grey-light, .5), $light-default);
+				content    : '';
+				position   : absolute;
+				z-index    : -1;
+			}
+		}
+
+		.fadeMeBabeOneMoreTime .royalSlider{
+			background : $light-default !important;
+		}
+
+		.no-js .royalSlider{
+			overflow:hidden;
+		}
+
+	/* Background */
+		.rsUni,
+		.rsUni .rsOverflow,
+		.rsUni .rsSlide,
+		.rsUni .rsVideoFrameHolder,
+		.rsUni .rsThumbs {
+			background : $grey-dark;
+			color      : #FFF;
+		}
+
+	/***************
+	*
+	*  1. Arrows
+	*
+	****************/
+
+		.rsUni .rsArrow {
+			height   : 100%;
+			width    : 60px;
+			position : absolute;
+			display  : block;
+			cursor   : pointer;
+			z-index  : 21;
+		}
+		.rsUni.rsVer .rsArrow {
+			width  : 100%;
+			height : 60px;
+
+		}
+		.rsUni.rsVer .rsArrowLeft {
+			top  : 0;
+			left : 0;
+		}
+		.rsUni.rsVer .rsArrowRight {
+			bottom : 0;
+			left   : 0;
+		}
+
+		.rsUni.rsHor .rsArrowLeft {
+			left : 0;
+			top  : 0;
+		}
+		.rsUni.rsHor .rsArrowRight {
+			right : 0;
+			top   : 0;
+		}
+
+		.rsUni .rsArrowIcn {
+			@extend %royalSliderSprite;
+			width         : 32px;
+			height        : 32px;
+			top           : 50%;
+			left          : 50%;
+			margin-top    : -16px;
+			margin-left   : -16px;
+
+			position      : absolute;
+			cursor        : pointer;
+
+			opacity       : 0.5;
+			border-radius : 2px;
+		}
+		.rsUni .rsArrow:hover .rsArrowIcn {
+			opacity : 1;
+		}
+
+		.rsUni.rsHor .rsArrowLeft .rsArrowIcn {
+			background-position : -64px -32px;
+		}
+		.rsUni.rsHor .rsArrowRight .rsArrowIcn {
+			background-position : -64px -64px;
+		}
+
+		.rsUni.rsVer .rsArrowLeft .rsArrowIcn {
+			background-position : -96px -32px;
+		}
+		.rsUni.rsVer .rsArrowRight .rsArrowIcn {
+			background-position : -96px -64px;
+		}
+
+		.rsUni .rsArrowDisabled .rsArrowIcn {
+			opacity  : .1 !important;
+			filter   : alpha(opacity = 20);
+			*display : none;
+		}
+
+	/***************
+	*
+	*  2. Bullets
+	*
+	****************/
+
+		.rsUni .rsBullets {
+			position    : relative;
+			z-index     : 35;
+			padding-top : 4px;
+			width       : 100%;
+			height      : auto;
+			margin      : 0 auto;
+			text-align  : center;
+			line-height : 5px;
+			overflow    : hidden;
+		}
+		.rsUni .rsBullet {
+			width    : 8px;
+			height   : 8px;
+			display  : inline-block;
+			*display : inline;
+			*zoom    : 1;
+			padding  : 5px;
+		}
+		.rsUni .rsBullet span {
+			display       : block;
+			width         : 8px;
+			height        : 8px;
+			border-radius : 50%;
+			background    : #BBB;
+		}
+		.rsUni .rsBullet.rsNavSelected span {
+			background-color : #383838;
+		}
+
+	/***************
+	*
+	*  3. Thumbnails
+	*
+	****************/
+
+		.rsUni .rsThumbsHor {
+			width      : 100%;
+			height     : 40px;
+			margin-top : 0;
+		}
+
+		.rsUni .rsThumbsVer {
+			width    : 90px;
+			height   : 100%;
+			position : absolute;
+			top      : 0;
+			right    : 0;
+		}
+
+		.rsUni.rsWithThumbsHor .rsThumbsContainer {
+			position : relative;
+			height   : 100%;
+		}
+		.rsUni.rsWithThumbsVer .rsThumbsContainer {
+			position : relative;
+			margin   : auto;
+			width    : 100%;
+		}
+		.rsThumbsHor .rsThumbsContainer {
+			margin   : 0 auto;
+			overflow : hidden;
+			width    : 100% ;
+		}
+
+		.rsThumbsContainer.centered{
+			@include prefixer('transform', #{translate3d(0,0,0) !important});
+
+		}
+
+		.rsUni .rsThumb {
+			float    : left;
+			overflow : hidden;
+			width  : 90px;
+			height : 40px;
+		}
+
+
+		.rsUni .rsThumb img {
+			@include transition(opacity .75s ease);
+			@include opacity(.25);
+			width   : auto;
+			height  : 80%;
+			margin  : 5% auto 0;
+		}
+
+		.rsUni .rsThumb.rsNavSelected {
+			@include transition(background .3s ease);
+			@include vGradient($grey-dark 30%, $grey-darker);
+
+			&:before,
+			&:after{
+				@include dim(1px, 100%);
+				@include abs($l:0, $t:0);
+				content:'';
+				@include vGradient($grey-dark, $dark-default);
+			}
+
+			&:after{
+				left:auto;
+				right:0;
+			}
+		}
+		.rsUni .rsThumb.rsNavSelected img {
+			@include opacity(1);
+		}
+		.rsUni .rsThumb.rsNavSelected .thumbIco {
+			position                    : absolute;
+			top                         : 0;
+			bottom                      : 0;
+			left                        : 0;
+			right                       : 0;
+			border                      : 2px solid #FFF;
+			border                      : 2px solid rgba(255, 255, 255, 0.9);
+			-webkit-backface-visibility : hidden;
+		}
+
+		.rsUni .rsTmb {
+			display : block;
+		}
+
+	/* Thumbnails with text */
+		.rsUni .rsTmb h5 {
+			font-size   : 16px;
+			margin      : 0;
+			padding     : 0;
+			line-height : 20px;
+			color       : #FFF;
+		}
+		.rsUni .rsTmb span {
+			color       : #DDD;
+			margin      : 0;
+			padding     : 0;
+			font-size   : 13px;
+			line-height : 18px;
+		}
+
+	/* Thumbnails arrow icons */
+		.rsUni .rsThumbsArrow {
+			height   : 100%;
+			width    : 20px;
+			position : absolute;
+			display  : block;
+			cursor   : pointer;
+			z-index  : 21;
+		}
+		.rsUni .rsThumbsArrow:hover {
+
+		}
+		.rsUni.rsWithThumbsVer .rsThumbsArrow {
+			width  : 100%;
+			height : 20px;
+		}
+		.rsUni.rsWithThumbsVer .rsThumbsArrowLeft {
+			top  : 0;
+			left : 0;
+		}
+		.rsUni.rsWithThumbsVer .rsThumbsArrowRight {
+			bottom : 0;
+			left   : 0;
+		}
+
+		.rsUni.rsWithThumbsHor .rsThumbsArrowLeft {
+			left : 0;
+			top  : 0;
+		}
+		.rsUni.rsWithThumbsHor .rsThumbsArrowRight {
+			right : 0;
+			top   : 0;
+		}
+
+		.rsUni .rsThumbsArrowIcn {
+			@extend %royalSliderSprite;
+			width       : 16px;
+			height      : 16px;
+			top         : 50%;
+			left        : 50%;
+			margin-top  : -8px;
+			margin-left : -8px;
+			position    : absolute;
+			cursor      : pointer;
+			background-color  : transparent;
+		}
+
+		.rsUni.rsWithThumbsHor .rsThumbsArrowLeft .rsThumbsArrowIcn {
+			background-position : -128px -32px;
+		}
+		.rsUni.rsWithThumbsHor .rsThumbsArrowRight .rsThumbsArrowIcn {
+			background-position : -128px -48px;
+		}
+
+		.rsUni.rsWithThumbsVer .rsThumbsArrowLeft .rsThumbsArrowIcn {
+			background-position : -144px -32px;
+		}
+		.rsUni.rsWithThumbsVer .rsThumbsArrowRight .rsThumbsArrowIcn {
+			background-position : -144px -48px;
+		}
+
+		.rsUni .rsThumbsArrowDisabled {
+			display : none !important;
+		}
+
+		.rsUni .rsThumbs {
+			/*margin-top       : -26px;*/
+			width            : 100%;
+
+		}
+
+
+	/***************
+	*
+	*  4. Tabs
+	*
+	****************/
+
+		.rsUni .rsTabs {
+			width       : 100%;
+			height      : auto;
+			margin      : 0 auto;
+			text-align  : center;
+			overflow    : hidden;
+			padding-top : 12px;
+			position    : relative;
+		}
+		.rsUni .rsTab {
+			display         : inline-block;
+			cursor          : pointer;
+			text-align      : center;
+			height          : auto;
+			width           : auto;
+			color           : #333;
+			padding         : 5px 13px 6px;
+			min-width       : 72px;
+			border          : 1px solid #D9D9DD;
+			text-decoration : none;
+
+			background      : #FFF;
+			border-right    : none;
+			*display        : inline;
+			*zoom           : 1;
+			*border-right   : 1px solid #d9d9d9;
+
+		}
+		.rsUni .rsTab:first-child {
+			border-top-left-radius    : 16px;
+			border-bottom-left-radius : 16px;
+		}
+		.rsUni .rsTab:last-child {
+			border-top-right-radius    : 16px;
+			border-bottom-right-radius : 16px;
+			border-right               : 1px solid #D9D9DD;
+		}
+		.rsUni .rsTab:active {
+			background-color : #f4f4f4;
+		}
+		.rsUni .rsTab.rsNavSelected {
+			color        : #FFF;
+			background   : #383838;
+			border-color : #383838;
+		}
+
+	/***************
+	*
+	*  5. Fullscreen button
+	*
+	****************/
+
+		.rsUni .rsFullscreenBtn {
+			right    : 0;
+			top      : 0;
+			width    : 44px;
+			height   : 44px;
+			z-index  : 22;
+			display  : block;
+			position : absolute;
+			cursor   : pointer;
+
+		}
+		.rsUni .rsFullscreenIcn {
+			@extend %royalSliderSprite;
+			display       : block;
+			margin        : 6px;
+			width         : 32px;
+			height        : 32px;
+
+			background-position  : 0 0;
+			background-color:transparent;
+			opacity       : 0.7;
+			border-radius : 2px;
+
+		}
+		.rsUni .rsFullscreenBtn:hover .rsFullscreenIcn {
+			opacity : 1;
+		}
+		.rsUni.rsFullscreen .rsFullscreenIcn {
+			background-position : -32px 0;
+		}
+
+	/***************
+	*
+	*  6. Play/close video button
+	*
+	****************/
+
+		.rsUni .rsPlayBtn {
+			-webkit-tap-highlight-color : rgba(0, 0, 0, 0.3);
+			width                       : 64px;
+			height                      : 64px;
+			margin-left                 : -32px;
+			margin-top                  : -32px;
+			cursor                      : pointer;
+		}
+		.rsUni .rsPlayBtnIcon {
+			@extend %royalSliderSprite;
+			width                 : 64px;
+			display               : block;
+			height                : 64px;
+			-webkit-border-radius : 4px;
+			border-radius         : 4px;
+
+			-webkit-transition    : .3s;
+			-moz-transition       : .3s;
+			transition            : .3s;
+
+			background-repeat     : no-repeat;
+			background-position   :0 -32px;
+			background-color      : #383838;
+			background-color      : rgba(0, 0, 0, 0.75);
+			*background-color     : #383838;
+		}
+		.rsUni .rsPlayBtn:hover .rsPlayBtnIcon {
+			background-color : rgba(0, 0, 0, 0.9);
+		}
+		.rsUni .rsBtnCenterer {
+			position : absolute;
+			left     : 50%;
+			top      : 50%;
+			width    : 20px;
+			height   : 20px;
+		}
+		.rsUni .rsCloseVideoBtn {
+			right                       : 0;
+			top                         : 0;
+			width                       : 44px;
+			height                      : 44px;
+			z-index                     : 500;
+			position                    : absolute;
+			cursor                      : pointer;
+			-webkit-backface-visibility : hidden;
+			-webkit-transform           : translateZ(0);
+
+		}
+		.rsUni .rsCloseVideoBtn.rsiOSBtn {
+			top   : -38px;
+			right : -6px;
+		}
+
+		.rsUni .rsCloseVideoIcn {
+			@extend %royalSliderSprite;
+			margin            : 6px;
+			width             : 32px;
+			height            : 32px;
+			background-position: -64px 0;
+			background-color  : #383838;
+			background-color  : rgba(0, 0, 0, 0.75);
+			*background-color : #383838;
+		}
+		.rsUni .rsCloseVideoIcn:hover {
+			background-color : rgba(0, 0, 0, 0.9);
+		}
+
+	/***************
+	*
+	*  7. Preloader
+	*
+	****************/
+
+		.rsUni .rsPreloader {
+			width            : 20px;
+			height           : 20px;
+			background-image : $royalSlider-preloader;
+
+			left             : 50%;
+			top              : 50%;
+			margin-left      : -10px;
+			margin-top       : -10px;
+		}
+
+	/***************
+	*
+	*  8. Global caption
+	*
+	****************/
+		.rsUni .rsGCaption {
+			position      : absolute;
+			float         : none;
+			bottom        : 6px;
+			left          : 6px;
+			text-align    : left;
+
+			background    : #222;
+
+			color         : #FFF;
+			padding       : 2px 8px;
+			width         : auto;
+			font-size     : 12px;
+			border-radius : 2px;
+		}
+
+
+
+
+	/***************
+	*
+	*  9. Slides
+	*
+	****************/
+		.rsContent{
+			@include box-sizing(border-box);
+			padding    : 15px 0 0;
+			background : $light-default;
+			z-index    : 100;
+			position   : relative;
+
+			&:before{
+				@include dim(100%, 15px);
+				@include abs($l:0, $t:0);
+				background : $red-darker;
+				content     : '';
+			}
+
+		}
+
+		.no-js .rsContent{
+			background : $grey-dark;
+		}
+
+			.slide-textBlock{
+
+
+				h2, h3{
+					color       : #fff;
+					text-shadow : 1px 1px 1px #000;
+				}
+
+				h2{
+					@include adjust-font-size-to($base-font-size*.8);
+					@include adjust-leading-to(.86);
+					@include inline-block;
+					text-transform : uppercase;
+					font-weight    : $baseFont-regular;
+					font-family    : $baseFont;
+					margin         : 0;
+					text-align     : left;
+					position       : relative;
+				}
+
+				h3{
+					text-transform : none;
+					margin         : rhythm(1/3) 0;
+					font-family    : $headingFont;
+					line-height    : 1.3em;
+				}
+
+				.slider-readmore{
+					@include inline-block;
+					@include box-sizing(border-box);
+					color          : $light-default;
+					text-transform : uppercase;
+
+					&:after{
+						@include inline-block;
+						content     : '>';
+						background  : $light-default;
+						color       : $dark-default;
+						padding     : 0 .15em;
+						font-weight : $headingFont-regular;
+						font-family : $headingFont;
+						margin      : -.15em 0 0 .5em;
+						line-height : 1em;
+
+					}
+				}
+			}
+
+				.slider-iconHeading-w3awards{
+					padding-left        : rhythm(2);
+
+
+					&:before{
+						@include dim(rhythm(1.375), rhythm(1.375));
+						@include abs($l:0, $t:50%);
+						content         : '';
+						background      : transparent url() no-repeat 50% 50%;
+						background-size : 100% auto;
+						margin-top      : -.5 * rhythm(1.375);
+					}
+
+
+				}
+
+				.slider-iconHeading-w3awards:before{
+					background-image:$w3Awards;
+				}
+
+			.responsive .slide-smallBlock{
+				display : none !important;
+				z-index : 200;
+			}
+
+
+
+
+		/* Portrait */
+		@media screen and (orientation:portrait) {
+
+			.responsive{
+
+				.rsMainSlideImage{
+					@include dim(auto !important, 100% !important);
+					margin: 0 auto !important;
+				}
+
+				.slide-largeBlock{
+					@include dim(100% !important, 50% !important);
+					bottom : 0 !important;
+					top    : auto !important;
+					right  : auto !important;
+					left   : auto !important;
+					margin : 0 auto !important;
+
+					.rsABImage{
+						@include dim(auto, 100%);
+						margin: 0 auto !important;
+					}
+				}
+
+				.slide-textBlock{
+					text-align : center;
+					top        : rhythm(1) !important;
+					width      : (100% - $grid-padding*2) !important;
+					left       : $grid-padding !important;
+				}
+
+			}
+
+			/*.slider-iconHeading-w3awards{
+				padding-top         : rhythm(2);
+				background-position : 50% 0;
+				background-repeat   : no-repeat;
+				background-size     : auto rhythm(1.375);
+			}*/
+
+		}
+
+		/* Landscape */
+		@media screen and (orientation:landscape) {
+
+			.responsive{
+
+				.rsMainSlideImage{
+					@include dim(100% !important, 100% !important);
+					margin: 0 auto !important;
+				}
+
+				.slide-largeBlock{
+					@include dim(50% !important, 100% !important);
+					bottom : auto !important;
+					top    : 9px !important;
+					right  : 0 !important;
+					left   : auto !important;
+					margin : 0 auto !important;
+
+					.rsABImage{
+						@include dim(auto, 100%);
+						margin: 0 auto !important;
+					}
+				}
+
+
+				.slide-textBlock{
+					text-align : left;
+					top        : rhythm(1) !important;
+					width      : 60% !important;
+					left       : $grid-padding !important;
+				}
+
+			}
+
+
+
+		}
+	}
+
+	/* ------------------------------------------------------
+	 * ENDOF: GENERIC
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 320
+	 * ------------------------------------------------------ */
+
+	@else if $res == "320" {
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 320
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 480
+	 * ------------------------------------------------------ */
+
+	@else if $res == "480" {
+
+		/* Portrait */
+		@media screen and (orientation:portrait) {
+			.responsive .slide-textBlock{
+				top: 3em !important;
+			}
+		}
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 480
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 640
+	 * ------------------------------------------------------ */
+
+	@else if $res == "640" {
+
+
+	/* Portrait */
+		@media screen and (orientation:portrait) {
+
+			.responsive{
+
+				.slide-textBlock{
+					top        : rhythm(2) !important;
+					left       : $grid-padding !important;
+
+					h2{
+						font-size: 1em;
+						line-height: 1.5em;
+
+						&:before{
+							@include dim(rhythm(1.5), rhythm(1.5), false);
+							margin-top      : -.5 * rhythm(1.5);
+						}
+					}
+
+					h3{
+						font-size: 1.75em;
+					}
+				}
+
+			}
+
+
+		}
+
+	/* Landscape */
+		@media screen and (orientation:landscape) {
+
+			.responsive{
+
+
+				.slide-largeBlock{
+					right: 5% !important;
+				}
+
+
+				.slide-textBlock{
+					top:2.5em !important;
+				}
+
+			}
+
+
+
+		}
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 640
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 768
+	 * ------------------------------------------------------ */
+
+	@else if $res == "768" {
+
+		$resizeRatio:.75;
+
+		.rsUni .rsThumbsHor {
+			height : 80px*$resizeRatio;
+		}
+
+		.rsUni .rsThumb {
+			width    : 180px*$resizeRatio;
+			height   : 80px*$resizeRatio;
+		}
+
+
+
+	/* Landscape */
+		@media screen and (orientation:landscape) {
+
+			.responsive{
+
+				.rsContent{
+
+					&:after{
+						@include dim(100%, 24px);
+						@include abs($b:0);
+						content    : '';
+						background : $grey-dark;
+						z-index    : 101;
+					}
+				}
+
+				.slide-smallBlock{
+					@include dim(50% !important, 45% !important, false);
+					display : block !important;
+					opacity : 0;
+					left    : $grid-padding !important;
+
+					.rsABImage{
+						@include dim(auto, 100%);
+					}
+				}
+			}
+
+
+
+		}
+
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 768
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 800
+	 * ------------------------------------------------------ */
+	@else if $res == "800" {
+
+
+
+
+
+	/* Portrait */
+		@media screen and (orientation:portrait) {
+			.responsive{
+
+				.rsMainSlideImage{
+					@include dim(auto !important, 100% !important);
+					margin: 0 auto !important;
+				}
+
+				.slide-largeBlock{
+					@include dim(100% !important, 50% !important);
+					bottom : 10% !important;
+					top    : auto !important;
+					right  : auto !important;
+					margin : 0 auto !important;
+
+					.rsABImage{
+						@include dim(auto, 100%);
+						margin: 0 auto !important;
+					}
+				}
+
+			}
+
+		}
+
+	/* Landscape */
+		@media screen and (orientation:landscape) {
+
+			.rsContent{
+				padding-bottom:15px;
+			}
+
+
+			.responsive{
+				.rsMainSlideImage{
+					@include dim(100% !important, 100% !important);
+					margin: 0 auto !important;
+				}
+
+				.slide-largeBlock{
+					@include dim(50% !important, 100% !important);
+					bottom : auto !important;
+					top    : 10px !important;
+					right  : 10% !important;
+					margin : 0 auto !important;
+
+					.rsABImage{
+						@include dim(auto, 100%);
+						margin: 0 auto !important;
+					}
+				}
+
+			}
+
+
+
+		}
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 800
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 960
+	 * ------------------------------------------------------ */
+
+	@else if $res == "960" {
+
+
+		.slider-home{
+			opacity:1 !important;
+
+			&.fadeMeBabeOneMoreTime{
+				.rsThumbs, .rsContent>div, .rsContent>img, .rsABImage{
+					opacity:$serviceFadeout !important;
+				}
+
+				.rsContent:after{
+					background: #66686b;
+				}
+			}
+
+
+			.rsThumbs, .rsContent>div, .rsContent>img, .rsABImage{
+				@include transition(opacity .3s ease-out);
+			}
+
+			.rsContent:after{
+				@include transition(background .3s ease-out);
+			}
+		}
+
+
+
+		.rsContent{
+			padding:24px 0 0;
+
+			&:before{
+				height : 24px;
+			}
+
+			&:after{
+				height: 24px;
+			}
+		}
+
+		.rsSlide{
+
+		}
+
+		.rsUni .rsThumbsHor {
+			height : 80px;
+		}
+
+		.rsUni .rsThumb {
+			width    : 180px;
+			height   : 80px;
+		}
+
+
+
+	/* Landscape */
+		@media screen and (orientation:landscape) {
+
+			.responsive{
+
+				.slide-largeBlock {
+					right: 5% !important;
+				}
+
+				.slide-smallBlock{
+					left:$grid-padding !important;
+				}
+
+				.slide-textBlock{
+					top        : rhythm(3) !important;
+					left       : $grid-padding !important;
+
+					h2{
+						font-size: 1em;
+						line-height: 1.5em;
+
+						&:before{
+							@include dim(rhythm(1.5), rhythm(1.5), false);
+							margin-top      : -.5 * rhythm(1.5);
+						}
+					}
+
+					h3{
+						font-size: 1.75em;
+					}
+				}
+
+			}
+
+		}
+
+
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 960
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 1100
+	 * ------------------------------------------------------ */
+
+	@else if $res == "1100" {
+
+
+	/* Landscape */
+		@media screen and (orientation:landscape) {
+
+			.responsive{
+				.slide-smallBlock {
+					left: 6% !important;
+				}
+
+				.slide-largeBlock {
+					right: -5% !important;
+				}
+
+				.slide-textBlock{
+					left        : 48% !important;
+					top         : 7em !important;
+					width       : 50% !important;
+					margin-left : -24%;
+					text-align  : center;
+
+					h3 {
+						font-size: 2.5em;
+					}
+				}
+			}
+
+
+
+		}
+
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 1100
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 1200
+	 * ------------------------------------------------------ */
+
+	@else if $res == "1200" {
+
+		.rsContent{
+
+			&:after{
+				@include dim(100%, 24px);
+				@include abs($b:0);
+				content    : '';
+				background : $grey-dark;
+				z-index    : 101;
+			}
+		}
+
+			.slide-smallBlock {
+				z-index: 200;
+			}
+
+			.slide-textBlock{
+				text-align: center;
+
+				h2{
+					font-size: 1em;
+					line-height: 1.5em;
+
+					&:before{
+						@include dim(rhythm(1.5), rhythm(1.5), false);
+						margin-top      : -.5 * rhythm(1.5);
+					}
+				}
+
+				h3{
+					font-size: 2.5em;
+				}
+			}
+
+	}
+/* ------------------------------------------------------
+ * ENDOF: 1200
+ * ------------------------------------------------------ */
+
+
+
+
+}

@@ -1,0 +1,846 @@
+/* ===================================================================================
+ * Style Guide:
+ * -----------------------------------------------------------------------------------
+ * IV. FORMS
+ * ===================================================================================
+
+
+	/* ...........................
+	 * VI#1. GENERAL
+	 * ........................... */
+
+		form{
+			@extend %cf;
+			position: relative;
+
+			ul{
+				@extend %blockList;
+			}
+
+				li{
+					margin : 0;
+
+					&:last-child{
+						margin : 0;
+					}
+				}
+		}
+
+			fieldset{
+				border        : 0;
+				margin        : 0;
+				padding       : rhythm(1/3) 0 rhythm(.5);
+				border-bottom : 1px dotted $grey-light;
+				position      : relative;
+			}
+
+			form ul,
+			.form-help{
+				margin  : 0;
+				padding : 0;
+			}
+
+
+			.fieldset-actions{
+				border  : none;
+
+				button, input{
+					margin-top:.75em;
+				}
+			}
+
+			.fieldset-disclaimer,
+			.fieldset-list{
+				label{
+					display     : inline;
+					float       : none;
+					width       : auto;
+					font-weight : $baseFont-bold;
+				}
+			}
+
+				label,
+				legend{
+					font-weight : $baseFont-bold;
+					display     : block;
+					float       : none;
+					width       : 100%;
+					margin      : 0;
+				}
+
+				label{
+					cursor : pointer;
+				}
+
+				/* 1. Corrects color not being inherited in IE 8/9.
+				 * 2. Remove padding so people aren't caught out if they zero out fieldsets. */
+				legend{
+					border  : 0; /* 1 */
+					padding : rhythm(1/3) 0 0; /* 2 */
+				}
+
+				/* 1. Corrects font family not being inherited in all browsers.
+				 * 2. Corrects font size not being inherited in all browsers.
+				 * 3. Addresses margins set differently in Firefox 4+, Safari 5, and Chrome */
+				button,
+				input,
+				select,
+				textarea{
+					@include adjust-font-size-to($base-font-size);
+					font-family : inherit;  /* 1 */
+					margin      : 0;        /* 3 */
+					border      : 1px solid #DDDDDD;
+				}
+
+				input{
+					height:$line-height + rhythm(0.5);
+				}
+
+				/* Addresses Firefox 4+ setting `line-height` on `input` using `!important` in the UA stylesheet. */
+				button,
+				input{
+					line-height : normal;
+				}
+
+				/* Re-set default cursor for disabled elements. */
+				button[disabled],
+				input[disabled]{
+					cursor : default;
+				}
+
+				/* 1. Addresses box sizing set to `content-box` in IE 8/9.
+				 * 2. Removes excess padding in IE 8/9. */
+				input[type="checkbox"],
+				input[type="radio"]{
+					box-sizing    : border-box;    /* 1 */
+					padding       : 0;             /* 2 */
+					margin-right  :.5em;
+				}
+
+				/* 1. Addresses `appearance` set to `searchfield` in Safari 5 and Chrome.
+				 * 2. Addresses `box-sizing` set to `border-box` in Safari 5 and Chrome. */
+				input[type="search"]{
+					@include box-sizing(content-box);     /* 2 */
+					-webkit-appearance : textfield;       /* 1 */
+				}
+
+				/* Removes inner padding and search cancel button in Safari 5 and Chrome on OS X. */
+				input[type="search"]::-webkit-search-cancel-button,
+				input[type="search"]::-webkit-search-decoration{
+					-webkit-appearance : none;
+				}
+
+				/* Removes inner padding and border in Firefox 4+. */
+				button::-moz-focus-inner,
+				input::-moz-focus-inner{
+					border  : 0;
+					padding : 0;
+				}
+
+				/* 1. Removes default vertical scrollbar in IE 8/9.
+				 * 2. Improves readability and alignment in all browsers. */
+				textarea{
+					overflow       : auto;    /* 1 */
+					vertical-align : top;     /* 2 */
+					height         : 150px;
+				}
+
+				input[type="text"],
+				input[type="email"],
+				input[type="url"],
+				input[type="range"],
+				textarea,
+				.input-range-wrapper,
+				.input-combobox-wrapper input,
+				select{
+					@include box-sizing(border-box);
+					display               : block;
+					width                 : 100%;
+					padding               : rhythm(0.25);
+					margin-bottom         : rhythm(.5);
+					font-size             : 14px;
+					border                : 1px solid #ddd;
+					background            : #f5f5f5;
+					-webkit-box-shadow    : inset 0 1px 2px rgba(0, 0, 0, .05);
+					-moz-box-shadow       : inset 0 1px 2px rgba(0, 0, 0, .05);
+					-webkit-box-shadow    : inset 0 1px 2px rgba(0, 0, 0, .05);
+					-webkit-border-radius : 4px;
+					-moz-border-radius    : 4px;
+					border-radius         : 4px;
+				}
+
+				input[type="text"],
+				input[type="email"],
+				input[type="url"],
+				.input-combobox-wrapper input{
+					&:focus{
+						border     : 1px solid #ccc;
+						background : #fff;
+					}
+				}
+
+				input[type="file"]{
+					display  :block;
+				}
+
+
+				input[type="text"],
+				input[type="email"],
+				input[type="url"],
+				textarea{
+					@include box-sizing(border-box);
+					padding-right:2.5em;
+				}
+
+
+				input[type="range"],
+				input.input-datepicker,
+				input.input-datepicker-range{
+					width : 8em;
+				}
+
+
+
+
+
+				/* range */
+
+				.input-range-slider{
+					width:85%;
+					float:left;
+					margin-top:rhythm(0.25);
+				}
+
+				.input-range-wrapper{
+					@extend %cf;
+
+					width : 100% !important;
+
+					input[type="range"]{
+						width:15%;
+					}
+
+				}
+
+
+
+
+
+				/* datepicker */
+
+				.input-datepicker-wrapper,
+				.input-datepicker-range-wrapper{
+					width    : 8em;
+					position : relative;
+
+					button{
+						text-indent : -9000px;
+						border      : none;
+						background  : transparent;
+					}
+				}
+
+				.input-datepicker-range-wrapper{
+					float:left;
+					margin-left : rhythm(.5);
+
+					&:first-of-type{
+						margin-left: 0;
+					}
+				}
+
+					.input-datepicker,
+					.input-datepicker-range{
+						width:auto;
+					}
+
+					.input-datepicker-range{
+						width  : 8em;
+						float  : left;
+						margin : 0 0 0 rhythm(.5);
+
+						&:first-of-type{
+							margin:0;
+						}
+					}
+
+
+					.input-datepicker-wrapper .input-datepicker,
+					.input-datepicker-range-wrapper .input-datepicker-range{
+						width:100%;
+					}
+
+
+
+				/* select */
+
+				select{
+					display   : block;
+					min-width : 25%;
+					margin    : 0;
+					font-size : 0.9em;
+					padding   : 0.35em 0.25em;
+				}
+
+
+
+				/* combobox */
+
+				.input-combobox-wrapper{
+					@extend %cf;
+					width  : 100% !important;
+					float  : left;
+					height : auto !important;
+				}
+
+					.ffb-input{
+						width:100% !important;
+					}
+
+
+
+
+
+				.form-help{
+					margin    : 0;
+					font-size : 11px;
+					color     : #999;
+				}
+
+
+				.form-error {
+					input,
+					textarea,
+					select{
+						@include transition(box-shadow .3s ease);
+						@include box-shadow(0 0 4px rgba($red, 1));
+
+						&:first-of-type{
+							clear:both;
+						}
+					}
+
+					span{
+						color:$red;
+
+					}
+				}
+
+				.form-correct{
+					&:after{
+						@extend %icon-twitter;
+						@include dim(.8em,.8em);
+						@include abs($r:.25em, $t:1.05em);
+						box-shadow    : 0 1px 2px 1px white, 0 1px 2px darken(#07e187, 15) inset;
+						background    : #07e187;
+						border-radius : .8em;
+						font-size     : 1em;
+						color         : $light-default;
+						line-height   : 0.8em;
+						padding       : .3em;
+					}
+
+					input,
+					textarea,
+					select{
+						@include transition(box-shadow .3s ease);
+						@include box-shadow(none);
+					}
+
+
+				}
+
+
+
+
+		@media screen and (min-width: 640px) {
+
+			fieldset {
+				padding: .2em 0;
+			}
+
+			label, legend{
+				width  : 30%;
+				float  : left;
+				margin : rhythm(0.5) 0;
+			}
+
+				legend{
+					margin-top  : rhythm(2/3);
+					padding-top : 0;
+				}
+
+				.fieldset-list{
+
+					input[type="checkbox"],
+					input[type="radio"]{
+						margin: rhythm(1/3) rhythm(1/3) rhythm(1/3) 0;
+					}
+
+					ul{
+
+					}
+				}
+
+
+
+			input,
+			select,
+			textarea,
+			.input-range-wrapper,
+			.input-datepicker-wrapper,
+			.input-datepicker-range-wrapper,
+			input.input-datepicker,
+			input.input-datepicker-range,
+			input[type="submit"],
+			form ul{
+				margin-top : rhythm(0.5);
+			}
+
+
+
+			form ul,
+			textarea,
+			.input-range-wrapper,
+			.input-datepicker-wrapper,
+			.input-datepicker-range-wrapper,
+			input[type="checkbox"],
+			input[type="submit"]{
+				margin-bottom : rhythm(0.5);
+			}
+
+
+			form ul,
+			.form-help,
+			.fieldset-actions input,
+			.fieldset-disclaimer label,
+			select,
+			.input-combobox-wrapper{
+				margin-left : 30%
+			}
+
+
+			input[type="text"],
+			input[type="email"],
+			input[type="url"],
+			input[type="file"],
+			textarea,
+			.input-range-wrapper{
+				width : 70%;
+				margin-left : 30%
+			}
+
+			.input-combobox-wrapper {
+				width : 300px !important;
+			}
+
+			select{
+				width : 300px;
+			}
+
+
+			.input-range-wrapper{
+				width : 70% !important;
+
+				input[type="range"]{
+					margin-top:0;
+				}
+			}
+
+
+			.input-datepicker-wrapper,
+			input[type="range"]{
+				margin-left : 30%;
+			}
+
+				input.input-datepicker,
+				input.input-datepicker-range{
+					width  : 8em;
+				}
+
+				input.input-datepicker-range{
+
+					margin-left : rhythm(.5);
+
+					&:first-of-type{
+						margin: rhythm(0.5) 0 0;
+					}
+				}
+
+
+			.input-datepicker-wrapper input.input-datepicker{
+				margin-left:0;
+			}
+
+			.input-datepicker-range-wrapper input.input-datepicker-range{
+				margin:0;
+			}
+
+
+		}
+
+
+
+
+
+
+		@media screen and (min-width: 960px) {
+
+			label, legend{
+				width  : 274px;
+				float  : left;
+				margin : rhythm(0.5) 0;
+			}
+
+			.fieldset-actions input,
+			.fieldset-disclaimer label,
+			form ul,
+			.form-help,
+			select{
+				margin-left : 296px;
+			}
+
+
+			input[type="text"],
+			input[type="email"],
+			input[type="url"],
+			input[type="file"],
+			textarea{
+				/*@include placeholder{
+					color: $grey-dark;
+				}*/
+				width       : 570px;
+				margin-left : 296px;
+			}
+
+			.input-range-wrapper,
+			.input-datepicker-wrapper,
+			.input-datepicker-range-wrapper,
+			input[type="range"]{
+				margin-left : 296px;
+			}
+
+
+
+			.input-range-wrapper{
+				width : 570px !important;
+			}
+
+
+			input.input-datepicker,
+			input.input-datepicker-range{
+				width  : 8em;
+			}
+
+
+			input.input-datepicker-range{
+
+				margin-left : rhythm(.5);
+
+				&:first-of-type{
+					margin: rhythm(0.5) 0 0 22px;
+				}
+			}
+
+
+			.input-datepicker-range-wrapper{
+				margin: rhythm(0.5) 1em 0 0;
+
+				input.input-datepicker-range{
+					margin:0;
+				}
+
+				&:first-of-type{
+					margin-left:22px;
+				}
+			}
+
+
+				.input-combobox-wrapper{
+					margin: rhythm(0.5) 0 rhythm(0.5) 22px;
+				}
+		}
+
+
+
+
+
+
+
+		%form-dark{
+
+			 input[type="text"],
+			 input[type="email"],
+			 input[type="url"],
+			 input[type="file"],
+			 textarea{
+			   @include placeholder{
+			      color: $grey-light;
+			   }
+				 background : $grey-dark;
+				 color      : $light-default;
+				 border     : 0;
+			 }
+
+			 button{
+				 @extend %button-yellow;
+			 }
+
+		}
+
+
+
+
+		%form-linear{
+
+			 fieldset{
+				 padding : 0;
+			 }
+
+				 label{
+					 width : auto;
+				 }
+
+				 input, button{
+					 @include inline-block;
+				 }
+
+				 input{
+					 @include box-sizing(border-box);
+					 border-radius : 5px 0 0 5px;
+					 width         : 70%;
+				 }
+
+				 button{
+					 border-radius : 0 5px 5px 0;
+					 width         : 30%;
+				 }
+
+			 @media screen and (min-width: 640px) {
+
+				 margin-bottom:rhythm(1);
+
+				 input, button{
+					 margin:0;
+				 }
+			 }
+
+		}
+
+
+
+
+
+
+
+		.form-linear-dark{
+			@extend %form-dark;
+			@extend %form-linear;
+		}
+
+
+
+
+	/* ...........................
+	 * IV#2. BUTTONS
+	 * ........................... */
+
+
+		%button{
+			margin                : 0;
+			padding               : 0.5em 1em;
+			font-size             : 1em;
+			font-weight           : $baseFont-bold;
+			background            : #eee;
+			border-radius         : 0.333em;
+			position              : relative;
+
+		}
+
+		%buttonIcon{
+			 @include adjust-font-size-to($base-font-size);
+			 @include transition(background-color .9s ease);
+			 border-radius : 0.333em;
+			 padding       : 0.5em;
+			 text-indent   : -10000px;
+			 background    : $red;
+			 float         : none;
+
+			 &:hover,
+			 &:active{
+				 @include transition(background-color .3s ease);
+				 background      : $red-light;
+				 text-decoration : none;
+			 }
+
+			 &:active{
+				 background      : $red-lighter;
+			 }
+
+		}
+
+
+	 /* 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls.
+		* 2. Corrects inability to style clickable `input` types in iOS. */
+
+		button,
+		html input[type="button"]{        /* 1 */
+			-webkit-appearance : button;    /* 2 */
+		}
+
+	 /* 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls.
+	  * 2. Improves usability and consistency of cursor style between image-type `input` and others. */
+		button,
+		.button,
+		.button-grey,
+		.button-yellow,
+		.button-3d,
+		.button-3dsplit,
+		html input[type="button"]{    /* 1 */
+			cursor : pointer;           /* 2 */
+		}
+
+
+		.button,
+		.button-grey,
+		.button-yellow,
+		.button-3d,
+		.button-3dsplit{
+			@extend %button;
+		}
+
+			.button{
+				border                : 1px solid #ccc;
+
+				&:enabled:hover,
+				&:enabled:focus{
+					border-color : #bbb;
+					background   : #e5e5e5;
+				}
+
+				&:enabled:active{
+					border-color  : #ccc;
+					background    : #eee;
+				}
+			}
+
+
+
+			.button-grey{
+				@include transition(background .7s ease);
+				background : $grey-dark;
+				color      : $light-default;
+
+				&:hover,
+				&:focus{
+					@include transition(background .3s ease);
+					background : $red-dark;
+					color      : $light-default;
+				}
+
+				&:active{
+					@include transition(background .3s ease);
+					background : $red;
+					color      : $light-default;
+				}
+			}
+
+
+
+
+
+			%button-yellow{
+				 @include transition(background .7s ease, color .7s ease);
+				 @include box-sizing(border-box);
+				 background  : $yellow;
+				 color       : $dark-default;
+				 border      : 0;
+				 font-weight : $baseFont-bold;
+				 padding     : rhythm(.25);
+
+				 &:hover,
+				 &:focus,
+				 &:active{
+					 @include prefix('transition-duration', '.3s, .3s');
+				 }
+
+				&:hover,
+				&:focus{
+					background  : $yellow-med;
+					color       : $red-dark;
+				}
+
+				&:active{
+					background : $yellow-light;
+					color      : $red-light;
+				}
+			}
+
+			.button-yellow{
+				@extend %button-yellow;
+			}
+
+
+
+
+			.button-full{
+				@include box-sizing(border-box);
+				display    : block;
+				width      : 100%;
+				text-align : center;
+			}
+
+
+
+
+		.button-3d{
+			@include background-image(linear-gradient(top, rgba(255, 255, 255, .8) 0%, rgba(255, 255, 255, 0) 75%));
+			@include transition(color .2s ease, background .2s ease, top .2s ease, box-shadow .2s ease);
+			padding     : rhythm(.5) rhythm(1);
+			text-shadow : #fff;
+			box-shadow  : 0 1px 0 #ccc, 0 2px 0 #c6c6c6, 0 3px 0 #c0c0c0, 0 4px 6px #c0c0c0;
+
+			&:enabled:hover,
+			&:enabled:focus{
+				@include background-image(linear-gradient(top, rgba(255, 255, 255, .8) 0%, rgba(255, 255, 255, 0) 75%));
+				box-shadow : 0 1px 0 #c6c6c6, 0 2px 0 #c0c0c0, 0 4px 5px #c0c0c0;
+				top        : 1px;
+				color      : #421f1f;
+			}
+
+			&:enabled:active{
+				@include background-image(linear-gradient(top, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, .8) 100%));
+				box-shadow : 0 1px 4px #d6d6d6, inset 0 2px 3px #ddd;
+				top        : 2px;
+				color      : #c93e3e;
+			}
+
+		}
+
+
+
+
+		.button-ajax{
+			@include transition(padding .3s);
+
+			&:after{
+				@include transition(opacity .3s);
+				opacity : 0;
+			}
+		}
+
+		.button-loading{
+			&:after{
+				@include dim(16px, 16px);
+				@include abs($r:.5em, $t:.65em);
+				content    : '';
+				background : transparent $yellowAjaxSpiner no-repeat 0 0;
+				opacity    : 1;
+			}
+		}
+
+		@media only screen and (min-width: 480px){
+			.button-loading{
+				padding-right:2.5em !important;
+			}
+		}

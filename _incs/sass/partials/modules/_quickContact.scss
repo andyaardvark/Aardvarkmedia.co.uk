@@ -1,0 +1,290 @@
+@mixin quickContact($res:false){
+
+
+
+/* ------------------------------------------------------
+ * GENERIC
+ * ------------------------------------------------------ */
+
+
+	@if $res == false {
+
+		.quick-contact{
+			@include box-sizing(border-box);
+			height         : 0;
+			overflow       : hidden;
+
+
+			span{
+				border      : 0;
+				width       : auto;
+				height      : auto;
+				margin-left : 0;
+			}
+
+			&.animated{
+				height   : auto;
+				position : absolute;
+				left     : -9999px;
+			}
+
+			&.visible{
+				position : relative;
+				left     : 0;
+				height   : 0;
+			}
+
+			.button-yellow{
+				width:100%;
+			}
+
+			fieldset{
+				border-color:$grey-light;
+			}
+
+			.form-correct{
+				&:after{
+					top:2.25em;
+				}
+			}
+
+			.wpcf7-response-output{
+				text-align : center;
+				margin-top : .75em;
+			}
+		}
+
+		.ajax-loader{
+			height     : 16px;
+			position   : absolute;
+			right      : 0.25em;
+			top        : 1.5em;
+			width      : 16px;
+		}
+
+
+		#isQuickContactOpen:checked + .quick-contact{
+			height         : auto;
+			padding-bottom : rhythm(1);
+		}
+
+
+	}
+
+	/* ------------------------------------------------------
+	 * ENDOF: GENERIC
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 320
+	 * ------------------------------------------------------ */
+
+	@else if $res == "320" {
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 320
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 480
+	 * ------------------------------------------------------ */
+
+	@else if $res == "480" {
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 480
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 640
+	 * ------------------------------------------------------ */
+
+	@else if $res == "640" {
+
+		.quick-contact{
+			label{
+				@include span-columns(2);
+			}
+
+			.wpcf7-form-control-wrap,
+			.button-yellow{
+				@include span-columns(6);
+				@include omega();
+			}
+
+			.wpcf7-response-output{
+				@include pre(2);
+				@include span-columns(6);
+				@include omega();
+			}
+
+			textarea,
+			input[type="email"],
+			input[type="text"]{
+				margin-left : 0;
+				width       : 100%;
+			}
+
+			.button-yellow{
+				@include pre(2);
+			}
+
+			.form-correct{
+				&:after{
+					top:1.05em;
+				}
+			}
+		}
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 640
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 768
+	 * ------------------------------------------------------ */
+
+	@else if $res == "768" {
+
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 768
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 960
+	 * ------------------------------------------------------ */
+
+	@else if $res == "960" {
+
+		.quick-contact{
+			@include box-sizing(border-box);
+
+			fieldset,
+			.quickContact-paragraph{
+				@include squish(2, 2);
+			}
+
+			label{
+				@include span-columns(2, 8);
+			}
+
+			.wpcf7-form-control-wrap,
+			.button-yellow{
+				@include span-columns(6, 8);
+				@include omega();
+			}
+
+			.wpcf7-response-output{
+				@include squish(4, 2);
+				@include span-columns(6);
+			}
+
+			textarea,
+			input[type="email"],
+			input[type="text"]{
+				margin-left : 0;
+				width       : 100%;
+			}
+
+			.button-yellow{
+				@include pre(2, 8);
+			}
+		}
+
+	}
+	/* ------------------------------------------------------
+	 * ENDOF: 960
+	 * ------------------------------------------------------ */
+
+
+
+
+
+
+	/* ------------------------------------------------------
+	 * 1200
+	 * ------------------------------------------------------ */
+
+	@else if $res == "1200" {
+
+		.quick-contact{
+			@include box-sizing(border-box);
+
+			fieldset,
+			.quickContact-paragraph{
+				@include squish(2, 2);
+			}
+
+			label{
+				@include span-columns(2, 8);
+			}
+
+			.wpcf7-form-control-wrap,
+			.button-yellow{
+				@include span-columns(6, 8);
+				@include omega();
+			}
+
+			.wpcf7-response-output{
+				@include squish(4, 2);
+				@include span-columns(6);
+			}
+
+			textarea,
+			input[type="email"],
+			input[type="text"]{
+				margin-left : 0;
+				width       : 100%;
+			}
+
+			.button-yellow{
+				@include pre(2, 8);
+			}
+		}
+
+	}
+/* ------------------------------------------------------
+ * ENDOF: 1200
+ * ------------------------------------------------------ */
+
+
+
+
+}

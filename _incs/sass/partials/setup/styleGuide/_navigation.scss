@@ -1,0 +1,126 @@
+/* ===================================================================================
+ * Style Guide:
+ * -----------------------------------------------------------------------------------
+ * V. NAVIGATION PATTERNS
+ * ===================================================================================
+
+
+	/* ...........................
+	 * V#1. BREADCRUMBS
+	 * ........................... */
+	@media only screen and (max-width: 640px){
+		.breadcrumbs{
+			@include hidden();
+		}
+	}
+
+
+
+
+	/* ...........................
+	 * V#2. PAGINATION
+	 * ........................... */
+
+		.pagination{
+			@extend %cf;
+			text-align     : center;
+			padding-bottom : 1.5em;
+			position       : relative;
+			margin         : rhythm(1) 0;
+		}
+
+			.pagination-link,
+			.pagination-lite-link{
+				@include inline-block;
+				width : 50%;
+			}
+
+			.pagination-link{
+				@include abs($b:0);
+				text-align:left;
+
+				&:last-child{
+					right      : 0;
+					text-align : right;
+				}
+			}
+
+			.pagination-lite-link{
+				text-align : center;
+				width      : 100%;
+				max-width  : 320px;
+				margin     : 0.25em 0;
+				padding    : 0.5em 1em;
+			}
+
+			.pagination-list{
+				@extend %inlineBlockList;
+				@include inline-block;
+				width : 100%;
+			}
+
+				.pagination-list a{
+					display:block;
+				}
+
+
+		@media only screen and (min-width: 320px){
+
+			.pagination{
+				padding-bottom : 0;
+			}
+
+				.pagination-link{
+					@include rel($b:auto, $r:auto);
+					text-align:left;
+					width : auto;
+				}
+
+				.pagination-list{
+					width : auto;
+				}
+
+		}
+
+		@media only screen and (min-width: 480px){
+
+				.pagination-lite-link{
+					width     : auto;
+					max-width : none;
+					margin    : 0;
+
+					&:first-child{
+						margin-right:3%;
+					}
+				}
+
+			.button-single:first-child{
+				margin-right:0;
+			}
+
+
+		}
+
+		@media only screen and (min-width: 1248px){
+
+				.pagination-lite-link:first-child{
+					margin-right:.75%;
+				}
+
+
+		}
+
+
+	/* ...........................
+	 * V#3. TAG LIST
+	 * ........................... */
+
+		.tag-list{
+			@extend %horizontalList;
+			display: inline;
+
+			li{
+				float:none;
+				padding:0;
+			}
+		}

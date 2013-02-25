@@ -1,0 +1,166 @@
+/* ===================================================================================
+ * Spinners
+ * http://atomeye.com/projects/sass-css-spinner.html
+ * https://github.com/tomgenoni/ouroboros
+ * ===================================================================================
+ * ImageLess animated spinners
+ *
+ * MARKUP:
+ *  <div class="ui-spinner">
+ *    <span class="side side-left">
+ *      <span class="fill"></span>
+ *    </span>
+ *    <span class="side side-right">
+ *      <span class="fill"></span>
+ *    </span>
+ *  </div>
+ *
+ *
+ * USAGE:
+ * @include ui-spinner(transparent,100px,#bbb,#ea7b3a,1,5s);
+ *
+ *  For IE<10:
+ *  @include ui-spinner-ie();
+ *
+ * =================================================================================== */
+
+
+// # CSS Spinner
+// Optional 6 parameters for mixin 'ui-spinner'.
+// Defaults are as follows.
+
+$default-hole-color: transparent;
+$default-size: 46px;
+$default-bkg-color-light: #ddd;
+$default-bkg-color-dark: #3c76ca;
+$default-opacity: .8;
+$default-duration: 3s;
+
+// Need to remove the units to do some math.
+@function strip-units($number) {
+	@return $number / ($number * 0 + 1);
+}
+
+// Mixin for the ui-spinner. Paramters use defaults from above if none passed in.
+@mixin ui-spinner(
+	$hole-color       : $default-hole-color,
+	$size             : $default-size,
+	$bkg-color-light  : $default-bkg-color-light,
+	$bkg-color-dark   : $default-bkg-color-dark,
+	$opacity          : $default-opacity,
+	$duration         : $default-duration
+){
+	.ui-spinner {
+		width      : $size;
+		height     : $size;
+		background : $bkg-color-light;
+
+		.side .fill {
+			@include experimental(animation-duration, $duration);
+			background : $bkg-color-dark;
+			opacity    : $opacity;
+		}
+
+		// This is the 'hole' that creates the ring. It's size is determined by the
+		// size of the spinner.
+		&:after {
+			$hole-size      : round((strip-units($size)*.6)) + px;
+			$hole-position  : round((strip-units($size)*.2)) + px;
+			content       : "";
+			background    : $hole-color;
+			position      : absolute;
+			width         : $hole-size;
+			height        : $hole-size;
+			border-radius : 50%;
+			top           : $hole-position;
+			left          : $hole-position;
+			display       : block;
+		}
+	}
+}
+
+// Keyframes for each browser that flip the boxes around.
+@include keyframes(ui-spinner-rotate-right){
+	0%        { @include rotate(0deg); }
+	25%, 50%  { @include rotate(180deg); }
+	75%, 100% { @include rotate(360deg); }
+}
+
+
+@include keyframes(ui-spinner-rotate-left){
+	0%, 25%   { @include rotate(0deg); }
+	50%, 75%  { @include rotate(180deg);}
+	100%      { @include rotate(360deg);}
+}
+
+// The basic CSS for the spinner. Each '.side' takes turns spinning
+// to reveal the left/right side filling or emptying.
+// The damn thing is so complicated I barely understand it anymore.
+
+.ui-spinner {
+	position: relative;
+	border-radius: 100%;
+
+	.side {
+		width: 50%;
+		height: 100%;
+		overflow: hidden;
+		position: absolute;
+
+		.fill {
+			border-radius: 999px;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			@include experimental(animation-iteration-count, infinite);
+			@include experimental(animation-timing-function, linear);
+		}
+	}
+
+	.side-left {
+		left: 0;
+
+		.fill {
+			left: 100%;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+			@include experimental(animation-name, ui-spinner-rotate-left);
+			@include experimental(transform-origin, 0 50%);
+		}
+	}
+
+	.side-right {
+		left: 50%;
+
+		.fill {
+			left: -100%;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+			@include experimental(animation-name, ui-spinner-rotate-right);
+			@include experimental(transform-origin, 100% 50%);
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+@mixin ui-spinner-ie(){
+	.ui-spinner {
+		background: url(data:image/gif;base64,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) no-repeat center center !important;
+		min-width: 32px;
+		min-height: 32px;
+		&:after {
+			display: none !important;
+		}
+		.side {
+			display: none !important;
+		}
+	}
+}

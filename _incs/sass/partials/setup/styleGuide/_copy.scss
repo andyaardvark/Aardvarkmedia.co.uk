@@ -1,0 +1,366 @@
+/* ===================================================================================
+ * Style Guide:
+ * -----------------------------------------------------------------------------------
+ * I. SEMANTIC TEXT FORMATTING
+ * =================================================================================== */
+
+
+
+
+	.leadingReset{
+		line-height : $line-height;
+	}
+
+	/* .........................
+	 * I#1. HEADINGS
+	 * ......................... */
+
+		h1, h2, .h2 {
+			font-family : $headingFont;
+		}
+
+		h1{
+			@include adjust-font-size-to($base-font-size*3);
+			margin      : rhythm(1) 0;
+			font-weight : $headingFont-regular;
+		}
+
+		h2, .h2{
+			@include adjust-font-size-to($base-font-size*2);
+			margin : rhythm(1) 0;
+			font-weight : $headingFont-thin;
+		}
+
+		.h2-baseFont{
+			font           : $baseFont-bold #{$base-font-size*2}/1.3em $baseFont;
+			text-transform : uppercase;
+			margin         : 0;
+			padding        : rhythm(1) 0 0;
+		}
+
+		h3{
+			@include adjust-font-size-to($base-font-size*1.5);
+			margin         : rhythm(1) 0;
+			font-weight    : $baseFont-regular;
+			text-transform : uppercase;
+		}
+
+		.h3-starter{
+			font-size  : $base-font-size*1.5;
+			margin-top : rhythm(1.5);
+		}
+
+		.column-heading{
+			font           : $headingFont-regular normal #{$base-font-size}/1.5em $headingFont;
+			margin         : 0 0 -.5em;
+			text-transform : none;
+		}
+
+		h4{
+			@include adjust-font-size-to($base-font-size);
+			font-weight : $baseFont-bold;
+			margin      : rhythm(2) 0 0;
+		}
+
+		h5{
+			@include adjust-font-size-to($base-font-size);
+			font-variant : small-caps;
+			font-weight  : $baseFont-regular;
+			margin       : rhythm(2) 0 0;
+		}
+
+		h6{
+			@include adjust-font-size-to($base-font-size);
+			font-weight : $baseFont-regular;
+			font-style  : italic;
+			margin      : rhythm(2) 0 0;
+		}
+
+		%headline{
+			@include rhythm(1, 0, 2, 1);
+			text-align    : center;
+
+			h1, h2, .h2{
+				margin: 0 auto;
+			}
+		}
+
+		.headline,
+		.headline-borderless{
+			@extend %headline;
+		}
+
+
+
+
+
+		.headline{
+			border-bottom : .2em dotted $grey-light;
+		}
+
+		@media only screen and (max-width: 480px){
+			.headline,
+			.headline-borderless{
+				font-size: 0.75em;
+
+				h1 {
+					line-height : 1.2em;
+					margin      : 0.25em 0 0.5em;
+				}
+			}
+
+			.generic-title{
+				font-size   : 2.25em;
+				line-height : 1.2em;
+			}
+
+		}
+
+		@media only screen and (min-width: 481px) and (max-width: 768px){
+			.headline,
+			.headline-borderless{
+				font-size: .9em;
+
+				h1 {
+					line-height : 1.2em;
+					margin      : 0.25em 0 0.5em;
+				}
+			}
+
+			.generic-title{
+				font-size   : 2.5em;
+				line-height : 1.2em;
+			}
+		}
+
+		@media only screen and (min-width: 768px){
+			.h2-baseFont{
+				padding-top:2em;
+			}
+		}
+
+
+		@media only screen and (min-width: 1248px){
+			.column-heading{
+				@include adjust-font-size-to(14px);
+			}
+
+		}
+
+
+	/* .........................
+	 * I#2. PARAGRAPHS
+	 * ......................... */
+
+		p{
+			margin : $line-height 0;
+		}
+
+			.paragraph-opening{
+				@include adjust-font-size-to($base-font-size*1.25);
+				@include adjust-leading-to(1);
+			}
+
+		hr{
+			@include rhythm(2, 0, 0, 2);
+			@include dim(100%, $line-height);
+			border     : 0;
+			clear      : both;
+			text-align : center;
+			position   : relative;
+
+			&:after{
+				@include dim(100%, 100%);
+				@include abs($l : 0, $t : -0.6em);
+				@include fs(2em, $line-height, bold);
+				content     : ". . .";
+				font-family : Georgia, serif;
+
+			}
+		}
+
+
+
+
+
+
+
+
+
+	/* .........................
+	 * I#3. LINKS
+	 * ......................... */
+
+		a{
+			@include transition(color .7s ease);
+			color           : $red;
+			text-decoration : none;
+			cursor          : pointer;
+
+			/* Addresses `outline` inconsistency between Chrome and other browsers.  */
+			&:focus{
+				outline : thin dotted;
+			}
+
+			&[rel~="external"]{
+				&:after{
+					@extend %fontIcon;
+					content : "L";
+					padding : 0 0.5em 0 0.25em;
+				}
+			}
+
+			&[href*=".zip"],
+			&[href*=".rar"],
+			&[href*=".7z"],
+			&[href*=".doc"],
+			&[href*=".xls"],
+			&[href*=".ppt"],
+			&[href*=".exe"]{
+				&:after{
+					@extend %fontIcon;
+					content : "K";
+					padding : 0 0.5em 0 0.25em;
+				}
+			}
+
+
+			/* Improves readability when focused and also mouse hovered in all browsers.  */
+			&:active,
+			&:hover{
+				@include transition(color .3s ease);
+				outline : 0;
+			}
+
+			&:hover{
+				color : $red-light;
+			}
+
+			&:active{
+				color : $red-lighter;
+			}
+		}
+
+			.nonColoured{
+				color : $grey-dark;
+			}
+
+
+
+
+
+
+
+	/* ................................
+	 * I#4. EMPHASIS AND IMPORTANCE
+	 * ................................ */
+
+		/* Addresses style set to `bolder` in Firefox 4+, Safari 5, and Chrome. */
+		b,
+		strong{
+			font-weight : $baseFont-bold;
+		}
+
+		/* Addresses styling not present in IE 8/9. */
+		mark{
+			background : #ff0;
+			color      : #000;
+		}
+
+
+
+
+
+
+
+	/* .......................................
+	 * I#5. DEFINITIONS AND ABBREVIATIONS
+	 * ....................................... */
+
+		abbr, dfn{
+			font-style : italic;
+
+			&[title]{
+				border-bottom : 1px dotted $grey-light;
+				cursor        : help;
+
+				&:hover{
+					border-bottom-color : $dark-default
+				}
+			}
+		}
+
+
+
+
+
+
+
+
+	/* .......................................
+	 * I#6. INLINE QUOTING
+	 * ....................................... */
+
+		/* Sets consistent quote types. */
+		q{
+			quotes : "\201C" "\201D" "\2018" "\2019";
+		}
+
+
+
+
+
+
+
+	/* .......................................
+	 * I#7. SOURCE CODE
+	 * ....................................... */
+
+		/* Corrects font family set oddly in Safari 5 and Chrome. */
+		code,
+		kbd,
+		pre,
+		samp{
+			font-family : monospace, serif;
+			font-size   : 1em;
+		}
+
+		/* Improves readability of pre-formatted text in all browsers. */
+		pre{
+			white-space : pre;
+			white-space : pre-wrap;
+			word-wrap   : break-word;
+		}
+
+
+
+
+
+
+
+
+	/* .......................................
+	 * I#8. SEMANTIC SCALING AND PLACEMENT
+	 * ....................................... */
+
+		/* Addresses inconsistent and variable font size in all browsers.  */
+		small{
+			font-size : 80%;
+		}
+
+		/* Prevents `sub` and `sup` affecting `line-height` in all browsers. */
+		sub,
+		sup{
+			font-size      : 75%;
+			line-height    : 0;
+			position       : relative;
+			vertical-align : baseline;
+		}
+
+		sup{
+			top : -0.5em;
+		}
+
+		sub{
+			bottom : -0.25em;
+		}

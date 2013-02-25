@@ -1,0 +1,177 @@
+/* ===================================================================================
+ * Module Name: Top Branding > Left
+ * ===================================================================================
+ * Contains layout outlines for the main heading branding,
+ * with the logo being shifted from central to left on smaller resolutions
+ *
+ * @dependency $logoSmall string/boolean Will use provided smaller (e.g. horizontal) version of the logo,
+ *                                       or scale down the existing one if set to false.
+ *                                       Expected to be set in _vars.scss.
+ * =================================================================================== */
+
+
+
+
+@mixin topBranding($res:false){
+
+
+
+	@if $res == false {
+	/* ------------------------------------------------------
+	 * GENERIC
+	 * ------------------------------------------------------ */
+
+		$roundingBuffer : 0.5%;// 0.5% to fix rounding issues
+
+
+
+		#header{
+			@extend %cf;
+			text-align : center;
+			z-index    : 101;
+			background : $red-darker;
+		//	height     : 3.5em;
+		}
+
+			#logo{
+				float    : left;
+				z-index  : 102;
+
+				width    : 40%;
+
+
+				@if($logoSmall){
+					position : absolute;
+					left     : 0;
+					margin   : rhythm(.3) 0 0 $gutter-width;
+
+				}@else{
+					position : relative;
+					margin   : rhythm(.5) 0 0 $gutter-width;
+				}
+
+
+				img{
+					@include dim(100%, auto);
+				}
+			}
+
+				#logoImage{
+					@extend %noWhitespace;
+					line-height:1em;
+
+					@if($logoSmall){
+						//@include dim(image-width($logoSmall), image-height($logoSmall));
+						@include dim(284px *.5, 76px*.5);
+						background:$logoSmall no-repeat 0 0;
+						background-size: auto 100%;
+						img{
+							@extend %removed;
+						}
+
+					}@else{
+
+					}
+				}
+
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: GENERIC
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "320" {
+	/* ------------------------------------------------------
+	 * 320
+	 * ------------------------------------------------------ */
+
+		#logo{
+			width    : 130px;
+		}
+
+	/* ------------------------------------------------------
+	 * ENDOF: 320
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "640" {
+	/* ------------------------------------------------------
+	 * 640
+	 * ------------------------------------------------------ */
+
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 640
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "960" {
+	/* ------------------------------------------------------
+	 * 960
+	 * ------------------------------------------------------ */
+
+			#header{
+				//height:4em;
+			}
+
+			#logo{
+				@include abs($l:50%);
+				@include dim(206px, 132px);
+				background : transparent $logoBackground no-repeat 0 0;
+				margin     : 0 0 0 -103px;
+				float      : none;
+				z-index    : 100;
+			}
+
+			#logoImage{
+				@include dim(180px, 47px, false);
+				margin : .5em auto 0;
+
+				@if($logoSmall){
+					background : none;
+
+					img{
+						@include rel($l:auto);
+						margin : 32px auto 0;
+						width  : 85%;
+					}
+				}
+			}
+
+	/* ------------------------------------------------------
+	 * ENDOF: 960
+	 * ------------------------------------------------------ */
+	}
+
+
+
+}

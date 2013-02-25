@@ -1,0 +1,62 @@
+/* ===================================================================================
+ * ACCORDION MENU
+ * ===================================================================================
+ * Based on: http://tympanus.net/codrops/2012/02/21/accordion-with-css3/
+ * =================================================================================== */
+
+
+
+.accordion{
+	width:100%;
+
+	input[type="radio"]:checked{
+
+		& + article{
+
+			.accordion-header,
+			.accordion-header:hover{
+				background : darken($grey-light, 10);
+			}
+
+			.accordion-content{
+				height:auto;
+			}
+
+		}
+
+	}
+}
+
+
+	.accordion-header{
+		@include adjust-font-size-to($base-font-size*1.5);
+		background : $grey-light;
+		position   : relative;
+		z-index    : 20;
+		display    : block;
+		cursor     : pointer;
+		margin     : 0;
+		padding    : 0;
+
+		&:hover{
+			background : lighten($grey-light, 10);
+		}
+
+		label{
+			float   : none;
+			padding : 0 rhythm(.25);
+			margin  : 0;
+		}
+	}
+
+
+	.accordion-content{
+		@include transition(height .5s ease);
+		overflow : hidden;
+		position : relative;
+		z-index  : 10;
+		height   : 0;
+	}
+
+
+
