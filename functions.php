@@ -70,10 +70,3 @@ function my_custom_login_logo() {
       </style>';
 }
 add_action('login_head', 'my_custom_login_logo');
-
-
-
-
-
-
-
