@@ -182,3 +182,47 @@ add_action( 'init', 'register_menus' );
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 		}
 	}
+
+
+
+
+
+
+
+
+
+
+
+  class AM_Walker_AboutSubnav extends Walker_page {
+    /**
+     * @see Walker::start_el()
+     * @since 2.1.0
+     *
+     * @param string $output Passed by reference. Used to append additional content.
+     * @param object $page Page data object.
+     * @param int $depth Depth of page. Used for padding.
+     * @param int $current_page Page ID.
+     * @param array $args
+     */
+    function start_el( &$output, $page, $depth, $args, $current_page = 0 ) {
+
+      $indent = '';
+      if($depth){
+        $indent = str_repeat("\t", $depth);
+      }
+
+      extract($args, EXTR_SKIP);
+      $class='class="subnav-link';
+
+      if( !empty($current_page) &&  $page->ID == $current_page ){
+        $class.= ' currentPage';
+      }
+
+      $output.= $indent .
+                '<li class="subnav-entry">'.
+                  '<a '.$class.'" href="' . get_permalink($page->ID) . '" title="Proceed to '.apply_filters( 'the_title', $page->post_title, $page->ID ).' section">' .
+                    apply_filters( 'the_title', $page->post_title, $page->ID ) .
+                '</a>';
+    }
+
+  }

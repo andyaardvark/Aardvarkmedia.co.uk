@@ -1,22 +1,73 @@
+/* ===================================================================================
+ * Name     : Main Single Item Controller
+ * Version  :
+ * URL      : https://github.com/criograhy/
+ *
+ * Author   : Marek Lenik
+ *            http://aardvarkmedia.co.uk
+ *
+ * Licensed under the MIT license.
+ * ===================================================================================
+ *
+ *
+ * @dependency jQuery
+ * @dependency Modernizr
+ * =================================================================================== */
 
-	$(document).ready(function(){
+/*jshint smarttabs: true */
+/*global jQuery:true, Modernizr:true */
 
+$(document).ready(function() {
+	"use strict";
 
-
+	/* progressively enhance responsive navigation with animations */
+	$('#header').Nav({
+		contactToggler          : $('#isQuickContactOpen'),
+		subnavToggler           : $('#topNavInput'),
+		contactContainer        : $('#quick-contact'),
+		subnav                  : $('.topNav-links:first'),
+		serviceToggler          : $('#services-toggler'),
+		serviceFadeables        : $('.fadeable'),
+		serviceTogglerMinWidth  : 960
 	});
 
-	$(window).load(function(){
+
+	ContactForm7_Override._init($('#quick-contact'));
 
 
-		/* Load latest tweet */
-		Twitter._loadFeed({
 
-			target		: $('#twitterBalloon'),
-			username	: 'aardvarkmedia',
-			tweetNum	: 1,
-			attrs			: {rel:'nofollow'}
 
+	/* correct DOM for hovering */
+	if(!Modernizr.touch && window.location.pathname.indexOf('/who-we-are')>0){
+
+		$('.gridHex-entry-inner2', $('#about-team-grid')).on('mouseenter mouseleave', function(e){
+
+			var overlay = $(e.target).parents('.gridHex-thumb').next();
+
+			if(e.type==='mouseenter'){
+				overlay.addClass('visible');
+			}else{
+				overlay.removeClass('visible');
+			}
 		});
 
+	}
 
+
+
+});
+
+$(window).load(function(){
+	"use strict";
+
+
+	/* Load latest tweet */
+	Twitter._loadFeed({
+		target		: $('#twitterBalloon'),
+		username	: 'aardvarkmedia',
+		tweetNum	: 1,
+		attrs			: {rel:'nofollow'}
 	});
+
+
+});
