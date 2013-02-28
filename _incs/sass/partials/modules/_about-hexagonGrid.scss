@@ -1,0 +1,618 @@
+/* ===================================================================================
+ * Module Name: About: Hexagon Grid
+ * =================================================================================== */
+
+
+
+
+@mixin about-hexagonGrid($res:false){
+
+	@if $res == false {
+	/* ------------------------------------------------------
+	 * GENERIC
+	 * ------------------------------------------------------ */
+
+
+
+		.gridHex{
+			margin     : 0 auto;
+			padding    : 0;
+			position   : relative;
+			width      : 96%;
+			text-align : center;
+			overflow   : hidden;
+			list-style : none;
+		}
+
+			.gridHex-entry{
+				@include inline-block;
+				width      : 100%;
+				list-style : none;
+				height     : auto;
+				position   : relative;
+			}
+
+
+				.gridHex-thumb {
+					@include rotate(120deg);
+					@include dim(150px, 300px, false);
+					@include inline-block;
+					overflow   : hidden;
+					visibility : hidden;
+					cursor     : pointer;
+					margin     : -62px 0 -50px 0;
+				}
+
+					.gridHex-entry-inner1 {
+						@include rotate(-60deg);
+						overflow  : hidden;
+						width     : 100%;
+						height    : 100%;
+					}
+
+						.gridHex-entry-inner2 {
+							@include rotate(-60deg);
+							width               : 100%;
+							height              : 100%;
+							background-repeat   : no-repeat;
+							background-position : 50%;
+							background-size     : auto 180px;
+							position            : relative;
+							visibility          : visible;
+							overflow            : hidden;
+						}
+
+							.gridHex-entry-overlay-fill{
+								@include transition(opacity .3s ease);
+								background : $red;
+								position   : absolute;
+								width      : 100%;
+								height     : 100%;
+								opacity    : 0;
+							}
+
+
+				.gridHex-overlay{
+					width     : 90%;
+					padding   : 0 5%;
+					max-width : 90%;
+
+					h3{
+						font           : $headingFont-regular 1.35em/1.2em $headingFont;
+						margin         : 0;
+						text-transform : capitalize;
+					}
+
+					h4{
+						margin         : 0;
+						text-transform : uppercase;
+						font-weight    : $baseFont-bold;
+
+					}
+
+					p{
+						margin-top:0;
+					}
+				}
+
+
+
+
+		.mzr-no-touch{
+
+			.gridHex-entry-inner2:hover .gridHex-entry-overlay-fill{
+				opacity:.8;
+			}
+
+			.gridHex-entry{
+				@include deflicker();
+			}
+
+			.gridHex-overlay{
+				@include transition(opacity .3s ease);
+				@include abs($t:40px, $l:50%);
+				@include box-sizing(border-box);
+				width          : 150px;
+				height         : 98px;
+				color          : white;
+				opacity        : 0;
+				text-align     : center;
+				padding        : 0 1em;
+				pointer-events : none;
+				margin-left    : -75px;
+				max-width      : none;
+
+				&.visible{
+					opacity : 1;
+				}
+
+				&:before{
+					@include inline-block;
+					content : '';
+					height  : 100%;
+				}
+
+				h3{
+					font           : $headingFont-regular 1.35em/1.2em $headingFont;
+				}
+
+				h4{
+					font-size      : 0.875em;
+					line-height    : 1.25em;
+					padding-bottom : 1em;
+					position       : relative;
+
+					&:after{
+						@include dim(80%, 0);
+						@include abs($l:10%, $b:.5em);
+						content       : '';
+						border-bottom : 1px dotted $light-default;
+					}
+				}
+
+				p{
+					margin      : 0;
+					font-size   : 0.875em;
+					line-height : 1.25em;
+				}
+			}
+
+			.gridHex-overlay-content{
+				@include inline-block;
+				height:auto;
+			}
+		}
+
+
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: GENERIC
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+	@else if $res == "320" {
+	/* ------------------------------------------------------
+	 * 320
+	 * ------------------------------------------------------ */
+
+		.mzr-no-touch{
+
+			.gridHex{
+				width          : 226px;
+				text-align     : left;
+				padding-bottom : 44px;
+			}
+
+			.gridHex-entry{
+				margin-bottom : -50px;
+			}
+
+			.gridHex-entry:nth-child(even){
+				margin-left : 76px;
+			}
+
+			.gridHex-overlay{
+				left        : 0;
+				margin-left : 0;
+			}
+
+		}
+
+
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 320
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "480" {
+	/* ------------------------------------------------------
+	 * 480
+	 * ------------------------------------------------------ */
+
+		.gridHex-entry{
+			width: 48%;
+		}
+
+			.gridHex-entry:nth-child(odd){
+				clear        : both;
+				margin-right : 4%;
+			}
+
+
+
+		.mzr-no-touch{
+
+			.gridHex{
+				width:466px;
+			}
+
+				.gridHex-entry{
+					width:150px;
+				}
+
+					.gridHex-entry,
+					.gridHex-entry:nth-child(odd),
+					.gridHex-entry:nth-child(even){
+						margin:0 0 -54px 4px;
+					}
+
+					.gridHex-entry:nth-child(5n+4){
+						margin-left:81px;
+					}
+
+		}
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 480
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "640" {
+	/* ------------------------------------------------------
+	 * 640
+	 * ------------------------------------------------------ */
+
+
+		.gridHex-entry{
+			width        : 31%;
+			margin-right : 0;
+			margin-left  : 3.5%;
+
+			&:nth-child(odd){
+				clear        : none;
+				margin-right : 0;
+				margin-left  : 3.5%;
+			}
+
+			&:nth-child(3n+1){
+				clear       : both;
+				margin-left : 0;
+			}
+		}
+
+
+
+
+
+		.mzr-no-touch{
+			.gridHex{
+				width:544px;
+			}
+
+				.gridHex-entry{
+					width:150px;
+				}
+
+					.gridHex-entry,
+				  .gridHex-entry:nth-child(odd),
+				  .gridHex-entry:nth-child(even),
+				  .gridHex-entry:nth-child(5n+4){
+						margin:0 0 -54px 4px;
+					}
+
+				  .gridHex-entry:nth-child(6n+4){
+						margin-left:81px;
+					}
+
+		}
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 640
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "768" {
+	/* ------------------------------------------------------
+	 * 768
+	 * ------------------------------------------------------ */
+
+		.gridHex-thumb {
+			width  : 200px;
+			height : 400px;
+			margin : -80px 0 -50px 0;
+		}
+
+			.gridHex-entry-inner2 {
+				background-size:auto 235px;
+			}
+
+		.mzr-no-touch{
+
+			.gridHex{
+				width          : 734px;
+				padding-bottom : 62px;
+			}
+
+				.gridHex-entry{
+					width : 200px;
+				}
+
+					.gridHex-entry,
+					.gridHex-entry:nth-child(odd),
+					.gridHex-entry:nth-child(even),
+					.gridHex-entry:nth-child(5n+4){
+						margin : 0 0 -90px 8px;
+					}
+
+					.gridHex-entry:nth-child(6n+4){
+						margin-left : 112px;
+					}
+
+					.gridHex-overlay{
+						height : 125px;
+						top    : 57px;
+						width  : 200px;
+
+						&:before{
+							height:100%;
+							width:0;
+							display:inline-block;
+							vertical-align: middle;
+						}
+					}
+
+		}
+
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 768
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+	@else if $res == "800" {
+	/* ------------------------------------------------------
+	 * 800
+	 * ------------------------------------------------------ */
+
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 800
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+	@else if $res == "960" {
+	/* ------------------------------------------------------
+	 * 960
+	 * ------------------------------------------------------ */
+
+		.gridHex-entry {
+			width        : 22.75%;
+			margin-right : 0;
+			margin-left  : 3%;
+
+		}
+
+			.gridHex-thumb {
+				width         : 180px;
+				height        : 360px;
+				margin-bottom : -65px;
+			}
+
+				.gridHex-entry{
+
+					&:nth-child(odd),
+					&:nth-child(3n+1) {
+						clear        : none;
+						margin-right : 0;
+						margin-left  : 3%;
+					}
+
+					&:nth-child(4n+1) {
+						clear       : both;
+						margin-left : 0;
+					}
+
+				}
+
+					.gridHex-entry-inner2 {
+						background-size : auto 210px;
+					}
+
+
+
+
+		.mzr-no-touch{
+
+			.gridHex {
+				width          : 960px;
+				padding-bottom : 62px;
+			}
+
+				.gridHex-entry {
+					width  : 230px;
+
+					&,
+					&:nth-child(odd),
+					&:nth-child(even),
+					&:nth-child(5n+4),
+					&:nth-child(6n+4) {
+						margin : 0 0 -105px 12px;
+					}
+
+					&:nth-child(7n+1) {
+						margin-left : 0;
+					}
+
+					&:nth-child(7n+5) {
+						margin-left : 121px;
+					}
+				}
+
+				.gridHex-thumb {
+					width  : 230px;
+					height : 460px;
+					margin : -96px 0 -50px 0;
+				}
+
+					.gridHex-entry-inner2 {
+						background-size : auto 266px;
+					}
+
+
+				.gridHex-overlay {
+					height: 165px;
+					top: 52px;
+					width: 230px;
+				}
+
+
+		}
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 960
+	 * ------------------------------------------------------ */
+	}
+
+
+
+
+
+
+
+
+
+
+	@else if $res == "1200" {
+	/* ------------------------------------------------------
+	 * 1200
+	 * ------------------------------------------------------ */
+
+		.gridHex{
+			width:1200px;
+		}
+
+			.gridHex-entry{
+				width: 22.75%;
+				margin-right:0;
+				margin-left:3%;
+			}
+
+				.gridHex-thumb {
+					width: 200px;
+					height: 400px;
+					margin-bottom:-80px;
+				}
+
+					.gridHex-entry-inner2 {
+						background-size:auto 230px;
+					}
+
+
+						.gridHex-overlay p {
+							font-size: 0.875em;
+						}
+
+			.mzr-no-touch{
+
+				.gridHex{
+					width:1230px;
+					padding-bottom:62px;
+				}
+
+
+				.gridHex-entry{
+					&,
+					&:nth-child(odd),
+					&:nth-child(even),
+					&:nth-child(5n+4),
+					&:nth-child(6n+4),
+					&:nth-child(7n+1),
+					&:nth-child(7n+5){
+						margin:0 0 -95px 20px;
+					}
+
+					&:nth-child(9n+1){
+						margin-left:0;
+					}
+
+
+					&:nth-child(9n+6){
+						margin-left:125px;
+					}
+				}
+
+			}
+
+
+
+	/* ------------------------------------------------------
+	 * ENDOF: 1200
+	 * ------------------------------------------------------ */
+	}
+
+
+
+}
+

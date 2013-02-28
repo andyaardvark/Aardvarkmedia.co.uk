@@ -25,7 +25,7 @@
 
     <link rel="stylesheet" href="/_incs/css/aardvarkmedia.<?php echo cgy_get_current_page(); ?>.css">
     <?php if(is_page_template('page-styleGuide.php')){?><link rel="stylesheet" href="/_incs/css/partials/libs/prismjs.css"><?php } ?>
-    <?php if(is_page_template('page-about-modusOperandi.php')){?><link rel="stylesheet" href="/_incs/css/aardvarkmedia.article.about.process.css"><?php } ?>
+    <?php if(is_page() && strstr($_SERVER["REQUEST_URI"], '/about-us/')!==false){?><link rel="stylesheet" href="/_incs/css/aardvarkmedia.article.about.css"><?php } ?>
     <!--[if IE]><!--> <link rel="stylesheet" href="/_incs/css/aardvarkmedia.ie.css"> <!--<![endif]-->
 
     <script src="/_incs/js/lib/modernizr.2.6.2.min.js"></script>

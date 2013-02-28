@@ -10,9 +10,9 @@
 
 	@if $res == false {
 
-		.project-stats{
+		/*.project-stats{
 			margin-top:rhythm(1);
-		}
+		}*/
 
 			.gridbase-stats{
 				padding:0;
@@ -344,7 +344,7 @@
 					@include abs($l:50%, $t:-.75em);
 					content     : '';
 					margin-left : -.5 * (columns(6) + $gutter-width * 2 - 4.2%);
-					background  : $light-default;
+					background  : $grey-lighter;
 				}
 			}
 

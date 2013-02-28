@@ -384,7 +384,36 @@
 
 
 
+	@else if $res == "480" {
+	/* ------------------------------------------------------
+	 * 480
+	 * ------------------------------------------------------ */
 
+		/* Award List
+		 * ----------------------------------*/
+		.awardList{
+			margin-bottom : rhythm(2);
+
+			li{
+				width         : columns(2);
+				text-align    : center;
+				margin-bottom : rhythm(1);
+				margin-right  : $gutter-width;
+				overflow      : hidden;
+
+				&:nth-child(2n){
+					margin-right : 0;
+					clear        : both;
+				}
+
+			}
+
+		}
+
+	/* ------------------------------------------------------
+	 * ENDOF: 480
+	 * ------------------------------------------------------ */
+	}
 
 
 
@@ -545,7 +574,6 @@
 
 
 
-
 		/* Award List
 		 * ----------------------------------*/
 		.awardList{
@@ -558,8 +586,10 @@
 				margin-right  : $gutter-width;
 				overflow      : hidden;
 
+				&:nth-child(2n),
 				&:nth-child(2n+1){
 					margin-right : $gutter-width;
+					clear        : none;
 				}
 
 				&:last-child{
@@ -775,10 +805,16 @@
 			@include span-columns($total-columns);
 
 			li{
-				@include span-columns(3);
+				@include inline-block;
+				width : columns(3);
 
+				&:nth-child(2n),
 				&:nth-child(2n+1){
 					margin-right : $gutter-width;
+				}
+
+				&:last-child{
+					margin-right : 0;
 				}
 			}
 
@@ -843,10 +879,15 @@
 			@include squish(2, 2);
 
 			li{
-				@include span-columns(2, 8);
+				width: columns(2, 8);
 
+				&:nth-child(2n),
 				&:nth-child(2n+1){
 					margin-right : gutter(8);
+				}
+
+				&:last-child{
+					margin-right : 0;
 				}
 			}
 
