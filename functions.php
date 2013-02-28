@@ -12,8 +12,6 @@ require_once('_incs/core/admin_menus.php');
 /* Custom Post Types */
 require_once('_incs/core/cpt/our-work.php');
 require_once('_incs/core/cpt/vacancies.php');
-//require_once('_incs/core/cpt/services.php');
-//require_once('_incs/core/cpt/about.php');
 
 
 /* Utilities */

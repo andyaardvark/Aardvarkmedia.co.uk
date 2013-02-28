@@ -196,10 +196,11 @@
 
 
 
-      <?php }elseif(is_single() && get_post_type()==='post'){ ?>
+      <?php }elseif(is_single() && (get_post_type()==='post' || get_post_type()==='page') ){ ?>
         <!-- SCRIPTS: SECTION: BLOG ARTICLE -->
           <script src="/_incs/js/aardvarkmedia.<?php echo ucfirst(cgy_get_current_page()); ?>.js"></script>
         <!-- ENDOF: SCRIPTS: SECTION: BLOG ARTICLE -->
+
 
 
 
@@ -218,7 +219,7 @@
 
       <?php }else{ ?>
         <!-- SCRIPTS: SECTION: STYLEGUIDE -->
-          <script src="/_incs/js/com.website.<?php echo ucfirst(cgy_get_current_page()); ?>.js"></script>
+          <script src="/_incs/js/aardvarkmedia.<?php echo ucfirst(cgy_get_current_page()); ?>.js"></script>
         <!-- ENDOF: SCRIPTS: SECTION: STYLEGUIDE -->
         <?php wp_footer(); ?>
       <?php } ?>

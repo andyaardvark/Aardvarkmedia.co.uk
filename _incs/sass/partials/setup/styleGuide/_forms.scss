@@ -781,6 +781,9 @@
 			}
 
 
+			.button-single{
+				@include transition(width .5s ease, height .5s ease);
+			}
 
 
 			.button-full{

@@ -45,8 +45,9 @@
 			}
 		}
 
-		.no-header{
-			padding--top: rhythm(2);
+		.no-header,
+		.no-header-with-subnav{
+			padding-top: rhythm(1);
 		}
 
 		.secondaryContent-columns{
@@ -58,6 +59,44 @@
 		.container-grey-odd{
 			padding-bottom:rhythm(2);
 		}
+
+
+		.no-header-with-subnav{
+			padding-bottom:0;
+
+			p{
+				font-size:1.5em;
+
+			}
+		}
+
+		.subnav{
+			text-align:center;
+			margin-bottom:rhythm(2);
+		}
+
+			.subnav-entry{
+			}
+
+
+				.subnav-link{
+					@include transition(color .3s ease, border-color .3s ease);
+					padding       : .5em 1.5em;
+					border-bottom : 2px dotted $grey;
+					color         : $grey;
+					display       : block;
+
+					&.currentPage,
+					&:hover{
+						@include prefixer('transition-duration', '.7s, .7s');
+						border-color : $red;
+						color        : $red;
+					}
+
+					&:active{
+						border-color:$red-light;
+					}
+				}
 
 	/* ------------------------------------------------------
 	 * ENDOF: GENERIC
@@ -76,7 +115,7 @@
 
 	@else if $res == "480" {
 	/* ------------------------------------------------------
-	 * 640
+	 * 480
 	 * ------------------------------------------------------ */
 
 		@include mainWrappers("480");
@@ -84,6 +123,14 @@
 		.secondaryContent-columns{
 			margin-top:0;
 		}
+
+
+		.no-header-with-subnav{
+			p{
+				line-height: 1.25em;
+			}
+		}
+
 
 	/* ------------------------------------------------------
 	 * ENDOF: 480
@@ -110,7 +157,8 @@
 			width: columns(5);
 		}
 
-		.no-header{
+		.no-header,
+		.no-header-with-subnav{
 			padding-top: rhythm(2);
 		}
 
@@ -148,8 +196,15 @@
 			}
 		}
 
-		.no-header{
+		.no-header,
+		.no-header-with-subnav{
 			padding-top: rhythm(2);
+		}
+
+		.no-header-with-subnav{
+			p{
+				line-height: 1.5em;
+			}
 		}
 
 	/* ------------------------------------------------------
@@ -194,6 +249,10 @@
 			padding-top: rhythm(4);
 		}
 
+		.no-header-with-subnav{
+			padding-top:4em;
+		}
+
 
 			.container-grey-even,
 			.container-grey-odd{
@@ -228,6 +287,12 @@
 	 * ------------------------------------------------------ */
 
 		@include mainWrappers("1100");
+
+		.no-header-with-subnav p{
+			width  : 960px;
+			margin : 0 auto;
+			color  : $grey;
+		}
 
 	/* ------------------------------------------------------
 	 * ENDOF: 1100
@@ -274,6 +339,10 @@
 
 		.no-header{
 			padding-top: rhythm(4);
+		}
+
+		.no-header-with-subnav{
+			padding-top: rhythm(2);
 		}
 
 

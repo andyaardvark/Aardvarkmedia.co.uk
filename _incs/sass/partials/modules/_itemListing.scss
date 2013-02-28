@@ -65,6 +65,8 @@
 						}
 
 		.gridEntry{
+			@include transition(width .5s ease, height .5s ease, position .5s ease);
+
 			&:hover{
 				.gridOverlay{
 					@include transition(opacity .3s ease);
