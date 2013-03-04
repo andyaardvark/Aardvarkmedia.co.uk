@@ -1,3 +1,9 @@
+# General #
+############
+/**/garbage/
+/**/temp/
+
+
 # Compass #
 ############
 .sass-cache

@@ -21,12 +21,14 @@
 
 		h1{
 			@include adjust-font-size-to($base-font-size*3);
+			@include adjust-leading-to(.85);
 			margin      : rhythm(1) 0;
 			font-weight : $headingFont-regular;
 		}
 
 		h2, .h2{
 			@include adjust-font-size-to($base-font-size*2);
+			@include adjust-leading-to(.85);
 			margin : rhythm(1) 0;
 			font-weight : $headingFont-thin;
 		}
@@ -40,8 +42,14 @@
 
 		h3{
 			@include adjust-font-size-to($base-font-size*1.5);
+			@include adjust-leading-to(.85);
 			margin         : rhythm(1) 0;
 			font-weight    : $baseFont-regular;
+			text-transform : uppercase;
+		}
+
+		.h3-baseFont{
+			font           : $baseFont-bold 1.0533em/1.275em $baseFont;
 			text-transform : uppercase;
 		}
 
@@ -168,15 +176,22 @@
 			clear      : both;
 			text-align : center;
 			position   : relative;
+			overflow   : hidden;
 
 			&:after{
 				@include dim(100%, 100%);
 				@include abs($l : 0, $t : -0.6em);
-				@include fs(2em, $line-height, bold);
-				content     : ". . .";
+				@include fs(10px, $line-height, bold);
+				content     : ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ." ;
 				font-family : Georgia, serif;
 
 			}
+		}
+
+
+		.hr-thin{
+			margin : 0;
+			height : 10px;
 		}
 
 

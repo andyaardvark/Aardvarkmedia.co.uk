@@ -128,6 +128,12 @@
 			}
 		}
 
+		.columnisedListInlineBlock{
+			li{
+				@include columniseList(1, true);
+			}
+		}
+
 
 
 
@@ -221,6 +227,12 @@
 			}
 		}
 
+		.columnisedListInlineBlock{
+			li{
+				@include columniseList(2, true);
+			}
+		}
+
 		.column-2{
 			display      : inline;
 			float        : left;
@@ -279,6 +291,12 @@
 		.columnisedList{
 			li{
 				@include columniseList(2);
+			}
+		}
+
+		.columnisedListInlineBlock{
+			li{
+				@include columniseList(2, true);
 			}
 		}
 
@@ -403,6 +421,11 @@
 			}
 		}
 
+		.columnisedListInlineBlock{
+			li{
+				@include columniseList(3, true);
+			}
+		}
 
 
 		.column-4{
@@ -539,6 +562,11 @@
 			}
 		}
 
+		.columnisedListInlineBlock{
+			li{
+				@include columniseList(3, true);
+			}
+		}
 
 		.column-4{
 			width         : (100% - 3*$gutter-width*.25)*.25;

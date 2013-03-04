@@ -1,3 +1,4 @@
+@charset "CP852";
 /* -------------------------------------- */
 /* IMPORT ALL MODULES                     */
 /* -------------------------------------- */
@@ -213,39 +214,17 @@
   overflow: hidden;
   position: relative;
   z-index: 1;
+  /*&:before{
+  	@include dim(58%, 71.25%);
+  	@include abs($b:48px, $l:27%);
+  	border        : .5em solid $grey-light;
+  	content       : '';
+  	border-radius : 1em;
+  	z-index       : -1;
+  	padding       : 4em 0 60px;
+  }*/
 }
-/* line 20, ../sass/partials/modules/_about-process.scss */
-.about-process-graph:before {
-  width: 50%;
-  height: 67%;
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 27%;
-  border: 0.5em solid #bdbebf;
-  content: '';
-  border-radius: 1em;
-  z-index: -1;
-}
-/* line 29, ../sass/partials/modules/_about-process.scss */
-.about-process-graph li {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 55%;
-  height: auto;
-  display: block;
-  float: left;
-  padding: 1em 0 1em 1em;
-  margin-bottom: 3em;
-  background: #fafafb;
-  text-align: center;
-}
-/* line 38, ../sass/partials/modules/_about-process.scss */
-.about-process-graph li:before {
-  margin-left: -1em;
-}
-/* line 44, ../sass/partials/modules/_about-process.scss */
+/* line 30, ../sass/partials/modules/_about-process.scss */
 .about-process-graph svg {
   position: relative;
   left: -0.5em;
@@ -253,34 +232,124 @@
   margin: 0 auto;
 }
 
-/* line 52, ../sass/partials/modules/_about-process.scss */
-.graph-process-discover:after {
-  width: 0.5em;
-  height: 3em;
+/* line 39, ../sass/partials/modules/_about-process.scss */
+.graph-process-icon {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 55%;
+  height: auto;
   display: block;
+  float: left;
+  padding: 0.25em 0 0.25em 1em;
+  margin-bottom: 3em;
+  text-align: center;
   position: relative;
-  bottom: 0;
-  left: -0.375em;
-  content: '';
-  margin: .5em auto 1em;
-  background: #bdbebf;
 }
-
-/* line 60, ../sass/partials/modules/_about-process.scss */
-.graph-process-measure {
-  padding-bottom: 2em;
+/* line 48, ../sass/partials/modules/_about-process.scss */
+.graph-process-icon:before {
+  margin-left: -1em;
 }
-
-/* line 64, ../sass/partials/modules/_about-process.scss */
-.graph-process-evolve {
+/* line 52, ../sass/partials/modules/_about-process.scss */
+.graph-process-icon:after {
+  width: 0;
+  height: 2.5em;
+  display: block;
   position: absolute;
-  top: 60%;
-  right: 0;
+  bottom: -2.75em;
+  left: 50%;
+  border-left: 0.5em solid #dfdfe0;
+  content: '';
+  z-index: -1;
+}
+
+/* line 63, ../sass/partials/modules/_about-process.scss */
+.graph-process-understand {
+  margin-bottom: 1em;
+}
+/* line 66, ../sass/partials/modules/_about-process.scss */
+.graph-process-understand:after {
+  bottom: -.75em;
+}
+
+/* line 71, ../sass/partials/modules/_about-process.scss */
+.graph-process-understand-svg {
+  -webkit-transform: scale(0.75, 0.75);
+  -moz-transform: scale(0.75, 0.75);
+  -ms-transform: scale(0.75, 0.75);
+  -o-transform: scale(0.75, 0.75);
+  transform: scale(0.75, 0.75);
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+/* line 76, ../sass/partials/modules/_about-process.scss */
+.graph-process-closer {
+  width: 65%;
+  height: 300%;
+  display: block;
+  position: absolute;
+  top: 30%;
+  right: -70%;
+  z-index: -1;
+  border-radius: 0 1em 0 0;
+  border: 0.5em solid #dfdfe0;
+  border-width: 0.5em 0.5em 0 0;
+  margin-top: 1.5em;
+}
+/* line 85, ../sass/partials/modules/_about-process.scss */
+.graph-process-closer:after {
+  width: 0;
+  height: 0;
+  display: block;
+  border-bottom: 0.75em solid transparent;
+  border-top: 0.75em solid transparent;
+  border-right: 1em solid #dfdfe0;
+  position: absolute;
+  top: -1em;
+  left: -0.75em;
+  content: '';
+}
+/* line 189, ../sass/partials/helpers/_mixins-generic.scss */
+.graph-process-closer:after else {
+  border-right: 0.75em solid #dfdfe0;
+}
+
+/* line 93, ../sass/partials/modules/_about-process.scss */
+.graph-process-measure {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+/* line 97, ../sass/partials/modules/_about-process.scss */
+.graph-process-measure:after {
+  border-radius: 0 0 1em 0;
+  border: 0.5em solid #dfdfe0;
+  border-width: 0 0.5em 0.5em 0;
+  height: 300%;
+  left: auto;
+  right: -70%;
+  width: 65%;
+  bottom: 25%;
+}
+
+/* line 109, ../sass/partials/modules/_about-process.scss */
+.graph-process-improve {
+  position: absolute;
+  top: 52%;
+  right: -16%;
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
   transform: rotate(-90deg);
+  background: #fafafb;
+}
+/* line 114, ../sass/partials/modules/_about-process.scss */
+.graph-process-improve:after {
+  content: none;
 }
 
 /* ------------------------------------------------------

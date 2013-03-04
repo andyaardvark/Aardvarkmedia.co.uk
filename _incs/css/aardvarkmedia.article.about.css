@@ -1,0 +1,1579 @@
+@charset "CP852";
+/* -------------------------------------- */
+/* IMPORT ALL MODULES                     */
+/* -------------------------------------- */
+/* SASS/COMPASS LIBRARIES */
+/* SETUP: GLOBAL VARS, FONTS */
+/* EASING
+ * ------------------------------------------- */
+/* MODULE OPTIONS
+ * ------------------------------------------- */
+/* VERTICAL RHYTHM
+ * ------------------------------------------- */
+/* GRID
+ * ------------------------------------------- */
+/* IMAGES
+ * ------------------------------------------- */
+/* COLOURS
+ * -------------------------------------------
+ * use colour_name[-state] names instead referring
+ * to usage to minimise their amount and future confusion.
+ * If unavoidable, extend with element or function specific values
+ *
+ * e.g.: $dark-blue, $red-inactive
+ * ------------------------------------------- */
+/* applies to majority of black and near-black elements, e.g. text */
+/* applies to majority of white and near-white elements, e.g. background */
+/* e.g.: logo banner, links/buttons idle colour */
+/* e.g.: top nav hovers */
+/* e.g.: top nav background */
+/* e.g.: links/buttons hover colour */
+/* e.g.: links/buttons active state colour */
+/* used for panel backgrounds, e.g. home twitter feed */
+/* used for panel strokes, e.g. dividers, twitter tooltip border */
+/* ued for panel fills, e.g. ribbon in the work/study case oages */
+/* used for panel backgrounds, e.g. buttons, footer navigation */
+/* used for panel backgrounds, e.g. functional footer */
+/* used for panel backgrounds, e.g. buttons idle */
+/* used for panel backgrounds, e.g. buttons hover */
+/* used for panel backgrounds, e.g. buttons active */
+/* TYPOGRAPHY
+ * ------------------------------------------- */
+/* MISC
+ * ------------------------------------------- */
+/* amount of fading applied when hovering services in top nav*/
+/* ICON FONTS
+ * ------------------------------------------- */
+@font-face {
+  font-family: 'aardvark';
+  src: url("../fonts/aardvark.eot");
+}
+
+@font-face {
+  font-family: 'aardvark';
+  src: url(data:application/x-font-woff;charset=utf-8;base64,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) format("woff"), url(data:application/x-font-ttf;charset=utf-8;base64,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) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+/* Use the following CSS code if you want to have a class per icon */
+/* HELPERS: MIXINS, ANIMATIION DEFINITIONS, MAIN/GENERIC CLASSES AND EXTEND VARIABLES */
+/* Make sure Mixins load last as they may use certain definitions, e.g. clearfix      */
+/* ===================================================================================
+ * Helper Name: Generic Mixins
+ * ===================================================================================
+ * Contains all shorthand mixins.
+ * Introduce per-page/section segmentation for larger projects to reduce filesize.
+ *
+ * Filename convention: _mixins-[section].scss
+ * =================================================================================== */
+/* ------------------------------------------------------
+ * ELEMENT SIZING
+ * ------------------------------------------------------
+ * @desc  sets display type and size
+
+ * @param $w  cssUnit width
+ * @param $h  cssUnit height
+ * @param $d  string  display-type
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: ELEMENT SIZING
+ * ------------------------------------------------------
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * FONT STYLING SHORTHAND
+ * ------------------------------------------------------
+ * @desc  Use sparringly.
+ *        Idealy go with 'font' or vertical-rhythm mixins
+
+ * @param $fs   cssUnit font-size
+ * @param $lh   cssUnit line-height
+ * @param $fw   cssUnit font-weight
+ * @param $fst  cssUnit font-style
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: FONT STYLING SHORTHAND
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * POSITIONING
+ * ------------------------------------------------------
+ * @desc  positions element absolutely, relatively or as a fixed element
+
+ * @param $t  cssUnit top
+ * @param $r  cssUnit right
+ * @param $b  cssUnit bottom
+ * @param $l  cssUnit left
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: POSITIONING
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ANIMATE
+ * ------------------------------------------------------
+ * @desc  Add Compass support for CSS animation.
+ *        PLEASE NOTE: enable prefixes as required by the target audience.
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: ANIMATE
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * TRIANGLE
+ * ------------------------------------------------------
+ * @desc  Renders a CSS triangle.
+
+ * @param $direction  string[up, left, right, bottom]
+ * @param $color      hexValue
+ * @param $size       cssUnit[px, em, rem]
+ * @param $height     cssUnit[px, em, rem] set to stretch or shrink the base of the triangle
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: TRIANGLE
+ * ------------------------------------------------------
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * GRADIENTS
+ * ------------------------------------------------------
+ * @desc  Renders a CSS gradient.
+ *
+ *
+ * @param $startColor colour value
+ * @param $endColor   colour value
+ * @param $direction  [num]deg
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: GRADIENTS
+ * ------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * COLUMNISE LIST
+ * ------------------------------------------------------
+ * @desc  Transforms <li> into a dynamically sized, table-like elements.
+
+ * @param $c integer:
+ *    1           : all <li>s are 100% wide.
+ *    2           : all <li>s are at filling half of the available columns' width.
+ *    3 [optional]: all <li>s are filling 30% of the total width, with 5% of the gutter.
+ *    0           : all elements are inlined. Widths are set automatically.
+ *
+ * @param $ib boolean: should everything be inline-block and no floats?
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: COLUMNISE LIST
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * NUMERIC COLOURED LIST
+ * ------------------------------------------------------
+ * @desc  Removes <li> numeration and introduces it back to :before pasudoelements to allow for custom styling
+
+ * @param $el parent of :before
+ * ------------------------------------------------------ */
+/* line 434, ../sass/partials/helpers/_mixins-generic.scss */
+.numericColouredList {
+  list-style-type: none;
+}
+/* line 422, ../sass/partials/helpers/_mixins-generic.scss */
+.numericColouredList li {
+  counter-increment: level1;
+}
+/* line 426, ../sass/partials/helpers/_mixins-generic.scss */
+.numericColouredList li:before {
+  content: counter(level1, decimal) ". ";
+  position: absolute;
+  color: #cd2729;
+}
+
+/* ------------------------------------------------------
+ * PLACEHOLDER
+ * ------------------------------------------------------
+ * @desc  allows styling of placeholder text
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * ENDOF: PLACEHOLDER
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * BROWSER SPECIFIC SELECTORS
+ * ------------------------------------------------------ */
+/* fixes 3D transform flickering in Webkits */
+/* target mobile devices—please note this is a very generous assumption */
+/* ------------------------------------------------------
+ * ENDOF: BROWSER SPECIFIC SELECTORS
+ * ------------------------------------------------------ */
+/* Mixins =================================================== */
+/* ===================================================================================
+ * Module Name: About Process Graph Styles
+ * =================================================================================== */
+/* ===================================================================================
+ * Module Name: About: Hexagon Grid
+ * =================================================================================== */
+/* ===================================================================================
+ * ACCORDION MENU
+ * ===================================================================================
+ * Based on: http://tympanus.net/codrops/2012/02/21/accordion-with-css3/
+ * =================================================================================== */
+/* line 9, ../sass/partials/modules/accordion/_default.scss */
+.accordion {
+  width: 100%;
+}
+
+/* line 18, ../sass/partials/modules/accordion/_default.scss */
+.no-js .accordion input[type="radio"]:checked + .accordion-content-wrapper .accordion-content {
+  height: auto;
+}
+
+/* line 33, ../sass/partials/modules/accordion/_default.scss */
+input[type="radio"]:checked + .accordion-content-wrapper .accordion-header {
+  color: #cd2729;
+}
+
+/* line 41, ../sass/partials/modules/accordion/_default.scss */
+.accordion-content-wrapper {
+  text-align: left;
+  position: relative;
+  width: 100%;
+}
+
+/* line 49, ../sass/partials/modules/accordion/_default.scss */
+.accordion-header {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  font-size: 1.5em;
+  line-height: 2em;
+  -webkit-transition: color 0.7s ease;
+  -moz-transition: color 0.7s ease;
+  -ms-transition: color 0.7s ease;
+  -o-transition: color 0.7s ease;
+  transition: color 0.7s ease;
+  position: relative;
+  z-index: 20;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+/* line 7, C:/__wamp/bin/ruby/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/css3/_inline-block.scss */
+.accordion-header {
+  *display: inline;
+}
+/* line 59, ../sass/partials/modules/accordion/_default.scss */
+.accordion-header:hover {
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  color: #cd2729;
+}
+/* line 64, ../sass/partials/modules/accordion/_default.scss */
+.accordion-header:active {
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  color: #ef292b;
+}
+/* line 69, ../sass/partials/modules/accordion/_default.scss */
+.accordion-header label {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float: none;
+  padding: 0 1em;
+  margin: 0;
+  width: 100%;
+}
+/* line 7, C:/__wamp/bin/ruby/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/css3/_inline-block.scss */
+.accordion-header label {
+  *display: inline;
+}
+
+/* line 80, ../sass/partials/modules/accordion/_default.scss */
+.accordion-content {
+  -webkit-transition: height 0.5s ease;
+  -moz-transition: height 0.5s ease;
+  -ms-transition: height 0.5s ease;
+  -o-transition: height 0.5s ease;
+  transition: height 0.5s ease;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  height: 0;
+}
+
+/* line 89, ../sass/partials/modules/accordion/_default.scss */
+.mzr-js .accordion-content {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: absolute;
+  left: -9999px;
+  height: auto;
+  width: 100%;
+}
+/* line 96, ../sass/partials/modules/accordion/_default.scss */
+.mzr-js .accordion-content.visible {
+  position: relative;
+  left: 0;
+  height: 0;
+}
+
+/* ===================================================================================
+ * Module Name: About Process Graph Styles
+ * =================================================================================== */
+/* -------------------------------------- */
+/* -------------------------------------- */
+/* INIT AND MANAGE ALL MODULES            */
+/* -------------------------------------- */
+/* ------------------------------------------------------
+ * GENERIC
+ * ------------------------------------------------------ */
+/* line 15, ../sass/partials/modules/_about-process.scss */
+.about-process-graph {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  /*&:before{
+  	@include dim(58%, 71.25%);
+  	@include abs($b:48px, $l:27%);
+  	border        : .5em solid $grey-light;
+  	content       : '';
+  	border-radius : 1em;
+  	z-index       : -1;
+  	padding       : 4em 0 60px;
+  }*/
+}
+/* line 30, ../sass/partials/modules/_about-process.scss */
+.about-process-graph svg {
+  position: relative;
+  left: -0.5em;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+/* line 36, ../sass/partials/modules/_about-process.scss */
+.about-process-graph svg:after {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  background: red;
+}
+
+/* line 47, ../sass/partials/modules/_about-process.scss */
+.graph-process-icon {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 55%;
+  height: auto;
+  display: block;
+  float: left;
+  padding: 0.25em 0 0.25em 1em;
+  margin-bottom: 3em;
+  text-align: center;
+  position: relative;
+}
+/* line 56, ../sass/partials/modules/_about-process.scss */
+.graph-process-icon:before {
+  margin-left: -1em;
+}
+/* line 60, ../sass/partials/modules/_about-process.scss */
+.graph-process-icon:after {
+  width: 0;
+  height: 2.5em;
+  display: block;
+  position: absolute;
+  bottom: -2.75em;
+  left: 50%;
+  border-left: 0.5em solid #dfdfe0;
+  content: '';
+  z-index: -1;
+}
+
+/* line 71, ../sass/partials/modules/_about-process.scss */
+.graph-process-understand {
+  margin-bottom: 1em;
+}
+/* line 74, ../sass/partials/modules/_about-process.scss */
+.graph-process-understand:after {
+  bottom: -.75em;
+}
+
+/* line 79, ../sass/partials/modules/_about-process.scss */
+.graph-process-understand-svg {
+  -webkit-transform: scale(0.75, 0.75);
+  -moz-transform: scale(0.75, 0.75);
+  -ms-transform: scale(0.75, 0.75);
+  -o-transform: scale(0.75, 0.75);
+  transform: scale(0.75, 0.75);
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+/* line 84, ../sass/partials/modules/_about-process.scss */
+.graph-process-closer {
+  width: 65%;
+  height: 300%;
+  display: block;
+  position: absolute;
+  top: 30%;
+  right: -70%;
+  z-index: -1;
+  border-radius: 0 1em 0 0;
+  border: 0.5em solid #dfdfe0;
+  border-width: 0.5em 0.5em 0 0;
+  margin-top: 1.5em;
+}
+/* line 93, ../sass/partials/modules/_about-process.scss */
+.graph-process-closer:after {
+  width: 0;
+  height: 0;
+  display: block;
+  border-bottom: 0.75em solid transparent;
+  border-top: 0.75em solid transparent;
+  border-right: 1em solid #dfdfe0;
+  position: absolute;
+  top: -1em;
+  left: -0.75em;
+  content: '';
+}
+/* line 189, ../sass/partials/helpers/_mixins-generic.scss */
+.graph-process-closer:after else {
+  border-right: 0.75em solid #dfdfe0;
+}
+
+/* line 101, ../sass/partials/modules/_about-process.scss */
+.graph-process-measure {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+/* line 105, ../sass/partials/modules/_about-process.scss */
+.graph-process-measure:after {
+  border-radius: 0 0 1em 0;
+  border: 0.5em solid #dfdfe0;
+  border-width: 0 0.5em 0.5em 0;
+  height: 300%;
+  left: auto;
+  right: -70%;
+  width: 65%;
+  bottom: 25%;
+}
+
+/* line 117, ../sass/partials/modules/_about-process.scss */
+.graph-process-improve {
+  position: absolute;
+  top: 52%;
+  right: -16%;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  background: #fafafb;
+}
+/* line 122, ../sass/partials/modules/_about-process.scss */
+.graph-process-improve:after {
+  content: none;
+}
+
+/* ------------------------------------------------------
+ * ENDOF: GENERIC
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * GENERIC
+ * ------------------------------------------------------ */
+/* line 17, ../sass/partials/modules/_about-hexagonGrid.scss */
+.gridHex {
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  width: 96%;
+  text-align: center;
+  overflow: hidden;
+  list-style: none;
+}
+
+/* line 27, ../sass/partials/modules/_about-hexagonGrid.scss */
+.gridHex-entry {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  width: 100%;
+  list-style: none;
+  height: auto;
+  position: relative;
+}
+/* line 7, C:/__wamp/bin/ruby/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/css3/_inline-block.scss */
+.gridHex-entry {
+  *display: inline;
+}
+
+/* line 36, ../sass/partials/modules/_about-hexagonGrid.scss */
+.gridHex-thumb {
+  -webkit-transform: rotate(120deg);
+  -moz-transform: rotate(120deg);
+  -ms-transform: rotate(120deg);
+  -o-transform: rotate(120deg);
+  transform: rotate(120deg);
+  width: 150px;
+  height: 300px;
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  overflow: hidden;
+  visibility: hidden;
+  cursor: pointer;
+  margin: -62px 0 -50px 0;
+}
+/* line 7, C:/__wamp/bin/ruby/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/css3/_inline-block.scss */
+.gridHex-thumb {
+  *display: inline;
+}
+
+/* line 46, ../sass/partials/modules/_about-hexagonGrid.scss */
+.gridHex-entry-inner1 {
+  -webkit-transform: rotate(-60deg);
+  -moz-transform: rotate(-60deg);
+  -ms-transform: rotate(-60deg);
+  -o-transform: rotate(-60deg);
+  transform: rotate(-60deg);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 53, ../sass/partials/modules/_about-hexagonGrid.scss */
+.gridHex-entry-inner2 {
+  -webkit-transform: rotate(-60deg);
+  -moz-transform: rotate(-60deg);
+  -ms-transform: rotate(-60deg);
+  -o-transform: rotate(-60deg);
+  transform: rotate(-60deg);
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: auto 180px;
+  position: relative;
+  visibility: visible;
+  overflow: hidden;
+}
+
+/* line 65, ../sass/partials/modules/_about-hexagonGrid.scss */
+.gridHex-entry-overlay-fill {
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+  background: #cd2729;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+/* line 75, ../sass/partials/modules/_about-hexagonGrid.scss */
+.gridHex-overlay {
+  width: 90%;
+  padding: 0 5%;
+  max-width: 90%;
+}
+/* line 80, ../sass/partials/modules/_about-hexagonGrid.scss */
+.gridHex-overlay h3 {
+  font: 300 1.35em/1.2em "museo", Georgia, Times, "Times New Roman";
+  margin: 0;
+  text-transform: capitalize;
+}
+/* line 86, ../sass/partials/modules/_about-hexagonGrid.scss */
+.gridHex-overlay h4 {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+/* line 93, ../sass/partials/modules/_about-hexagonGrid.scss */
+.gridHex-overlay p {
+  margin-top: 0;
+}
+
+/* line 103, ../sass/partials/modules/_about-hexagonGrid.scss */
+.mzr-no-touch .gridHex-entry-inner2:hover .gridHex-entry-overlay-fill {
+  opacity: .8;
+}
+/* line 107, ../sass/partials/modules/_about-hexagonGrid.scss */
+.mzr-no-touch .gridHex-entry {
+  -webkit-perspective-origin: 50% 50%;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(1px);
+}
+/* line 111, ../sass/partials/modules/_about-hexagonGrid.scss */
+.mzr-no-touch .gridHex-overlay {
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 150px;
+  height: 98px;
+  color: white;
+  opacity: 0;
+  text-align: center;
+  padding: 0 1em;
+  pointer-events: none;
+  margin-left: -75px;
+  max-width: none;
+}
+/* line 125, ../sass/partials/modules/_about-hexagonGrid.scss */
+.mzr-no-touch .gridHex-overlay.visible {
+  opacity: 1;
+}
+/* line 129, ../sass/partials/modules/_about-hexagonGrid.scss */
+.mzr-no-touch .gridHex-overlay:before {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  content: '';
+  height: 100%;
+}
+/* line 7, C:/__wamp/bin/ruby/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/css3/_inline-block.scss */
+.mzr-no-touch .gridHex-overlay:before {
+  *display: inline;
+}
+/* line 135, ../sass/partials/modules/_about-hexagonGrid.scss */
+.mzr-no-touch .gridHex-overlay h3 {
+  font: 300 1.35em/1.2em "museo", Georgia, Times, "Times New Roman";
+}
+/* line 139, ../sass/partials/modules/_about-hexagonGrid.scss */
+.mzr-no-touch .gridHex-overlay h4 {
+  font-size: 0.875em;
+  line-height: 1.25em;
+  padding-bottom: 1em;
+  position: relative;
+  font-weight: 400;
+}
+/* line 146, ../sass/partials/modules/_about-hexagonGrid.scss */
+.mzr-no-touch .gridHex-overlay h4:after {
+  width: 80%;
+  height: 0;
+  display: block;
+  position: absolute;
+  bottom: 0.5em;
+  left: 10%;
+  content: '';
+  border-bottom: 1px dotted white;
+}
+/* line 154, ../sass/partials/modules/_about-hexagonGrid.scss */
+.mzr-no-touch .gridHex-overlay p {
+  margin: 0;
+  font-size: 0.875em;
+  line-height: 1.25em;
+}
+/* line 161, ../sass/partials/modules/_about-hexagonGrid.scss */
+.mzr-no-touch .gridHex-overlay-content {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  height: auto;
+}
+/* line 7, C:/__wamp/bin/ruby/lib/ruby/gems/1.9.1/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/css3/_inline-block.scss */
+.mzr-no-touch .gridHex-overlay-content {
+  *display: inline;
+}
+
+/* ------------------------------------------------------
+ * ENDOF: GENERIC
+ * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * GENERIC
+ * ------------------------------------------------------ */
+/* line 15, ../sass/partials/modules/_about-accordion.scss */
+.about-reasons {
+  margin-left: 0;
+  padding-left: 2em;
+}
+/* line 19, ../sass/partials/modules/_about-accordion.scss */
+.about-reasons li {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-bottom: 1.5em;
+}
+/* line 25, ../sass/partials/modules/_about-accordion.scss */
+.about-reasons label {
+  padding-left: 0;
+  font-weight: inherit;
+}
+
+/* line 33, ../sass/partials/modules/_about-accordion.scss */
+.accordion-header {
+  font: 300 1em/1.3em "museo", Georgia, Times, "Times New Roman";
+  text-transform: capitalize;
+  vertical-align: top;
+}
+
+/* ------------------------------------------------------
+ * ENDOF: GENERIC
+ * ------------------------------------------------------ */
+@media only screen and (min-width: 320px) {
+  /* ------------------------------------------------------
+   * 320
+   * ------------------------------------------------------ */
+  /* line 146, ../sass/partials/modules/_about-process.scss */
+  .graph-process-understand-svg {
+    -webkit-transform-origin: 40% 0;
+    -moz-transform-origin: 40% 0;
+    -ms-transform-origin: 40% 0;
+    -o-transform-origin: 40% 0;
+    transform-origin: 40% 0;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 320
+   * ------------------------------------------------------ */
+  /* ------------------------------------------------------
+   * 320
+   * ------------------------------------------------------ */
+  /* line 190, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex {
+    width: 226px;
+    text-align: left;
+    padding-bottom: 44px;
+  }
+  /* line 196, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry {
+    margin-bottom: -50px;
+  }
+  /* line 200, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry:nth-child(even) {
+    margin-left: 76px;
+  }
+  /* line 204, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-overlay {
+    left: 0;
+    margin-left: 0;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 320
+   * ------------------------------------------------------ */
+}
+@media only screen and (min-width: 480px) {
+  /* ------------------------------------------------------
+   * 480
+   * ------------------------------------------------------ */
+  /* line 173, ../sass/partials/modules/_about-process.scss */
+  .about-process-graph:before {
+    border-top: 0;
+    border-radius: 1em 0 1em 1em;
+    height: 49%;
+    left: 20%;
+    width: 56%;
+  }
+
+  /* line 181, ../sass/partials/modules/_about-process.scss */
+  .graph-process-icon {
+    padding: 0.25em 0;
+    width: 40%;
+    display: block;
+    clear: both;
+  }
+  /* line 187, ../sass/partials/modules/_about-process.scss */
+  .graph-process-icon svg {
+    padding: 0;
+  }
+  /* line 191, ../sass/partials/modules/_about-process.scss */
+  .graph-process-icon .graph-process-understand-svg {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+    margin-top: -.5em;
+  }
+
+  /* line 198, ../sass/partials/modules/_about-process.scss */
+  .graph-process-understand {
+    margin-bottom: 2.75em;
+  }
+  /* line 201, ../sass/partials/modules/_about-process.scss */
+  .graph-process-understand:after {
+    bottom: -2.5em;
+  }
+
+  /* line 206, ../sass/partials/modules/_about-process.scss */
+  .graph-process-closer {
+    border-bottom: 0;
+    top: 37%;
+    height: 0;
+    right: -83%;
+  }
+
+  /* line 213, ../sass/partials/modules/_about-process.scss */
+  .graph-process-create-iterate {
+    margin-bottom: 3em;
+  }
+  /* line 216, ../sass/partials/modules/_about-process.scss */
+  .graph-process-create-iterate:after {
+    border: 0.5em solid #dfdfe0;
+    border-radius: 0 0 1em 1em;
+    border-width: 0 0.5em 0.5em 0.5em;
+    width: 150%;
+  }
+
+  /* line 224, ../sass/partials/modules/_about-process.scss */
+  .graph-process-deploy {
+    position: absolute;
+    right: 0;
+    bottom: 3em;
+    margin-bottom: 0;
+  }
+  /* line 228, ../sass/partials/modules/_about-process.scss */
+  .graph-process-deploy:after {
+    bottom: auto;
+    top: -2.5em;
+  }
+
+  /* line 234, ../sass/partials/modules/_about-process.scss */
+  .graph-process-measure {
+    position: absolute;
+    right: 0;
+    bottom: 203px;
+    margin-bottom: 3em;
+  }
+  /* line 238, ../sass/partials/modules/_about-process.scss */
+  .graph-process-measure:after {
+    border-left: 0.5em solid #dfdfe0;
+    border-width: 0 0 0 0.5em;
+    bottom: auto;
+    top: -4em;
+    height: 4em;
+    left: 50%;
+    right: auto;
+    width: 0;
+  }
+
+  /* line 250, ../sass/partials/modules/_about-process.scss */
+  .graph-process-improve {
+    right: 0;
+    top: 4em;
+    transform: none;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 480
+   * ------------------------------------------------------ */
+  /* ------------------------------------------------------
+   * 480
+   * ------------------------------------------------------ */
+  /* line 236, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-entry {
+    width: 48%;
+  }
+
+  /* line 240, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-entry:nth-child(odd) {
+    clear: both;
+    margin-right: 4%;
+  }
+
+  /* line 249, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex {
+    width: 466px;
+  }
+  /* line 253, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry {
+    width: 150px;
+  }
+  /* line 259, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry,
+  .mzr-no-touch .gridHex-entry:nth-child(odd),
+  .mzr-no-touch .gridHex-entry:nth-child(even) {
+    margin: 0 0 -54px 4px;
+  }
+  /* line 263, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry:nth-child(5n+4) {
+    margin-left: 81px;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 480
+   * ------------------------------------------------------ */
+  /* ------------------------------------------------------
+   * 480
+   * ------------------------------------------------------ */
+  /* line 83, ../sass/partials/modules/_about-accordion.scss */
+  .about-reasons {
+    list-style-type: none;
+  }
+  /* line 422, ../sass/partials/helpers/_mixins-generic.scss */
+  .about-reasons li {
+    counter-increment: level1;
+  }
+  /* line 426, ../sass/partials/helpers/_mixins-generic.scss */
+  .about-reasons label:before {
+    content: counter(level1, decimal) ". ";
+    position: absolute;
+    -webkit-transition: background 0.3s ease;
+    -moz-transition: background 0.3s ease;
+    -ms-transition: background 0.3s ease;
+    -o-transition: background 0.3s ease;
+    transition: background 0.3s ease;
+    color: #1b1e1f;
+    font: 300 1em/1.3em "museo", Georgia, Times, "Times New Roman";
+    background: #575b61;
+    color: white;
+    text-align: center;
+    width: 1.5em;
+    left: -1.5em;
+  }
+  /* line 95, ../sass/partials/modules/_about-accordion.scss */
+  .about-reasons label {
+    padding-left: .5em;
+  }
+
+  /* line 101, ../sass/partials/modules/_about-accordion.scss */
+  [name="accordion-reasons"]:checked + .accordion-content-wrapper label:before {
+    background: #cd2729;
+    color: white;
+  }
+
+  /* line 107, ../sass/partials/modules/_about-accordion.scss */
+  .accordion-content {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: .5em;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 480
+   * ------------------------------------------------------ */
+}
+@media only screen and (min-width: 640px) {
+  /* ------------------------------------------------------
+   * 640
+   * ------------------------------------------------------ */
+  /* line 276, ../sass/partials/modules/_about-process.scss */
+  .graph-process-icon {
+    clear: none;
+    padding-left: 1em;
+    width: 30%;
+    margin-bottom: 6em;
+  }
+  /* line 282, ../sass/partials/modules/_about-process.scss */
+  .graph-process-icon:after {
+    border-top: 0.5em solid #dfdfe0;
+    border-left: 0;
+    bottom: 40%;
+    height: 0;
+    left: auto;
+    right: -30%;
+    width: 35%;
+  }
+
+  /* line 294, ../sass/partials/modules/_about-process.scss */
+  .graph-process-understand,
+  .graph-process-plan {
+    margin-right: 5%;
+  }
+
+  /* line 298, ../sass/partials/modules/_about-process.scss */
+  .graph-process-closer {
+    border-radius: 0;
+    border-left: 0.5em solid #dfdfe0;
+    border-width: 0 0 0 0.5em;
+    bottom: -10em;
+    height: 9em;
+    right: 45%;
+    top: auto;
+    width: 0;
+  }
+  /* line 308, ../sass/partials/modules/_about-process.scss */
+  .graph-process-closer:after {
+    border-left: 0.75em solid transparent;
+    border-bottom: 1em solid #dfdfe0;
+    border-right: 0.75em solid transparent;
+    border-top: 0;
+    left: -1em;
+  }
+
+  /* line 318, ../sass/partials/modules/_about-process.scss */
+  .graph-process-plan:after {
+    right: -28%;
+    width: 40%;
+  }
+
+  /* line 325, ../sass/partials/modules/_about-process.scss */
+  .graph-process-create-iterate:after {
+    border-left: 0.5em solid #dfdfe0;
+    border-width: 0 0 0 0.5em;
+    border-radius: 0;
+    bottom: -5.5em;
+    height: 5em;
+    right: 47%;
+    width: 0;
+  }
+
+  /* line 338, ../sass/partials/modules/_about-process.scss */
+  .graph-process-deploy,
+  .graph-process-measure,
+  .graph-process-improve {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    float: right;
+    margin-bottom: 0;
+  }
+
+  /* line 345, ../sass/partials/modules/_about-process.scss */
+  .graph-process-deploy,
+  .graph-process-measure {
+    margin-left: 5%;
+  }
+  /* line 348, ../sass/partials/modules/_about-process.scss */
+  .graph-process-deploy:after,
+  .graph-process-measure:after {
+    right: auto;
+    left: -25%;
+    top: auto;
+  }
+
+  /* line 356, ../sass/partials/modules/_about-process.scss */
+  .graph-process-deploy:after {
+    left: -26%;
+    width: 40%;
+  }
+
+  /* line 363, ../sass/partials/modules/_about-process.scss */
+  .graph-process-measure:after {
+    width: 40%;
+    left: -33%;
+  }
+
+  /* line 369, ../sass/partials/modules/_about-process.scss */
+  .graph-process-improve {
+    margin-right: 5%;
+    top: 4.25em;
+    width: 20%;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 640
+   * ------------------------------------------------------ */
+  /* ------------------------------------------------------
+   * 640
+   * ------------------------------------------------------ */
+  /* line 294, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-entry {
+    width: 31%;
+    margin-right: 0;
+    margin-left: 3.5%;
+  }
+  /* line 299, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-entry:nth-child(odd) {
+    clear: none;
+    margin-right: 0;
+    margin-left: 3.5%;
+  }
+  /* line 305, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-entry:nth-child(3n+1) {
+    clear: both;
+    margin-left: 0;
+  }
+
+  /* line 316, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex {
+    width: 544px;
+  }
+  /* line 320, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry {
+    width: 150px;
+  }
+  /* line 327, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry,
+  .mzr-no-touch .gridHex-entry:nth-child(odd),
+  .mzr-no-touch .gridHex-entry:nth-child(even),
+  .mzr-no-touch .gridHex-entry:nth-child(5n+4) {
+    margin: 0 0 -54px 4px;
+  }
+  /* line 331, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry:nth-child(6n+4) {
+    margin-left: 81px;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 640
+   * ------------------------------------------------------ */
+  /* ------------------------------------------------------
+   * 640
+   * ------------------------------------------------------ */
+  /* line 133, ../sass/partials/modules/_about-accordion.scss */
+  .accordion-content {
+    padding-left: 0.75em;
+  }
+
+  /* line 137, ../sass/partials/modules/_about-accordion.scss */
+  .accordion-header {
+    font-size: 1.25em;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 640
+   * ------------------------------------------------------ */
+}
+@media only screen and (min-width: 768px) {
+  /* ------------------------------------------------------
+   * 768
+   * ------------------------------------------------------ */
+  /* line 403, ../sass/partials/modules/_about-process.scss */
+  .graph-process-icon:after {
+    right: -35%;
+    width: 45%;
+  }
+
+  /* line 408, ../sass/partials/modules/_about-process.scss */
+  .graph-process-plan:after {
+    right: -35%;
+    width: 53%;
+  }
+
+  /* line 413, ../sass/partials/modules/_about-process.scss */
+  .graph-process-deploy:after {
+    left: -31%;
+    width: 48%;
+  }
+
+  /* line 418, ../sass/partials/modules/_about-process.scss */
+  .graph-process-create-iterate:after {
+    right: 2%;
+  }
+
+  /* line 422, ../sass/partials/modules/_about-process.scss */
+  .graph-process-improve {
+    float: left;
+    margin: 0 0 0 10%;
+    padding: 0.25em 1.25em;
+    top: 4.25em;
+    width: auto;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 768
+   * ------------------------------------------------------ */
+  /* ------------------------------------------------------
+   * 768
+   * ------------------------------------------------------ */
+  /* line 364, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-thumb {
+    width: 200px;
+    height: 400px;
+    margin: -80px 0 -50px 0;
+  }
+
+  /* line 370, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-entry-inner2 {
+    background-size: auto 235px;
+  }
+
+  /* line 376, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex {
+    width: 734px;
+    padding-bottom: 62px;
+  }
+  /* line 381, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry {
+    width: 200px;
+  }
+  /* line 388, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry,
+  .mzr-no-touch .gridHex-entry:nth-child(odd),
+  .mzr-no-touch .gridHex-entry:nth-child(even),
+  .mzr-no-touch .gridHex-entry:nth-child(5n+4) {
+    margin: 0 0 -90px 8px;
+  }
+  /* line 392, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry:nth-child(6n+4) {
+    margin-left: 112px;
+  }
+  /* line 396, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-overlay {
+    height: 125px;
+    top: 57px;
+    width: 200px;
+  }
+  /* line 401, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-overlay:before {
+    height: 100%;
+    width: 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 768
+   * ------------------------------------------------------ */
+  /* ------------------------------------------------------
+   * 768
+   * ------------------------------------------------------ */
+  /* line 167, ../sass/partials/modules/_about-accordion.scss */
+  .about-reasons {
+    padding: 0 8%;
+  }
+
+  /* line 171, ../sass/partials/modules/_about-accordion.scss */
+  .accordion-header {
+    font-size: 1.375em;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 768
+   * ------------------------------------------------------ */
+}
+@media only screen and (min-width: 960px) {
+  /* ------------------------------------------------------
+   * 960
+   * ------------------------------------------------------ */
+  /* line 468, ../sass/partials/modules/_about-process.scss */
+  .graph-process-icon {
+    float: left;
+    margin: 0;
+    width: 15%;
+    margin-right: 6.75%;
+    margin-bottom: 1.5em;
+  }
+
+  /* line 476, ../sass/partials/modules/_about-process.scss */
+  .graph-process-understand:after {
+    right: -46%;
+    width: 40%;
+  }
+
+  /* line 481, ../sass/partials/modules/_about-process.scss */
+  .graph-process-icon .graph-process-understand-svg {
+    -webkit-transform: scale(0.8, 0.8);
+    -moz-transform: scale(0.8, 0.8);
+    -ms-transform: scale(0.8, 0.8);
+    -o-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8);
+    -webkit-transform-origin: 0 0 0;
+    -moz-transform-origin: 0 0 0;
+    -ms-transform-origin: 0 0 0;
+    -o-transform-origin: 0 0 0;
+    transform-origin: 0 0 0;
+    margin-top: 0;
+  }
+
+  /* line 488, ../sass/partials/modules/_about-process.scss */
+  .graph-process-closer {
+    border: 0.5em solid #dfdfe0;
+    border-width: 0 0.5em 0.5em 0.5em;
+    border-radius: 0 0 1em 1em;
+    bottom: -4em;
+    height: 3em;
+    left: 50%;
+    width: 553%;
+  }
+
+  /* line 502, ../sass/partials/modules/_about-process.scss */
+  .graph-process-plan:after {
+    right: -39%;
+    width: 40%;
+  }
+
+  /* line 508, ../sass/partials/modules/_about-process.scss */
+  .graph-process-create-iterate {
+    margin: 0 3% 0 -3%;
+    width: 19%;
+  }
+  /* line 512, ../sass/partials/modules/_about-process.scss */
+  .graph-process-create-iterate:after {
+    border-top: 0.5em solid #dfdfe0;
+    border-left: 0;
+    bottom: 40%;
+    height: 0;
+    right: -19%;
+    width: 31%;
+  }
+
+  /* line 522, ../sass/partials/modules/_about-process.scss */
+  .graph-process-deploy:after {
+    left: auto;
+    right: -47%;
+    width: 42%;
+  }
+
+  /* line 528, ../sass/partials/modules/_about-process.scss */
+  .graph-process-measure:after {
+    content: none;
+  }
+
+  /* line 533, ../sass/partials/modules/_about-process.scss */
+  .graph-process-measure {
+    margin-right: 0;
+  }
+
+  /* line 540, ../sass/partials/modules/_about-process.scss */
+  .graph-process-improve {
+    bottom: -1.25em;
+    left: 42%;
+    top: auto;
+    padding: 0.25em 1.25em 0.25em 2em;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 960
+   * ------------------------------------------------------ */
+  /* ------------------------------------------------------
+   * 960
+   * ------------------------------------------------------ */
+  /* line 450, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-entry {
+    width: 22.75%;
+    margin-right: 0;
+    margin-left: 3%;
+  }
+
+  /* line 457, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-thumb {
+    width: 180px;
+    height: 360px;
+    margin-bottom: -65px;
+  }
+
+  /* line 466, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-entry:nth-child(odd), .gridHex-entry:nth-child(3n+1) {
+    clear: none;
+    margin-right: 0;
+    margin-left: 3%;
+  }
+  /* line 472, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-entry:nth-child(4n+1) {
+    clear: both;
+    margin-left: 0;
+  }
+
+  /* line 479, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-entry-inner2 {
+    background-size: auto 210px;
+  }
+
+  /* line 488, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex {
+    width: 960px;
+    padding-bottom: 62px;
+  }
+  /* line 493, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry {
+    width: 230px;
+  }
+  /* line 500, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry, .mzr-no-touch .gridHex-entry:nth-child(odd), .mzr-no-touch .gridHex-entry:nth-child(even), .mzr-no-touch .gridHex-entry:nth-child(5n+4), .mzr-no-touch .gridHex-entry:nth-child(6n+4) {
+    margin: 0 0 -105px 12px;
+  }
+  /* line 504, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry:nth-child(7n+1) {
+    margin-left: 0;
+  }
+  /* line 508, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry:nth-child(7n+5) {
+    margin-left: 121px;
+  }
+  /* line 513, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-thumb {
+    width: 230px;
+    height: 460px;
+    margin: -96px 0 -50px 0;
+  }
+  /* line 519, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry-inner2 {
+    background-size: auto 266px;
+  }
+  /* line 524, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-overlay {
+    height: 165px;
+    top: 52px;
+    width: 230px;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 960
+   * ------------------------------------------------------ */
+}
+@media only screen and (min-width: 1100px) {
+  /* ------------------------------------------------------
+   * 1100
+   * ------------------------------------------------------ */
+  /* line 568, ../sass/partials/modules/_about-process.scss */
+  .graph-process-icon .graph-process-understand-svg {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+    margin-top: -.5em;
+  }
+
+  /* line 575, ../sass/partials/modules/_about-process.scss */
+  .graph-process-understand {
+    width: 15.75%;
+  }
+  /* line 578, ../sass/partials/modules/_about-process.scss */
+  .graph-process-understand:after {
+    right: -49%;
+    width: 48%;
+  }
+
+  /* line 584, ../sass/partials/modules/_about-process.scss */
+  .graph-process-closer {
+    bottom: -4.5em;
+    height: 2.5em;
+    width: 528%;
+  }
+
+  /* line 590, ../sass/partials/modules/_about-process.scss */
+  .graph-process-plan:after {
+    right: -46%;
+    width: 52%;
+  }
+
+  /* line 595, ../sass/partials/modules/_about-process.scss */
+  .graph-process-create-iterate:after {
+    right: -23%;
+    width: 40%;
+  }
+
+  /* line 600, ../sass/partials/modules/_about-process.scss */
+  .graph-process-deploy:after {
+    right: -51%;
+    width: 55%;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 1100
+   * ------------------------------------------------------ */
+}
+@media only screen and (min-width: 1248px) {
+  /* ------------------------------------------------------
+   * 1200
+   * ------------------------------------------------------ */
+  /* line 553, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex {
+    width: 1200px;
+  }
+
+  /* line 557, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-entry {
+    width: 22.75%;
+    margin-right: 0;
+    margin-left: 3%;
+  }
+
+  /* line 563, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-thumb {
+    width: 200px;
+    height: 400px;
+    margin-bottom: -80px;
+  }
+
+  /* line 569, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-entry-inner2 {
+    background-size: auto 230px;
+  }
+
+  /* line 574, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .gridHex-overlay p {
+    font-size: 0.875em;
+  }
+
+  /* line 580, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex {
+    width: 1230px;
+    padding-bottom: 62px;
+  }
+  /* line 593, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry, .mzr-no-touch .gridHex-entry:nth-child(odd), .mzr-no-touch .gridHex-entry:nth-child(even), .mzr-no-touch .gridHex-entry:nth-child(5n+4), .mzr-no-touch .gridHex-entry:nth-child(6n+4), .mzr-no-touch .gridHex-entry:nth-child(7n+1), .mzr-no-touch .gridHex-entry:nth-child(7n+5) {
+    margin: 0 0 -95px 20px;
+  }
+  /* line 597, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry:nth-child(9n+1) {
+    margin-left: 0;
+  }
+  /* line 602, ../sass/partials/modules/_about-hexagonGrid.scss */
+  .mzr-no-touch .gridHex-entry:nth-child(9n+6) {
+    margin-left: 125px;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 1200
+   * ------------------------------------------------------ */
+  /* ------------------------------------------------------
+   * 1200
+   * ------------------------------------------------------ */
+  /* line 254, ../sass/partials/modules/_about-accordion.scss */
+  .about-reasons {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ------------------------------------------------------
+   * ENDOF: 1200
+   * ------------------------------------------------------ */
+}

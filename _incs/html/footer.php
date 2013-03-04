@@ -169,7 +169,6 @@
 
 
 
-
       <?php if(cgy_get_current_page()==='home'){ ?>
         <!-- SCRIPTS: SECTION: HOME -->
           <script src="/_incs/js/lib/jQuery/royalslider.min.js"></script>
@@ -196,8 +195,9 @@
 
 
 
-      <?php }elseif(is_single() && (get_post_type()==='post' || get_post_type()==='page') ){ ?>
+      <?php }elseif( (is_single() && get_post_type()==='post') || is_page() ){ ?>
         <!-- SCRIPTS: SECTION: BLOG ARTICLE -->
+          <script src="/_incs/js/app/Accordion.js"></script>
           <script src="/_incs/js/aardvarkmedia.<?php echo ucfirst(cgy_get_current_page()); ?>.js"></script>
         <!-- ENDOF: SCRIPTS: SECTION: BLOG ARTICLE -->
 
