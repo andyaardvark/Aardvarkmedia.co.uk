@@ -141,6 +141,7 @@
 					line-height    : 1.25em;
 					padding-bottom : 1em;
 					position       : relative;
+					font-weight    : $baseFont-regular;
 
 					&:after{
 						@include dim(80%, 0);

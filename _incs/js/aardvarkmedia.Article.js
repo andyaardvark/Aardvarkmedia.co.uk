@@ -37,7 +37,7 @@ $(document).ready(function() {
 
 
 
-	/* correct DOM for hovering */
+	/* HEX GRID: manipulate DOM to be ready for hovering on non-touch devices */
 	if(!Modernizr.touch && window.location.pathname.indexOf('/who-we-are')>0){
 
 		$('.gridHex-entry-inner2', $('#about-team-grid')).on('mouseenter mouseleave', function(e){
@@ -51,6 +51,14 @@ $(document).ready(function() {
 			}
 		});
 
+	}
+
+
+
+
+	/* extend accordion menu */
+	if(window.location.pathname.indexOf('/10-reasons')>0){
+		$('#about-reasons').Accordion({duration:300, easing: 'easeOutQuad'});
 	}
 
 

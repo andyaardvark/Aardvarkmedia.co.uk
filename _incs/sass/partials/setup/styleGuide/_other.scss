@@ -105,6 +105,53 @@
 		}
 
 
+
+
+		.bordered{
+			border       : 2px dotted $grey-light;
+			border-width : 2px 0;
+		}
+
+		.bordered-top{
+			border-top : 2px dotted $grey-light;
+		}
+
+		.bordered-bottom{
+			border-bottom : 2px dotted $grey-light;
+		}
+
+
+
+		.padded{
+			padding: 1.5em 0;
+		}
+
+		.padded-top{
+			padding-top:1.5em;
+		}
+
+		.padded-bottom{
+			padding-bottom:1.5em;
+		}
+
+
+		.offset{
+			margin:1.5em 0;
+		}
+
+		.offset-top{
+			margin-top:1.5em;
+		}
+
+		.offset-bottom{
+			margin-bottom:1.5em;
+		}
+
+
+
+
+
+
 		.smiley{
 			padding-right : rhythm(1);
 			position      : relative;
@@ -308,34 +355,56 @@
 
 
 
-%badge-right-yellow{
+%badge-yellow{
 	@include inline-block;
-	padding        : .25em .5em;
+	padding        : .25em 1em;
 	background     : $yellow;
 	width          : auto;
 	color          : $dark-default;
 	position       : relative;
-	font-size      : 1.25em;
-	line-height    : 1.25em;
-	font-variant   : small-caps;
-	text-transform : lowercase;
+	font-size      : 1em;
+	line-height    : 1.75em;
+	text-transform : uppercase;
+	margin         : .5em 0;
 
 	&:before,
 	&:after{
-		@include abs($l:-17px, $t:0);
-		@include dim(17px, 100%);
+		@include abs($l:-1em, $t:0);
+		@include dim(1em, 100%);
 		content         : '';
-		background      : transparent $work-priceTag no-repeat 0 0;
+		background      : transparent $work-priceTag-right no-repeat 0 0;
 		background-size : auto 100%;
 	}
 
 	&:after{
 		left                : auto;
-		right               : -17px;
+		right               : -1em;
 		background-position : right 0;
 	}
 }
 
+.badge-right-yellow{
+	@extend %badge-yellow;
+}
+
+.badge-left-yellow{
+	@extend %badge-yellow;
+
+	&:before,
+	&:after{
+		background-image: $work-priceTag-left;
+	}
+}
+
+
+
+
+
+@media only screen and (min-width: 480px){
+	.badge-left-yellow + .badge-right-yellow{
+		margin-left:3em;
+	}
+}
 
 
 

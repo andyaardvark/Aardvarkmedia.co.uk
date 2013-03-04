@@ -1,3 +1,4 @@
+@charset "CP852";
 /* ===================================================================================
  * COMBOBOX POLYFILL STYLES
  * ===================================================================================
@@ -161,10 +162,34 @@
  *    2           : all <li>s are at filling half of the available columns' width.
  *    3 [optional]: all <li>s are filling 30% of the total width, with 5% of the gutter.
  *    0           : all elements are inlined. Widths are set automatically.
+ *
+ * @param $ib boolean: should everything be inline-block and no floats?
  * ------------------------------------------------------ */
 /* ------------------------------------------------------
  * ENDOF: COLUMNISE LIST
  * ------------------------------------------------------ */
+/* ------------------------------------------------------
+ * NUMERIC COLOURED LIST
+ * ------------------------------------------------------
+ * @desc  Removes <li> numeration and introduces it back to :before pasudoelements to allow for custom styling
+
+ * @param $el parent of :before
+ * ------------------------------------------------------ */
+/* line 434, ../../../sass/partials/helpers/_mixins-generic.scss */
+.numericColouredList {
+  list-style-type: none;
+}
+/* line 422, ../../../sass/partials/helpers/_mixins-generic.scss */
+.numericColouredList li {
+  counter-increment: level1;
+}
+/* line 426, ../../../sass/partials/helpers/_mixins-generic.scss */
+.numericColouredList li:before {
+  content: counter(level1, decimal) ". ";
+  position: absolute;
+  color: #cd2729;
+}
+
 /* ------------------------------------------------------
  * PLACEHOLDER
  * ------------------------------------------------------
@@ -209,7 +234,7 @@ input.ffb-input {
   right: 0;
   width: 1.5em;
   height: 100%;
-  border-left: 1px solid #DDDDDD;
+  border-left: 1px solid #dddddd;
 }
 /* line 44, ../../../sass/partials/libs/combobox-polyfill.scss */
 .ffb-arrow:after {
@@ -232,17 +257,17 @@ input.ffb-input {
 /* line 52, ../../../sass/partials/libs/combobox-polyfill.scss */
 .ffb-arrow.out {
   background: transparent;
-  border-left: 1px solid #DDDDDD;
+  border-left: 1px solid #dddddd;
 }
 /* line 57, ../../../sass/partials/libs/combobox-polyfill.scss */
 .ffb-arrow.over {
   background: transparent;
-  border-left: 1px solid #DDDDDD;
+  border-left: 1px solid #dddddd;
 }
 /* line 62, ../../../sass/partials/libs/combobox-polyfill.scss */
 .ffb-arrow.active {
   background: transparent;
-  border-left: 1px solid #DDDDDD;
+  border-left: 1px solid #dddddd;
 }
 
 /* line 69, ../../../sass/partials/libs/combobox-polyfill.scss */
@@ -284,7 +309,7 @@ input.ffb-input {
 .ffb-sel {
   cursor: pointer;
   cursor: hand;
-  color: #fff !important;
+  color: white !important;
   background-color: #39f;
 }
 
@@ -305,7 +330,7 @@ input.ffb-input {
 .ffb .page, .ffb a.page {
   font-size: 85%;
   padding: 2px;
-  border: solid 1px #339;
+  border: solid 1px #333399;
   background-color: #eef;
   margin: 2px;
 }

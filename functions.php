@@ -16,6 +16,7 @@ require_once('_incs/core/cpt/vacancies.php');
 
 /* Utilities */
 require_once( '_incs/core/utilities.php' );
+require_once('_incs/core/lib/aq_resizer.php');
 
 
 /* Custom Menu Walkers */

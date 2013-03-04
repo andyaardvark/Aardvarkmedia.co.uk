@@ -57,6 +57,7 @@
 
 		.container-grey-even,
 		.container-grey-odd{
+			@extend %cf;
 			padding-bottom:rhythm(2);
 		}
 
@@ -81,7 +82,8 @@
 
 				.subnav-link{
 					@include transition(color .3s ease, border-color .3s ease);
-					padding       : .5em 1.5em;
+					padding       : .5em 1.25em;
+					margin        : 0 .25em;
 					border-bottom : 2px dotted $grey;
 					color         : $grey;
 					display       : block;
@@ -97,6 +99,10 @@
 						border-color:$red-light;
 					}
 				}
+
+		.about-pagination{
+			text-align:center;
+		}
 
 	/* ------------------------------------------------------
 	 * ENDOF: GENERIC

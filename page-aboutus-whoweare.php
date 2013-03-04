@@ -1,10 +1,12 @@
 <?php
 /*
-Template Name: About Us: Who We Are
-*/
+ * Template Name: About Us: Who We Are
+ *
+ * @package <theme name>
+ * @since 1.0
+ */
 ?>
 
-<?php include_once('_incs/core/lib/aq_resizer.php'); ?>
 <?php include_once('_incs/html/header.php'); ?>
 
   <article class="container fadeable" role="main">
@@ -13,39 +15,9 @@ Template Name: About Us: Who We Are
 
 
 
-
-
-
     <!-- HEADER -->
-    <header class="container-grey-odd no-header-with-subnav">
-
-      <nav class="gridbase">
-        <ul class="inlineBlockList subnav">
-
-          <?php
-          echo wp_list_pages($args = array(
-            'child_of'     => $post->post_parent,
-            'title_li'     => false,
-            'echo'         => 1,
-            'walker'       => new AM_Walker_AboutSubnav(),
-            'post_type'    => 'page',
-            'post_status'  => 'publish'
-          ));
-          ?>
-
-        </ul>
-      </nav>
-
-      <div class="headline-borderless gridbase">
-        <h1 class="sideStripes"><span><?php echo get_field('main_heading'); ?></span></h1>
-        <?php echo get_field('main_content'); ?>
-      </div>
-
-    </header>
+    <?php include_once('_incs/html/about-header.php'); ?>
     <!-- ENDOF: HEADER -->
-
-
-
 
 
 
@@ -95,7 +67,11 @@ Template Name: About Us: Who We Are
     <!-- ENDOF: TEAM GRID -->
 
 
-
+    <!-- PAGINATION -->
+    <div class="container-grey-odd">
+      <?php include_once('_incs/html/about-pagination.php'); ?>
+    </div>
+    <!-- ENDOF: PAGINATION -->
 
 
   </article>
