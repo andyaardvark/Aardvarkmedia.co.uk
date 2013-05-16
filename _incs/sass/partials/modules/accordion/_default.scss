@@ -7,16 +7,13 @@
 
 
 .accordion{
-	width:100%;
+	width      : 100%;
+}
 
+.no-js .accordion{
 	input[type="radio"]:checked{
 
-		& + article{
-
-			.accordion-header,
-			.accordion-header:hover{
-				background : darken($grey-light, 10);
-			}
+		& + .accordion-content-wrapper{
 
 			.accordion-content{
 				height:auto;
@@ -28,24 +25,54 @@
 }
 
 
+
+input[type="radio"]:checked{
+
+	& + .accordion-content-wrapper{
+
+		.accordion-header{
+			color:$red;
+		}
+
+	}
+
+}
+
+	.accordion-content-wrapper{
+		text-align : left;
+		position   : relative;
+		width      : 100%;
+	}
+
+
+
 	.accordion-header{
+		@include inline-block;
 		@include adjust-font-size-to($base-font-size*1.5);
-		background : $grey-light;
+		@include transition(color .7s ease);
 		position   : relative;
 		z-index    : 20;
-		display    : block;
 		cursor     : pointer;
 		margin     : 0;
 		padding    : 0;
 
 		&:hover{
-			background : lighten($grey-light, 10);
+			@include transition-duration(.3s);
+			color:$red;
+		}
+
+		&:active{
+			@include transition-duration(.3s);
+			color:$red-lighter;
 		}
 
 		label{
+			@include inline-block;
+			@include box-sizing(border-box);
 			float   : none;
-			padding : 0 rhythm(.25);
+			padding : 0 $grid-padding;
 			margin  : 0;
+			width   : 100%;
 		}
 	}
 
@@ -58,5 +85,19 @@
 		height   : 0;
 	}
 
+
+	.mzr-js .accordion-content{
+		@include transition(none);
+		position : absolute;
+		left     : -9999px;
+		height   : auto;
+		width    : 100%;
+
+		&.visible{
+			position : relative;
+			left     : 0;
+			height   : 0;
+		}
+	}
 
 

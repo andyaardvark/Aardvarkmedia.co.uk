@@ -268,6 +268,7 @@
 	background-repeat : repeat-x;
 }
 
+
 /* ------------------------------------------------------
  * ENDOF: GRADIENTS
  * ------------------------------------------------------
@@ -291,56 +292,157 @@
  *    2           : all <li>s are at filling half of the available columns' width.
  *    3 [optional]: all <li>s are filling 30% of the total width, with 5% of the gutter.
  *    0           : all elements are inlined. Widths are set automatically.
+ *
+ * @param $ib boolean: should everything be inline-block and no floats?
  * ------------------------------------------------------ */
 
-@mixin columniseList($c:0){
+@mixin columniseList($c:0, $ib:false){
+	@if($ib){
+		@include inline-block;
+		vertical-align: top;
+	}
+
+
 	@if($c==1){
-		@include span-columns($total-columns);
+		@if($ib){
+			width:columns($total-columns);
+		} @else {
+			@include span-columns($total-columns);
+		}
+
 	}
 
 
 	@else if($c==2){
-		@include span-columns($total-columns * .5);
-		white-space:inherit;
+		@if($ib){
+			width        : columns($total-columns * .5);
+			margin-left : $gutter-width;
 
-		&:nth-child(2n){
-			@include omega();
+			&:nth-child(2n+1){
+				margin-left : 0;
+				clear       : both;
+			}
+
+		} @else {
+			@include span-columns($total-columns * .5);
+			white-space:inherit;
+
+			&:nth-child(2n){
+				@include omega();
+			}
 		}
+
 	}
 
 
 	@else if($c==3){
 		width        : (100 - 2 * $gutter-width)/3;
-		margin-right : $gutter-width;
 
-		&:nth-child(2n){
-			@include remove-omega;
-		}
 
-		&:nth-child(3n){
-			@include omega();
+		@if($ib){
+
+			&,
+			&:nth-child(2n),
+			&:nth-child(2n+1){
+				margin-left : $gutter-width;
+			}
+
+			&:nth-child(3n+1){
+				margin-left : 0;
+				clear       : both;
+			}
+
+		} @else {
+			margin-right : $gutter-width;
+
+			&:nth-child(2n){
+				@include remove-omega;
+			}
+
+			&:nth-child(3n){
+				@include omega();
+			}
+
 		}
 	}
 
 
 	@else if($c==0){
-		@include inline-block;
 		width  : auto;
 		margin : 0 1%;
-		float  : none;
 
-		&:nth-child(2n),
-		&:nth-child(3n){
+		@if($ib){
+			&:nth-child(2n),
+			&:nth-child(3n){
+				margin : 0 1%;
+			}
+
+		} @else {
 			@include inline-block;
-			margin : 0 1%;
 			float  : none;
+
+			&:nth-child(2n),
+			&:nth-child(3n){
+				@include inline-block;
+				margin : 0 1%;
+				float  : none;
+			}
 		}
+
+
 	}
 }
 
 /* ------------------------------------------------------
  * ENDOF: COLUMNISE LIST
  * ------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------
+ * NUMERIC COLOURED LIST
+ * ------------------------------------------------------
+ * @desc  Removes <li> numeration and introduces it back to :before pasudoelements to allow for custom styling
+
+ * @param $el parent of :before
+ * ------------------------------------------------------ */
+
+@mixin numericColouredList($el:li){
+	list-style-type: none;
+
+	li{
+		counter-increment : level1;
+	}
+
+	#{$el}:before{
+		content     : counter(level1, decimal) ". ";
+		position    : absolute;
+		@content;
+	}
+}
+
+
+.numericColouredList{
+	@include numericColouredList(){
+		color:$red;
+	}
+}
+
+
+
+
+
+
+
 
 
 

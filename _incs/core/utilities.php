@@ -49,6 +49,79 @@ function cgy_get_current_page(){
 
 
 /**
+ * get_page_siblings
+ * --------------------------------------------------
+ * Finds previous and next sibling page
+ * Based on: http://pastebin.com/KkdwLc6z
+ *
+ * @param string $side 'before' || 'after'
+ * @return array
+ */
+function get_page_siblings($side){
+
+  global $post;
+
+  //querry all sibling pages and sort by custom order
+  $siblings = get_pages(array(
+    'child_of'    => $post->post_parent,
+    'parent'      => $post->post_parent,
+    'sort_order'  => 'ASC',
+    'sort_column' => 'menu_order'
+  ));
+
+
+  //get current id
+  foreach ($siblings as $key=>$sibling){
+    if ($post->ID == $sibling->ID){
+      $ID = $key;
+    }
+  }
+
+  //prepare data array
+  $closest = array( 'current'=> $ID+1, 'total' => count($siblings));
+
+
+  //compose before and after
+  if(($ID == 0)){
+    $closest['prev'] = null;
+
+  }else{
+    $closest['prev'] = array(
+      'url'   => get_permalink($siblings[$ID-1]->ID),
+      'title' => get_the_title($siblings[$ID-1]->ID)
+    );
+  }
+
+  if($ID == $closest['total']-1){
+    $closest['next'] = null;
+  }else{
+    $closest['next'] = array(
+      'url'   => get_permalink($siblings[$ID+1]->ID),
+      'title' => get_the_title($siblings[$ID+1]->ID)
+    );
+  }
+
+
+  //return data
+  if ($side == 'before' || $side == 'after') { return $closest[$side]; } else { return $closest; }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
  * cgy_or
  * --------------------------------------------------
  * equivalent of JS's a||b||c returns first nonempty value
